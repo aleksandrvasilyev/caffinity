@@ -1,4 +1,4 @@
-import Cafe from "../models/cafe.js";
+import Cafe from "../models/Cafe.js";
 import { logError } from "../util/logging.js";
 
 export const getCafes = async (req, res) => {

@@ -15,3 +15,7 @@ coverage
 # Cypress videos from our headless runs should not be pushed to github
 cypress/videos
 cypress/screenshots
+
+# db seed
+server/src/db/data
+server/src/db/seedDb.js
