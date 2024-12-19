@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import cafeRouter from "./routes/cafe.js";
-
 import userRouter from "./routes/user.js";
 
 // Create an express server
@@ -18,7 +17,6 @@ app.use(cors());
  * As we also host our client code on heroku we want to separate the API endpoints.
  */
 app.use("/api/user", userRouter);
-
 app.use("/api/cafes", cafeRouter);
 
 export default app;
