@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home/Home";
-import CreateUser from "./pages/User/CreateUser";
-import UserList from "./pages/User/UserList";
+import Cafe from "./pages/Cafe/Cafe";
+import Catalog from "./pages/Catalog/Catalog";
+import Favorite from "./pages/Favorite/Favorite";
 
 const App = () => {
   return (
@@ -11,8 +12,9 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/user" element={<UserList />} />
-        <Route path="/user/create" element={<CreateUser />} />
+        <Route path="/cafe/:id" element={<Cafe />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorite />} />
       </Routes>
     </>
   );
