@@ -1,18 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import TEST_ID from "./Nav.testid";
-
 const Nav = () => {
   return (
-    <ul>
-      <Link to="/" data-testid={TEST_ID.linkToHome}>
-        <li>Home</li>
-      </Link>
-      <Link to="/user" data-testid={TEST_ID.linkToUsers}>
-        <li>Users</li>
-      </Link>
-    </ul>
+    <nav>
+      <ul className="flex space-x-4 p-4 text-accent">
+        <li>
+          <Link to="/" className="hover:text-gray-400">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/catalog" className="hover:text-gray-400">
+            Catalog
+          </Link>
+        </li>
+        <li>
+          <Link to="/favorites" className="hover:text-gray-400">
+            Favorites
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

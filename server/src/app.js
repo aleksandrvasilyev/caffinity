@@ -16,7 +16,6 @@ app.use(cors());
  * We use /api/ at the start of every route!
  * As we also host our client code on heroku we want to separate the API endpoints.
  */
-
 app.use("/api/user", userRouter);
 app.use("/api/cafes", cafeRouter);
 
