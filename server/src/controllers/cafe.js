@@ -1,14 +1,19 @@
-import Cafe from "../models/cafe.js";
+import Cafe from "../models/Cafe.js";
 import { logError } from "../util/logging.js";
+import paginate from "../util/pagination.js";
 
 export const getCafes = async (req, res) => {
+  const limit = Math.max(Number(req.query.limit) || 10, 1);
+  const page = Math.max(Number(req.query.page) || 1, 1);
+
   try {
-    const cafe = await Cafe.find();
-    res.status(200).json({ success: true, result: cafe });
+    const paginatedCafes = await paginate(Cafe, limit, page);
+
+    res.status(200).send({ success: true, result: paginatedCafes });
   } catch (error) {
     logError(error);
     res
       .status(500)
-      .json({ success: false, msg: "Unable to get users, try again later" });
+      .send({ success: false, msg: "Unable to get cafes, try again later" });
   }
 };
