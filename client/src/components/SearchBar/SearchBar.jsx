@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SearchIcon from "./SearchIcon";
-import Filters from "./Filters";
-import useFetch from "../hooks/useFetch";
+import SearchIcon from "../Icons/SearchIcon";
+import Filters from "../Filter/Filters";
+import useFetch from "../../hooks/useFetch";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");

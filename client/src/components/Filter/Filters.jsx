@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FilterIcon from "./FilterIcon";
+import FilterIcon from "../Icons/FilterIcon";
 import { useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 
