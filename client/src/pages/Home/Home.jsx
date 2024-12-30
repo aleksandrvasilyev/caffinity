@@ -1,11 +1,7 @@
 import React from "react";
 
 const Home = () => {
-  return (
-    <div>
-      <p className="text-4xl font-bold">Welcome to Caffinity!</p>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;
