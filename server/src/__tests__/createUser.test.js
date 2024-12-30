@@ -22,7 +22,11 @@ afterAll(async () => {
   await closeMockDatabase();
 });
 
-const testUserBase = { name: "John", email: "john@doe.com" };
+const testUserBase = {
+  name: "John",
+  email: "john@doe.com",
+  password: "password123",
+};
 
 describe("POST /api/user/create", () => {
   it("Should return a bad request if no user object is given", (done) => {
@@ -119,6 +123,7 @@ describe("POST /api/user/create", () => {
         expect(body.success).toBe(true);
         expect(body.user.name).toEqual(testUser.name);
         expect(body.user.email).toEqual(testUser.email);
+        expect(body.user.password).toEqual(testUser.password);
 
         // Check that it was added to the DB
         return findUserInMockDB(body.user._id);
@@ -126,6 +131,7 @@ describe("POST /api/user/create", () => {
       .then((userInDb) => {
         expect(userInDb.name).toEqual(testUser.name);
         expect(userInDb.email).toEqual(testUser.email);
+        expect(userInDb.password).toEqual(testUser.password);
       });
   });
 });
