@@ -6,7 +6,7 @@ import useFetch from "../hooks/useFetch";
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
-  
+
   // searchResults is not used in this component it will be used in catalog page to display the search results.
   // eslint-disable-next-line no-unused-vars
   const [searchResults, setSearchResults] = useState([]);
