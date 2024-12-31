@@ -1,46 +1,55 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
-import { useNavigate } from "react-router-dom";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(),
 }));
 
-describe("Header", () => {
-  let navigate;
+describe("Header component", () => {
+  const mockNavigate = jest.fn();
 
   beforeEach(() => {
-    navigate = useNavigate();
+    jest.clearAllMocks();
+    require("react-router-dom").useNavigate.mockReturnValue(mockNavigate);
   });
 
-  test("renders the header with logo and buttons", () => {
+  const renderHeader = () =>
     render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>,
     );
 
-    expect(
-      screen.getByRole("button", { name: /sign up/i }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /login/i })).toBeInTheDocument();
-    expect(screen.getByTestId("logo-icon")).toBeInTheDocument();
+  test("renders the logo icon", () => {
+    renderHeader();
+    const logoIcon = screen.getByRole("img", { name: /logo/i });
+    expect(logoIcon).toBeInTheDocument();
   });
 
-  test("navigates to the favorites page when HeartIcon is clicked", () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>,
-    );
+  test("renders the favorites button", () => {
+    renderHeader();
+    const favoritesButton = screen.getByRole("button", { name: /favorites/i });
+    expect(favoritesButton).toBeInTheDocument();
+  });
 
-    const heartIcon = screen.getByTestId("heart-icon");
+  test("renders the Sign Up and Login buttons", () => {
+    renderHeader();
+    const signUpButton = screen.getByRole("button", { name: /sign up/i });
+    const loginButton = screen.getByRole("button", { name: /login/i });
 
-    fireEvent.click(heartIcon);
+    expect(signUpButton).toBeInTheDocument();
+    expect(loginButton).toBeInTheDocument();
+  });
 
-    expect(navigate).toHaveBeenCalledWith("/favorites");
+  test("navigates to favorites when the favorites button is clicked", async () => {
+    renderHeader();
+    const favoritesButton = screen.getByRole("button", { name: /favorites/i });
+    await userEvent.click(favoritesButton);
+
+    expect(mockNavigate).toHaveBeenCalledWith("/favorites");
   });
 });
