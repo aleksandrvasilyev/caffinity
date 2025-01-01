@@ -2,10 +2,17 @@ import mongoose from "mongoose";
 
 import validateAllowedFields from "../util/validateAllowedFields.js";
 
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-});
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    name: { type: String },
+    avatar: { type: String },
+    phoneNumber: { type: String },
+    favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cafe" }],
+  },
+  { timestamps: true },
+);
 
 const User = mongoose.model("users", userSchema);
 
