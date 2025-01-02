@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import LogoIcon from "../icons/LogoIcon";
+import LogoIcon from "../Icons/LogoIcon";
 import Button from "../Button/Button";
 import HeartIcon from "../Icons/HeartIcon";
 
