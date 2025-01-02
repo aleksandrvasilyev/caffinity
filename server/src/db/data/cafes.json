@@ -1,0 +1,810 @@
+[
+  {
+    "_id": "64b8f5d2dc1b8a1234567801",
+    "title": "Café De Balie",
+    "description": "A cultural café near Leidseplein offering coffee, lunch, and events.",
+    "address": "Kleine-Gartmanplantsoen 10, 1017 RR Amsterdam, Netherlands",
+    "location": {
+      "latitude": 52.364812,
+      "longitude": 4.881876
+    },
+    "rating": 0,
+    "photos": [
+      "Café-vanaf-buiten-scaled.webp",
+      "bdiukylpviLcZig5NHdEiUlWFrh0m2-metaU09QSDA5NDYuanBn.webp",
+      "Balie_Warmer-51-scaled.webp",
+      "afbeelding-de-balie.webp"
+    ],
+    "utilities": [0, 2, 7, 15],
+    "foodOptions": [0, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567802",
+    "title": "Café Het Paleis",
+    "description": "Cozy café near the Royal Palace serving pastries and coffee.",
+    "address": "Nieuwezijds Voorburgwal 196, 1012 SJ Amsterdam",
+    "location": {
+      "latitude": 52.373173,
+      "longitude": 4.892608
+    },
+    "rating": 0,
+    "photos": [
+      "het-paleis-1.jpeg",
+      "hetpaleis.jpg",
+      "het-cafe-restaurant-nostalgisc.jpg",
+      "hetpaleis-01.jpg"
+    ],
+    "utilities": [1, 2, 8, 7],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567803",
+    "title": "Café Amstelhaven",
+    "description": "Riverside café with a terrace overlooking the Amstel.",
+    "address": "Mauritskade 1, 1091 EW Amsterdam",
+    "location": {
+      "latitude": 52.362221,
+      "longitude": 4.905045
+    },
+    "rating": 0,
+    "photos": [
+      "amstel3.jpg",
+      "amstelhaven-hoofdfoto.webp",
+      "665bb2dc-0c7e-4853-a3b7-767e1fbcec81.jpg",
+      "wk-2014.jpg"
+    ],
+    "utilities": [0, 12, 3, 1, 9],
+    "foodOptions": [0, 7, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567804",
+    "title": "Café Jordaan Corner",
+    "description": "Traditional Dutch café with canal views in the Jordaan.",
+    "address": "Prinsengracht 263, 1016 GV Amsterdam",
+    "location": {
+      "latitude": 52.375218,
+      "longitude": 4.883977
+    },
+    "rating": 0,
+    "photos": [
+      "jordaan_10-1024x768.jpeg",
+      "interior-jordaan.jpg",
+      "interieur-jordaan.jpg"
+    ],
+    "utilities": [0, 7, 11, 1, 9],
+    "foodOptions": [0, 1, 5]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567805",
+    "title": "Café De Pijp Delight",
+    "description": "Hip café in De Pijp serving healthy brunch options.",
+    "address": "Albert Cuypstraat 86, 1072 CV Amsterdam",
+    "location": {
+      "latitude": 52.357239,
+      "longitude": 4.895842
+    },
+    "rating": 0,
+    "photos": ["cafe-de-pijp-in-amsterdam.jpg", "cafe-binnen-buiten.jpg"],
+    "utilities": [2, 4, 8, 9],
+    "foodOptions": [0, 2, 3, 6]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567806",
+    "title": "Café Westerpark Lounge",
+    "description": "Green café near the park offering organic coffee and pastries.",
+    "address": "Haarlemmerweg 8, 1014 BE Amsterdam",
+    "location": {
+      "latitude": 52.3862,
+      "longitude": 4.8736
+    },
+    "rating": 0,
+    "photos": [
+      "westerpark-1.jpg",
+      "westerpark-2.jpeg",
+      "westerpark-3.jpg",
+      "westerpark-4.webp"
+    ],
+    "utilities": [0, 1, 2, 9],
+    "foodOptions": [0, 1, 4]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567807",
+    "title": "Café Oud-Zuid Garden",
+    "description": "Elegant café in Oud-Zuid with a hidden garden terrace.",
+    "address": "Van Baerlestraat 45, 1071 AP Amsterdam",
+    "location": {
+      "latitude": 52.3584,
+      "longitude": 4.8794
+    },
+    "rating": 0,
+    "photos": ["garden-1.jpg", "garden-2.webp", "garden-2jpg.jpg"],
+    "utilities": [0, 12, 9, 1, 5],
+    "foodOptions": [0, 2, 9]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567808",
+    "title": "Café De Plantage",
+    "description": "Stylish café near the zoo with botanical surroundings.",
+    "address": "Plantage Middenlaan 2, 1018 DD Amsterdam",
+    "location": {
+      "latitude": 52.3679,
+      "longitude": 4.9135
+    },
+    "rating": 0,
+    "photos": ["plantage-1.png", "plantage-2.jpg", "plantage-3.jpg"],
+    "utilities": [0, 7, 8, 9, 10],
+    "foodOptions": [1, 2, 8, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567809",
+    "title": "Café Canal Bloom",
+    "description": "Small café by the canal with fresh pastries and coffee.",
+    "address": "Keizersgracht 412, 1016 GB Amsterdam",
+    "location": {
+      "latitude": 52.37,
+      "longitude": 4.8876
+    },
+    "rating": 0,
+    "photos": [
+      "een-onderschrift-toevoegen.jpg",
+      "Screenshot-2024-01-30-at-12.19.49.webp",
+      "een-onderschrift-toevoegen-2.jpeg"
+    ],
+    "utilities": [1, 2, 7, 9],
+    "foodOptions": [0, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567810",
+    "title": "Café De L'Europe",
+    "description": "Upscale café with river views inside a luxury hotel.",
+    "address": "Nieuwe Doelenstraat 2-14, 1012 CP Amsterdam",
+    "location": {
+      "latitude": 52.367432,
+      "longitude": 4.895134
+    },
+    "rating": 0,
+    "photos": [
+      "de-leurope-1.webp",
+      "de-leurope-2.jpg",
+      "de-leurope-3.jpg",
+      "de-leurope-4.jpg"
+    ],
+    "utilities": [0, 3, 15, 1, 2],
+    "foodOptions": [2, 3, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567811",
+    "title": "Café Skinny Bridge",
+    "description": "Charming spot near the Magere Brug with canal scenery.",
+    "address": "Amstel 81, 1018 EK Amsterdam",
+    "location": {
+      "latitude": 52.365615,
+      "longitude": 4.901219
+    },
+    "rating": 0,
+    "photos": [
+      "aan-de-mooiste-brug-van.jpg",
+      "hq720.jpg",
+      "people-sitting-at-cafe-tables-at-sunset-on-the-magere-brug-skinny-bridge-netherlands-amsterdam-2B1FC5E.jpg"
+    ],
+    "utilities": [1, 4, 11, 9],
+    "foodOptions": [0, 7, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567812",
+    "title": "Café Noord Waterside",
+    "description": "Modern café in Amsterdam-Noord overlooking the IJ river.",
+    "address": "NDSM-Plein 28, 1033 WB Amsterdam",
+    "location": {
+      "latitude": 52.401557,
+      "longitude": 4.888728
+    },
+    "rating": 0,
+    "photos": [
+      "2822f155-4980-4300-aa86-702fc5555d83.webp",
+      "restaurants-bib-gourmand-noord-holland-marie-2.jpg",
+      "a-unique-waterside-terrace.jpg",
+      "lovely-waterside-terrace.jpg"
+    ],
+    "utilities": [0, 1, 2, 5],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567813",
+    "title": "Café Oost Indie",
+    "description": "Café in the East district with a variety of breakfast bowls.",
+    "address": "Linnaeusstraat 58, 1092 CM Amsterdam",
+    "location": {
+      "latitude": 52.3601,
+      "longitude": 4.9205
+    },
+    "rating": 0,
+    "photos": [
+      "badhuis-amsterdam-wil-weer-het-kloppend-hart-van-de-indische.jpeg",
+      "bar-botanique-cafe-tropique.jpg"
+    ],
+    "utilities": [0, 2, 5],
+    "foodOptions": [0, 4, 5]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567814",
+    "title": "Café Haarlemmer Treats",
+    "description": "Popular café on Haarlemmerdijk with homemade pastries.",
+    "address": "Haarlemmerdijk 38, 1013 JD Amsterdam",
+    "location": {
+      "latitude": 52.38298,
+      "longitude": 4.8885
+    },
+    "rating": 0,
+    "photos": [
+      "frietkamer.jpg",
+      "Foodhallen-Amsterdam-Food-Market-Stalls-scaled.jpg"
+    ],
+    "utilities": [0, 2, 6, 9],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567815",
+    "title": "Café Zuidas Modern",
+    "description": "A sleek café in the business district serving specialty coffee.",
+    "address": "Gustav Mahlerlaan 100, 1082 MA Amsterdam",
+    "location": {
+      "latitude": 52.3367,
+      "longitude": 4.8723
+    },
+    "rating": 0,
+    "photos": [
+      "restaurants-zuidas-amsterdam-grand-cafe-mahler.jpg",
+      "restaurants-zuidas-amsterdam-nela.jpg",
+      "restaurants-zuidas-amsterdam-ox-bucks.jpg"
+    ],
+    "utilities": [0, 2, 8, 9],
+    "foodOptions": [1, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567816",
+    "title": "Café Artis Garden",
+    "description": "Near Artis Zoo, a family-friendly café with a leafy terrace.",
+    "address": "Plantage Kerklaan 38, 1018 CZ Amsterdam",
+    "location": {
+      "latitude": 52.3678,
+      "longitude": 4.9156
+    },
+    "rating": 0,
+    "photos": [
+      "cafe-restaurant-de-plantage-artisplein-artis-zoological-garden-amsterdam-KWN7EA.jpg",
+      "de-Plantage-Buiten-Herfst-150-copy.jpg",
+      "cafe-restaurant-de-plantage_teska-overbeeke_1920x1080jpg__1920x1080_q85_crop_subsampling-2_upscale.jpg"
+    ],
+    "utilities": [0, 9, 12],
+    "foodOptions": [0, 2, 8]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567817",
+    "title": "Café Westerliefde",
+    "description": "Artsy café with live music performances in Westerpark.",
+    "address": "Klonneplein 4-6, 1014 DD Amsterdam",
+    "location": {
+      "latitude": 52.3868,
+      "longitude": 4.8793
+    },
+    "rating": 0,
+    "photos": [
+      "westerliefde_interieur-1800.webp",
+      "WesterLiefde2-2048x1365.jpg",
+      "WesterLiefde_Events_Amsterdam_DanielleReizevoort-39.jpg"
+    ],
+    "utilities": [0, 2, 15],
+    "foodOptions": [2, 3, 4]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567818",
+    "title": "Café Amstel Corner",
+    "description": "Small corner café by the Amstel with a cozy atmosphere.",
+    "address": "Amstel 158, 1017 AD Amsterdam",
+    "location": {
+      "latitude": 52.3638,
+      "longitude": 4.9028
+    },
+    "rating": 0,
+    "photos": [
+      "voorkant-amstel1.jpg",
+      "Cafe-De-Amstel_81b83208538ba9ff7ca23b0faf7b5f18.jpg",
+      "AmstelHotel-Lounge.webp"
+    ],
+    "utilities": [0, 7, 8],
+    "foodOptions": [0, 5, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567819",
+    "title": "Café Vondel Bliss",
+    "description": "Café near Vondelpark serving smoothies and light meals.",
+    "address": "Vondelstraat 75, 1054 GK Amsterdam",
+    "location": {
+      "latitude": 52.3603,
+      "longitude": 4.873
+    },
+    "rating": 0,
+    "photos": ["IMGL6748-web-2048x1365.jpg", "vondelpark3-amsterdam.jpg"],
+    "utilities": [0, 2, 1],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567820",
+    "title": "Café De Hallen Market",
+    "description": "Café inside a renovated tram depot, offering a variety of bites.",
+    "address": "Hannie Dankbaarpassage 33, 1053 RT Amsterdam",
+    "location": {
+      "latitude": 52.3681,
+      "longitude": 4.8628
+    },
+    "rating": 0,
+    "photos": [
+      "Foodhallen-Amsterdam-Street-Food-Market-Bar-scaled.webp",
+      "foodhallen-amsterdam.jpg"
+    ],
+    "utilities": [0, 6, 7],
+    "foodOptions": [0, 2, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567821",
+    "title": "Café Prinsengracht View",
+    "description": "Charming café with a view of Prinsengracht canal.",
+    "address": "Prinsengracht 500, 1017 KH Amsterdam",
+    "location": {
+      "latitude": 52.3669,
+      "longitude": 4.8855
+    },
+    "rating": 0,
+    "photos": [
+      "cafe-at-prinsengracht-amsterdam-netherlands-europe-W1MT6J.jpg",
+      "het-groene-wout-prinsengracht-amsterdam-cafe-restaurant-bar-pub-netherlands-DF00R7.jpg"
+    ],
+    "utilities": [0, 7, 2],
+    "foodOptions": [0, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567822",
+    "title": "Café Waterlooplein",
+    "description": "Café near the flea market, offering quick bites and coffee.",
+    "address": "Waterlooplein 22, 1011 PG Amsterdam",
+    "location": {
+      "latitude": 52.3665,
+      "longitude": 4.9037
+    },
+    "rating": 0,
+    "photos": ["gallerij2.jpg", "lunchcafe-waterloo.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [1, 2, 4]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567823",
+    "title": "Café Rembrandt Square",
+    "description": "Café on a lively square with late-night snacks.",
+    "address": "Rembrandtplein 15, 1017 CT Amsterdam",
+    "location": {
+      "latitude": 52.3669,
+      "longitude": 4.8964
+    },
+    "rating": 0,
+    "photos": ["rembrandtbar-amsterdam.jpg", "vanrijn_site_032.jpg"],
+    "utilities": [0, 2, 7],
+    "foodOptions": [2, 3, 8]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567824",
+    "title": "Café Museumsplein",
+    "description": "Café near Museumplein serving sandwiches and salads.",
+    "address": "Van Baerlestraat 33, 1071 AP Amsterdam",
+    "location": {
+      "latitude": 52.3582,
+      "longitude": 4.8801
+    },
+    "rating": 0,
+    "photos": ["museumplein-1.jpeg", "museumplein-2.jpeg"],
+    "utilities": [0, 11, 7],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567825",
+    "title": "Café Spui Central",
+    "description": "Café at the literary heart of the city, near Spui.",
+    "address": "Spui 10, 1012 WZ Amsterdam",
+    "location": {
+      "latitude": 52.3697,
+      "longitude": 4.8892
+    },
+    "rating": 0,
+    "photos": ["restaurant-4011989_1920.jpg", "cats-cafe-4697753_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 5, 6]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567826",
+    "title": "Café Nine Streets",
+    "description": "Quaint café in the Nine Streets area.",
+    "address": "Wolvenstraat 12, 1016 EP Amsterdam",
+    "location": {
+      "latitude": 52.3715,
+      "longitude": 4.8852
+    },
+    "rating": 0,
+    "photos": ["seoul-7106196_1920.jpg", "places-2568876_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567827",
+    "title": "Café Westergas",
+    "description": "Creative café in Westergas cultural area.",
+    "address": "Polonceaukade 27, 1014 DA Amsterdam",
+    "location": {
+      "latitude": 52.3869,
+      "longitude": 4.8735
+    },
+    "rating": 0,
+    "photos": ["cafe-5579069_1280.jpg", "coffee-shop-6275032_1280.jpg"],
+    "utilities": [0, 2, 15],
+    "foodOptions": [0, 3, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567828",
+    "title": "Café Zeedijk Flavors",
+    "description": "Café in the Chinatown area with fusion treats.",
+    "address": "Zeedijk 77, 1012 AR Amsterdam",
+    "location": {
+      "latitude": 52.3745,
+      "longitude": 4.9008
+    },
+    "rating": 0,
+    "photos": ["cafe-789635_1280.jpg", "amsterdam-2034650_1280.jpg"],
+    "utilities": [1, 2, 7],
+    "foodOptions": [2, 4, 5]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567829",
+    "title": "Café De Pijp Classics",
+    "description": "Another gem in De Pijp serving classic Dutch pastries.",
+    "address": "Ferdinand Bolstraat 45, 1072 LB Amsterdam",
+    "location": {
+      "latitude": 52.3549,
+      "longitude": 4.8914
+    },
+    "rating": 0,
+    "photos": ["interior-1961070_1280.jpg", "cafe-2256058_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [1, 7, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567830",
+    "title": "Café Overtoom Lounge",
+    "description": "Relaxed café on Overtoom street.",
+    "address": "Overtoom 85, 1054 HD Amsterdam",
+    "location": {
+      "latitude": 52.3609,
+      "longitude": 4.8684
+    },
+    "rating": 0,
+    "photos": ["cafe-6875771_1280.jpg", "coffeehouse-2600877_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567831",
+    "title": "Café Beethovenstraat",
+    "description": "Quiet café in a chic neighborhood.",
+    "address": "Beethovenstraat 32, 1077 JH Amsterdam",
+    "location": {
+      "latitude": 52.3465,
+      "longitude": 4.8791
+    },
+    "rating": 0,
+    "photos": ["chair-1840526_1280.jpg", "brick-wall-1834784_1280.jpg"],
+    "utilities": [0, 7, 8],
+    "foodOptions": [0, 3, 6]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567832",
+    "title": "Café Oud-West Hub",
+    "description": "Neighborhood café in Oud-West.",
+    "address": "Jan Pieter Heijestraat 33, 1053 GC Amsterdam",
+    "location": {
+      "latitude": 52.3641,
+      "longitude": 4.8687
+    },
+    "rating": 0,
+    "photos": ["chairs-2179044_1280.jpg", "bar-826688_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 2, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567833",
+    "title": "Café Oosterpark Green",
+    "description": "Café adjacent to Oosterpark with fresh juices.",
+    "address": "Oosterpark 10, 1092 AE Amsterdam",
+    "location": {
+      "latitude": 52.3622,
+      "longitude": 4.9226
+    },
+    "rating": 0,
+    "photos": [
+      "ai-generated-8760763_1280.jpg",
+      "villa-cortine-palace-949552_1280.jpg"
+    ],
+    "utilities": [0, 2, 9],
+    "foodOptions": [0, 8, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567834",
+    "title": "Café Sloterdijk Station",
+    "description": "Convenient café near Sloterdijk Station.",
+    "address": "Orlyplein 10, 1043 DP Amsterdam",
+    "location": {
+      "latitude": 52.3886,
+      "longitude": 4.8367
+    },
+    "rating": 0,
+    "photos": ["restaurant-6479814_1280.jpg", "bar-658615_1280.jpg"],
+    "utilities": [0, 2, 5],
+    "foodOptions": [0, 2, 4]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567835",
+    "title": "Café Nieuwmarkt",
+    "description": "Historic café near Nieuwmarkt.",
+    "address": "Nieuwmarkt 18, 1012 CS Amsterdam",
+    "location": {
+      "latitude": 52.3729,
+      "longitude": 4.9001
+    },
+    "rating": 0,
+    "photos": [
+      "interior-1961070_1280 (1).jpg",
+      "interior-design-836320_1280.jpg"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 6, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567836",
+    "title": "Café IJburg Shores",
+    "description": "Waterfront café in IJburg.",
+    "address": "IJburglaan 700, 1087 EM Amsterdam",
+    "location": {
+      "latitude": 52.3604,
+      "longitude": 4.9833
+    },
+    "rating": 0,
+    "photos": [
+      "architecture-70920_1280.jpg",
+      "villa-cortine-palace-949547_1280.jpg"
+    ],
+    "utilities": [0, 2, 12],
+    "foodOptions": [1, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567837",
+    "title": "Café Bos en Lommer",
+    "description": "Café in a multicultural neighborhood.",
+    "address": "Bos en Lommerplein 25, 1055 AD Amsterdam",
+    "location": {
+      "latitude": 52.3765,
+      "longitude": 4.8524
+    },
+    "rating": 0,
+    "photos": ["a-restaurant-4857484_1280.jpg", "bar-601302_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 2, 5]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567838",
+    "title": "Café Rivierenbuurt",
+    "description": "Friendly café in Rivierenbuurt.",
+    "address": "Maasstraat 56, 1078 HL Amsterdam",
+    "location": {
+      "latitude": 52.346,
+      "longitude": 4.8998
+    },
+    "rating": 0,
+    "photos": ["cafe-677895_1280.jpg", "hotel-1191725_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [2, 3, 9]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567839",
+    "title": "Café De Omval",
+    "description": "Riverside café near Amstel station.",
+    "address": "Weesperzijde 250, 1097 EB Amsterdam",
+    "location": {
+      "latitude": 52.3495,
+      "longitude": 4.9122
+    },
+    "rating": 0,
+    "photos": ["restaurant-237060_1280.jpg", "frame-6616616_1280.jpg"],
+    "utilities": [0, 1, 2],
+    "foodOptions": [0, 2, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567840",
+    "title": "Café Frederik Hendrik",
+    "description": "Local café in Frederik Hendrik neighborhood.",
+    "address": "Frederik Hendrikstraat 75, 1052 HN Amsterdam",
+    "location": {
+      "latitude": 52.3792,
+      "longitude": 4.8739
+    },
+    "rating": 0,
+    "photos": ["hotel-1191718_1280.jpg", "kitchen-6878026_1280.jpg"],
+    "utilities": [2, 7, 8],
+    "foodOptions": [0, 4, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567841",
+    "title": "Café De Houthavens",
+    "description": "Modern café in the newly developed Houthavens area.",
+    "address": "Haparandaweg 18, 1013 BD Amsterdam",
+    "location": {
+      "latitude": 52.3937,
+      "longitude": 4.8753
+    },
+    "rating": 0,
+    "photos": ["restaurant-805103_1280.jpg", "cafe-1629208_1280.jpg"],
+    "utilities": [0, 2, 8],
+    "foodOptions": [1, 2, 8]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567842",
+    "title": "Café Java Eiland",
+    "description": "Café with harbor views on Java-eiland.",
+    "address": "Javakade 4, 1019 BS Amsterdam",
+    "location": {
+      "latitude": 52.3746,
+      "longitude": 4.9403
+    },
+    "rating": 0,
+    "photos": [
+      "japanese-3723045_1280.jpg",
+      "WC-HotelJakarta-BakkerijWesters-15.jpg"
+    ],
+    "utilities": [0, 2, 12],
+    "foodOptions": [0, 3, 5]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567843",
+    "title": "Café Buiksloterham",
+    "description": "Trendy café in the north, industrial area turned chic.",
+    "address": "Distelweg 74, 1031 HH Amsterdam",
+    "location": {
+      "latitude": 52.3976,
+      "longitude": 4.9025
+    },
+    "rating": 0,
+    "photos": ["1Pelusa-15.jpg", "bar-interior.jpg", "2Pelusa-9.jpg"],
+    "utilities": [0, 2, 1],
+    "foodOptions": [2, 6, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567844",
+    "title": "Café Nieuw-West Sunset",
+    "description": "Café in Nieuw-West with great sunset views.",
+    "address": "Osdorpplein 33, 1068 ER Amsterdam",
+    "location": {
+      "latitude": 52.3617,
+      "longitude": 4.8068
+    },
+    "rating": 0,
+    "photos": [
+      "38eba06c-9d5d-43fa-bb08-7e2badb30d75-scaled-2-scaled.jpg",
+      "hero1234.jpg",
+      "IMG_5601.webp"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567845",
+    "title": "Café Bijlmer Bloom",
+    "description": "Café in the Bijlmer area, diverse food scene.",
+    "address": "Bijlmerdreef 200, 1102 AC Amsterdam",
+    "location": {
+      "latitude": 52.3174,
+      "longitude": 4.9728
+    },
+    "rating": 0,
+    "photos": [
+      "een-onderschrift-toevoegen3.jpeg",
+      "banner2.jpg",
+      "een-onderschrift-toevoegen1.jpg"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [1, 2, 9]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567846",
+    "title": "Café Borneo Eiland",
+    "description": "Cozy spot on the Borneo Eiland.",
+    "address": "Borneostraat 12, 1094 CK Amsterdam",
+    "location": {
+      "latitude": 52.3661,
+      "longitude": 4.9362
+    },
+    "rating": 0,
+    "photos": [
+      "bruin-cafe-outdoor.jpg",
+      "images.jpeg",
+      "9da6024a-2b04-4411-b7e0-2a89a73d3a57.jpg"
+    ],
+    "utilities": [0, 2, 5, 7, 8],
+    "foodOptions": [0, 2, 4, 5, 7, 10]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567847",
+    "title": "Café Wibaut Smooth",
+    "description": "Café on Wibautstraat with healthy options.",
+    "address": "Wibautstraat 150, 1091 GR Amsterdam",
+    "location": {
+      "latitude": 52.3555,
+      "longitude": 4.9104
+    },
+    "rating": 0,
+    "photos": [
+      "Cafe-Wildschut-Amsterdam-ontbijt-lunch-brunch-diner-borrel-2-uai-1250x1000.jpg",
+      "Cafe-Wildschut-Amsterdam-drinks-food.jpg"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 2, 3]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567848",
+    "title": "Café De Rivieren Mix",
+    "description": "Another café in Rivierenbuurt with global flavors.",
+    "address": "Rijnstraat 54, 1078 HX Amsterdam",
+    "location": {
+      "latitude": 52.3422,
+      "longitude": 4.9148
+    },
+    "rating": 0,
+    "photos": [
+      "AMI-liggend.webp",
+      "Studio-Modijefsky-Gitane-restaurant-Amsterdam-Interior-design-2.jpg",
+      "The-interiors-are-inspired-by-Amsterdam's-traditional-brown-cafes-thumb.jpg"
+    ],
+    "utilities": [2, 8],
+    "foodOptions": [0, 4, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567849",
+    "title": "Café Slotervaart Park",
+    "description": "Café near a green space in Slotervaart.",
+    "address": "Cornelis Lelylaan 25, 1062 EB Amsterdam",
+    "location": {
+      "latitude": 52.3543,
+      "longitude": 4.8336
+    },
+    "rating": 0,
+    "photos": [
+      "11_Bar-Botanique-Cafe-Tropique_Studio-Modijefsky_Inspirationist-1215x580.jpg",
+      "wvr5557ncb2-untitled-design-36.webp"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 1, 2]
+  },
+  {
+    "_id": "64b8f5d2dc1b8a1234567850",
+    "title": "Café Amstelveld Relax",
+    "description": "Laid-back café near Amstelveld.",
+    "address": "Amstelveld 7, 1017 JD Amsterdam",
+    "location": {
+      "latitude": 52.3643,
+      "longitude": 4.8965
+    },
+    "rating": 0,
+    "photos": [
+      "csm_AMS_Restaurant-Loef_c_Maritim-Hotel-Amsterdam_Geplan-mit-Reinhardt-und-Sander-GmbH_ac313b2c61.webp",
+      "cafe-zwart.jpg",
+      "hollywood-cafe-amsterdam.jpg"
+    ],
+    "utilities": [0, 2, 8],
+    "foodOptions": [0, 2, 3]
+  }
+]

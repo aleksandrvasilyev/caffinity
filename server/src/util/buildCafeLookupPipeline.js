@@ -3,25 +3,44 @@ const buildCafeLookupPipeline = () => {
     {
       $lookup: {
         from: "reviews",
-        localField: "_id",
-        foreignField: "cafeId",
-        as: "reviews",
-      },
-    },
-    {
-      $lookup: {
-        from: "users",
-        let: { userIds: "$reviews.userId" },
+        let: {
+          cafeId: "$_id",
+        },
         pipeline: [
           {
             $match: {
               $expr: {
-                $in: ["$_id", "$$userIds"],
+                $eq: ["$cafeId", "$$cafeId"],
               },
             },
           },
+          {
+            $lookup: {
+              from: "users",
+              let: { userId: "$userId" },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $eq: ["$_id", "$$userId"],
+                    },
+                  },
+                },
+                {
+                  $project: {
+                    password: 0,
+                    __v: 0,
+                  },
+                },
+              ],
+              as: "user",
+            },
+          },
+          {
+            $unwind: "$user",
+          },
         ],
-        as: "reviewUsers",
+        as: "reviews",
       },
     },
     {
