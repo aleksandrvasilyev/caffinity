@@ -34,7 +34,11 @@ const SearchBar = () => {
     <>
       <div className=" relative bg-white px-6 py-4 mx-10 my-10 border-2 rounded-full flex sm:justify-center sm:items-center flex-row h-50 border-black sm:flex-row justify-end items-end">
         {isLoading && <div> Loading...</div>}
-        {error && <div className=" px-auto py-6 text-lg">Error: {error}</div>}
+        {error && (
+          <div className=" px-auto py-6 text-lg">
+            Error: {error.massage || "Something went wrong"}
+          </div>
+        )}
 
         <input
           className="h-[30%] px-3 pb-2 rounded-full w-[100%] focus:outline-none hover:none pl-10 text-text text-ellipsis bg-transparent "
