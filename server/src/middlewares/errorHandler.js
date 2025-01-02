@@ -1,5 +1,6 @@
 import { logError } from "../util/logging.js";
 
+/* eslint-disable-next-line no-unused-vars */
 const errorHandler = (error, req, res, next) => {
   if (error.statusCode) {
     return res
