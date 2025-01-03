@@ -1,5 +1,5 @@
-const buildCafeLookupPipeline = () => {
-  return [
+const buildCafeLookupPipeline = (search) => {
+  const pipeline = [
     {
       $lookup: {
         from: "reviews",
@@ -67,6 +67,16 @@ const buildCafeLookupPipeline = () => {
       },
     },
   ];
+
+  if (search) {
+    pipeline.unshift({
+      $match: {
+        title: { $regex: search, $options: "i" },
+      },
+    });
+  }
+
+  return pipeline;
 };
 
 export default buildCafeLookupPipeline;

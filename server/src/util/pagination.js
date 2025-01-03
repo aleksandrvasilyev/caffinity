@@ -1,13 +1,18 @@
 import buildCafeLookupPipeline from "./buildCafeLookupPipeline.js";
 
-const paginate = async (model, limit, page) => {
+const paginate = async (model, limit, page, search) => {
   const skip = limit * (page - 1);
 
   const data = await model.aggregate(
-    [...buildCafeLookupPipeline(), { $skip: skip }, { $limit: limit }],
+    [...buildCafeLookupPipeline(search), { $skip: skip }, { $limit: limit }],
     { maxTimeMS: 60000, allowDiskUse: true },
   );
-  const totalItems = await model.countDocuments();
+
+  const searchFilter = search
+    ? { title: { $regex: search, $options: "i" } }
+    : {};
+
+  const totalItems = await model.countDocuments(searchFilter);
 
   return {
     limit: limit,

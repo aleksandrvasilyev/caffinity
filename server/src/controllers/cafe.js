@@ -7,9 +7,10 @@ import mongoose from "mongoose";
 export const getCafes = async (req, res) => {
   const limit = Math.max(Number(req.query.limit) || 10, 1);
   const page = Math.max(Number(req.query.page) || 1, 1);
+  const search = req.query.search || null;
 
   try {
-    const paginatedCafes = await paginate(Cafe, limit, page);
+    const paginatedCafes = await paginate(Cafe, limit, page, search);
 
     res.status(200).send({ success: true, result: paginatedCafes });
   } catch (error) {

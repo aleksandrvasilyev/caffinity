@@ -50,4 +50,14 @@ describe("GET /api/cafes/", () => {
     expect(response.body.success).toBe(true);
     expect(response.body.result[0].title).toBe("Café Het Paleis");
   });
+
+  it("Search should return cafe by its name", async () => {
+    await seedData();
+    const response = await request.get("/api/cafes?search=balie");
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.totalItems).toBe(1);
+    expect(response.body.result.data[0].title).toBe("Café De Balie");
+  });
 });
