@@ -16,6 +16,7 @@
 | --------- | ------- | -------- | ------- | ------------------------------------- |
 | `limit`   | integer | No       | 10      | The number of cafes to show per page. |
 | `page`    | integer | No       | 1       | The page number to return.            |
+| `search`  | string  | No       | null    | Search query (cafe name).             |
 
 ### Example Request
 
