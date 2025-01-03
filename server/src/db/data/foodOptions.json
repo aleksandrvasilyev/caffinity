@@ -1,0 +1,13 @@
+[
+  { "index": 0, "value": "vegetarian" },
+  { "index": 1, "value": "vegan" },
+  { "index": 2, "value": "gluten-free" },
+  { "index": 3, "value": "lactose-free" },
+  { "index": 4, "value": "nut-free" },
+  { "index": 5, "value": "halal" },
+  { "index": 6, "value": "kosher" },
+  { "index": 7, "value": "pescatarian" },
+  { "index": 8, "value": "sugar-free" },
+  { "index": 9, "value": "low-fat" },
+  { "index": 10, "value": "low-sodium" }
+]

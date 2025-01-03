@@ -16,5 +16,3 @@ coverage
 cypress/videos
 cypress/screenshots
 
-server/src/db/data
-server/src/db/seedDb.js

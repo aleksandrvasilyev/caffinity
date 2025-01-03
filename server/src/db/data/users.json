@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "64b8f600dc1b8a1234567901",
+    "email": "alice@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JO3Zl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Alice Johnson",
+    "avatar": "https://example.com/avatars/alice.jpg",
+    "phoneNumber": "+31611111111",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567902",
+    "email": "bob@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JO3Zl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Bob Anderson",
+    "avatar": "https://example.com/avatars/bob.jpg",
+    "phoneNumber": "+31611111112",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567903",
+    "email": "carol@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JYTZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Carol Smith",
+    "avatar": "https://example.com/avatars/carol.jpg",
+    "phoneNumber": "+31611111113",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567904",
+    "email": "david@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JaYZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "David Brown",
+    "avatar": "https://example.com/avatars/david.jpg",
+    "phoneNumber": "+31611111114",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567905",
+    "email": "eve@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JbZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Eve Williams",
+    "avatar": "https://example.com/avatars/eve.jpg",
+    "phoneNumber": "+31611111115",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567906",
+    "email": "frank@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JcZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Frank Harris",
+    "avatar": "https://example.com/avatars/frank.jpg",
+    "phoneNumber": "+31611111116",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567907",
+    "email": "grace@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JdZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Grace Lee",
+    "avatar": "https://example.com/avatars/grace.jpg",
+    "phoneNumber": "+31611111117",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567908",
+    "email": "helen@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JeZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Helen Martinez",
+    "avatar": "https://example.com/avatars/helen.jpg",
+    "phoneNumber": "+31611111118",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567909",
+    "email": "ivan@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JfZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Ivan Clark",
+    "avatar": "https://example.com/avatars/ivan.jpg",
+    "phoneNumber": "+31611111119",
+    "favourites": []
+  },
+  {
+    "_id": "64b8f600dc1b8a1234567910",
+    "email": "julia@example.com",
+    "password": "$2b$10$QfLmTP3hX1FfCjoL9OR8JgZl0SbHL5NG.C7zLpjSlK7OCl1M1N4C",
+    "name": "Julia Davis",
+    "avatar": "https://example.com/avatars/julia.jpg",
+    "phoneNumber": "+31611111120",
+    "favourites": []
+  }
+]
