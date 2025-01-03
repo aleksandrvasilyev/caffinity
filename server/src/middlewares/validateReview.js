@@ -20,7 +20,7 @@ const validateReview = async (req, res, next) => {
   const cafeExists = await Cafe.exists({ _id: cafeId });
 
   if (!cafeExists) {
-    return res.status(400).send({ success: false, msg: "Cafe does no exist" });
+    return res.status(400).send({ success: false, msg: "Cafe does not exist" });
   }
 
   if (typeof review !== "string" || review.length < 10) {
