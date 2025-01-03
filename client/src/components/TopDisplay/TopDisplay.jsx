@@ -1,30 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
+import CarouselDisplay from "./CarouselDisplay";
+import useFetch from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import HomeFilters from "./HomeFilters";
 
 const TopDisplay = () => {
+  const [topCafes, setTopCafes] = useState([]);
+  const { isLoading, error, performFetch } = useFetch("/cafes", setTopCafes);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    performFetch({ method: "GET" });
+  }, []);
+
+  const results = Array.isArray(topCafes)
+    ? topCafes
+    : topCafes?.result?.data || [];
+
   return (
     <>
-      <div className="flex sm:flex-row flex-col flex-wrap gap-3 justify-between p-5 mx-auto my-[10%] w-full h-[20%]">
-        <Button className="bg-primary rounded-full text-white font-medium   ">
-          Best for Solo work
-        </Button>
-        <Button className="bg-primary rounded-full text-white font-medium ">
-          Vibrant Atmosphere
-        </Button>
-        <Button className="bg-primary rounded-full text-white font-medium ">
-          Wifi Strength
-        </Button>
-        <Button className="bg-primary rounded-full text-white font-medium ">
-          Specialty Coffee
-        </Button>
-      </div>
+      <HomeFilters />
 
-      <div className=" font-bold text-2xl text-center ">
-        Top Rated Cafe&apos;s{" "}
-      </div>
+      <div className="font-bold text-2xl text-center">Top Rated Cafes</div>
 
-      <div>
-        <div className=""></div>
+      {isLoading && <div className="text-center">Loading...</div>}
+      {error && (
+        <div className="text-center text-red-500">
+          Failed to fetch cafes: {error.message}
+        </div>
+      )}
+
+      {!isLoading && !error && results.length > 0 && (
+        <CarouselDisplay
+          results={results.sort((a, b) => b.rating - a.rating)}
+        />
+      )}
+
+      <div className="flex justify-center items-center">
+        <Button
+          className="bg-primary rounded-full text-white font-medium my-10"
+          onClick={() => {
+            navigate("/catalog");
+          }}
+        >
+          Browse All
+        </Button>
       </div>
     </>
   );
