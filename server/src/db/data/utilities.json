@@ -1,0 +1,19 @@
+[
+  { "index": 0, "value": "indoor-seating" },
+  { "index": 1, "value": "outdoor-seating" },
+  { "index": 2, "value": "wifi" },
+  { "index": 3, "value": "wheelchair-accessible" },
+  { "index": 4, "value": "budget-friendly" },
+  { "index": 5, "value": "parking" },
+  { "index": 6, "value": "delivery" },
+  { "index": 7, "value": "cozy-atmosphere" },
+  { "index": 8, "value": "non-smoking-area" },
+  { "index": 9, "value": "family-friendly" },
+  { "index": 10, "value": "pet-friendly" },
+  { "index": 11, "value": "charging-stations" },
+  { "index": 12, "value": "terrace" },
+  { "index": 13, "value": "smoking-area" },
+  { "index": 14, "value": "playground" },
+  { "index": 15, "value": "live-music" },
+  { "index": 16, "value": "board-games" }
+]

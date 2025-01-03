@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema(
   {
-    text: { type: String },
+    text: { type: String, trim: true },
     cafeId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Cafe",

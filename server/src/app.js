@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import cafeRouter from "./routes/cafe.js";
 import userRouter from "./routes/user.js";
+import reviewRouter from "./routes/review.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 // Create an express server
 const app = express();
@@ -18,5 +20,8 @@ app.use(cors());
  */
 app.use("/api/user", userRouter);
 app.use("/api/cafes", cafeRouter);
+app.use("/api/reviews", reviewRouter);
+
+app.use(errorHandler);
 
 export default app;
