@@ -21,7 +21,7 @@ const StarRating = ({ rating, numReviews }) => {
         <EmptyStarIcon key={`empty-${index}`} />
       ))}
 
-      <span className="ml-2 text-sm text-gray-600">({numReviews} reviews)</span>
+      <span className="ml-2 text-sm text-gray-600">{numReviews} </span>
     </div>
   );
 };

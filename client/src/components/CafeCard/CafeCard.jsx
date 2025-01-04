@@ -4,7 +4,7 @@ import PinIcon from "../Icons/PinIcon";
 import StarRating from "../StarRating/StarRating";
 
 const CafeCard = ({ cafe }) => {
-  const imageUrl = `${process.env.BASE_IMAGE_URL}/${cafe.photos[0]}`;
+  const imageUrl = `${process.env.BASE_IMAGE_URL}${cafe.photos[0]}`;
 
   return (
     <div className="bg-white rounded-3xl border border-text hover:shadow-lg transition-shadow duration-300">

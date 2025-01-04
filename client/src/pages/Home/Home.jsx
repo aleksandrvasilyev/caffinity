@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CafeCard from "../../components/CafeCard/CafeCard";
+import useFetch from "../../hooks/useFetch";
 
 const Home = () => {
-  const [cafes, setCafes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { isLoading, error, performFetch } = useFetch(
+    "/cafes?limit=5&page=1",
+    (response) => setCafes(response.result.data),
+  );
+
+  const [cafes, setCafes] = React.useState([]);
 
   useEffect(() => {
-    const fetchCafes = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.BASE_SERVER_URL}/api/cafes?limit=5&page=1`,
-        );
-        const data = await response.json();
-        setCafes(data.result.data);
-        setLoading(false);
-      } catch (error) {
-        setError("Error fetching cafes");
-        setLoading(false);
-      }
-    };
+    performFetch();
 
-    fetchCafes();
+    return () => performFetch.cancelFetch?.();
   }, []);
 
   return (
@@ -29,7 +21,7 @@ const Home = () => {
       <h1 className="text-2xl m-2 font-bold mb-4 text-center">
         Top Rated Cafes
       </h1>
-      {loading ? (
+      {isLoading ? (
         <p className="text-center">Loading cafes...</p>
       ) : error ? (
         <p className="text-red-500 text-center">
