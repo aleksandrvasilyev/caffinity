@@ -25,7 +25,7 @@ const Home = () => {
         <p className="text-center">Loading cafes...</p>
       ) : error ? (
         <p className="text-red-500 text-center">
-          {error || "An unexpected error occurred."}
+          {error.message || "An unexpected error occurred."}
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
