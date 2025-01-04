@@ -10,7 +10,7 @@ const Home = () => {
     const fetchCafes = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/cafes?limit=5&page=1",
+          `${process.env.BASE_SERVER_URL}/api/cafes?limit=5&page=1`,
         );
         const data = await response.json();
         setCafes(data.result.data);
@@ -33,7 +33,7 @@ const Home = () => {
         <p className="text-center">Loading cafes...</p>
       ) : error ? (
         <p className="text-red-500 text-center">
-          {error?.message || "An unexpected error occurred."}
+          {error || "An unexpected error occurred."}
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
