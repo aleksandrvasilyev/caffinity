@@ -4,7 +4,6 @@ import useFetch from "../../hooks/useFetch";
 import CafeCard from "../CafeCard/CafeCard";
 import Pagination from "../Pagination/Pagination";
 
-
 const AllCafes = () => {
   const [cafes, setCafes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +27,7 @@ const AllCafes = () => {
         {!isLoading && !error && results.length > 0 && (
           <div className="flex  flex-row flex-wrap justify-center items-center gap-4  ">
             {results.map((item) => (
-             <CafeCard cafe={item} key={item._id} />
+              <CafeCard cafe={item} key={item._id} />
             ))}
           </div>
         )}
