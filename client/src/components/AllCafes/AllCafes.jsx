@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
+import CafeCard from "../CafeCard/CafeCard";
 import Pagination from "../Pagination/Pagination";
+
 
 const AllCafes = () => {
   const [cafes, setCafes] = useState([]);
@@ -22,30 +24,11 @@ const AllCafes = () => {
           Failed to fetch cafes: {error.message}
         </div>
       )}
-      <div className="">
+      <div>
         {!isLoading && !error && results.length > 0 && (
-          <div className="flex justify-center  flex-wrap w-full mx-auto">
+          <div className="flex  flex-row flex-wrap justify-center items-center gap-4  ">
             {results.map((item) => (
-              <div
-                key={item._id}
-                className="flex flex-col gap-4 w-[400px] h-[400px] border-solid border-2 border-black  rounded-lg mx-4 my-4"
-              >
-                <div className="w-[100%] h-[300px]">
-                  <img
-                    src={
-                      `https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${item.photos[0]}` ||
-                      "https://via.placeholder.com/300"
-                    }
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col p-2">
-                  <div className="font-bold text-xl">{item.title}</div>
-                  <div className="text-sm">{item.description}</div>
-                  <div className="text-sm">{item.rating}</div>
-                </div>
-              </div>
+             <CafeCard cafe={item} key={item._id} />
             ))}
           </div>
         )}

@@ -41,8 +41,9 @@ module.exports = {
     }),
     // All variables in our .env should be mentioned here
     new webpack.EnvironmentPlugin({
-      // Default is '' because on our heroku servers we want to have it default to our current URL
-      BASE_SERVER_URL: "",
+      BASE_SERVER_URL: "", // default value
+      BASE_IMAGE_URL:
+        "https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/",
     }),
   ],
   // To tell the dev server that everything should go back to index.html
