@@ -9,15 +9,19 @@ const StarRating = ({ rating, numReviews }) => {
   const halfStars = rating % 1 >= 0.5 ? 1 : 0;
   const emptyStars = 5 - (fullStars + halfStars);
 
+  // arrays with guaranteed non-negative lengths
+  const fullStarsArray = Array.from({ length: fullStars });
+  const emptyStarsArray = Array.from({ length: emptyStars });
+
   return (
     <div className="flex items-center mb-2">
-      {[...Array(fullStars)].map((_, index) => (
+      {fullStarsArray.map((_, index) => (
         <FullStarIcon key={`full-${index}`} />
       ))}
 
       {halfStars > 0 && <HalfStarIcon />}
 
-      {[...Array(emptyStars)].map((_, index) => (
+      {emptyStarsArray.map((_, index) => (
         <EmptyStarIcon key={`empty-${index}`} />
       ))}
 

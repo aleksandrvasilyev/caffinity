@@ -4,10 +4,11 @@ import PinIcon from "../Icons/PinIcon";
 import StarRating from "../StarRating/StarRating";
 
 const CafeCard = ({ cafe }) => {
-  const imageUrl = `${process.env.BASE_IMAGE_URL}${cafe.photos[0]}`;
+  const imageUrl = `https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${cafe.photos[0]}`;
 
   return (
-    <div className="bg-white rounded-3xl border border-text hover:shadow-lg transition-shadow duration-300">
+    // added some fixed height and width for the card to make it look even in carousel and catalog page
+    <div className="bg-white rounded-3xl border border-text hover:shadow-lg transition-shadow duration-300 mx-[1%] my-4 w-[250px] h-[430px] sm:w-[270px] sm:h-[430px] sm:mx-auto md:w-[300px] md:h-[400px] md:mx-[1%] lg:w-[400px]  ">
       <img
         src={imageUrl}
         alt={cafe.title}
