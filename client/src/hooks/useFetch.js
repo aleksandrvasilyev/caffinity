@@ -53,8 +53,18 @@ const useFetch = (route, onReceived) => {
       // We add the /api subsection here to make it a single point of change if our configuration changes
 
       const baseUrl = `${process.env.BASE_SERVER_URL}/api${route}`;
-      const url = options?.params
-        ? `${baseUrl}?page=${options.params.page}&limit=${options.params.limit}`
+      const params = new URLSearchParams();
+
+      if (options?.params) {
+        params.append("page", options.params.page || "1");
+        params.append("limit", options.params.limit || "10");
+      }
+      if (options?.search) {
+        params.append("search", options.search);
+      }
+
+      const url = params.toString()
+        ? `${baseUrl}?${params.toString()}`
         : baseUrl;
 
       const res = await fetch(url, { ...baseOptions, ...options, signal });
