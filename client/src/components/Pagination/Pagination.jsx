@@ -19,9 +19,9 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
       <ul className="flex gap-2">
         {pagesArray.map((page) => (
-          <li key={page} className="">
+          <li key={page}>
             <button
-              className={currentPage === page ? "active" : ""}
+              className={currentPage === page ? "text-accent" : ""}
               onClick={() => onPageChange(page)}
             >
               {page}
