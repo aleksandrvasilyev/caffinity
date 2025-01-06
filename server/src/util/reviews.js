@@ -22,8 +22,6 @@ export const addReview = async ({ cafeId, review, rating }) => {
       { session },
     );
 
-    await Cafe.findById(cafeId);
-
     const reviews = await Review.find({ cafeId: cafeId }).session(session);
 
     const averageRating =
@@ -39,6 +37,52 @@ export const addReview = async ({ cafeId, review, rating }) => {
     session.endSession();
 
     return { updatedCafe, addedReview };
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    logError("Transaction error:", error);
+    throw error;
+  }
+};
+
+export const editReview = async ({ reviewId, review, rating }) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  // const userId = "64b8f600dc1b8a1234567902";
+
+  try {
+    // const reviewObject = await Review.findOne({
+    // _id: reviewId,
+    // userId: userId,
+    // });
+
+    // if (!reviewObject) {
+    // throw { statusCode: 400, message: "Review id or User id is invalid!" };
+    // }
+
+    const updatedReview = await Review.findOneAndUpdate(
+      { _id: reviewId },
+      { text: review, rating: rating },
+      { new: true, session },
+    );
+
+    const cafeId = updatedReview.cafeId.toString();
+
+    const reviews = await Review.find({ cafeId: cafeId }).session(session);
+
+    const averageRating =
+      reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+
+    const updatedCafe = await Cafe.findOneAndUpdate(
+      { _id: cafeId },
+      { rating: averageRating },
+      { new: true, session },
+    );
+
+    await session.commitTransaction();
+    session.endSession();
+
+    return { updatedCafe, updatedReview };
   } catch (error) {
     await session.abortTransaction();
     session.endSession();

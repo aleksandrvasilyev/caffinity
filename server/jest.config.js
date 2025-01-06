@@ -4,4 +4,5 @@ export default {
   },
   modulePathIgnorePatterns: ["__testUtils__"],
   transformIgnorePatterns: [],
+  testTimeout: 40000,
 };

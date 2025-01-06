@@ -3,7 +3,10 @@
  */
 
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import {
+  // MongoMemoryServer,
+  MongoMemoryReplSet,
+} from "mongodb-memory-server";
 
 let mongoMemServer;
 
@@ -18,7 +21,10 @@ export const connectToMockDB = async () => {
     );
   }
 
-  mongoMemServer = await MongoMemoryServer.create();
+  // mongoMemServer = await MongoMemoryServer.create();
+  mongoMemServer = await MongoMemoryReplSet.create({
+    replSet: { count: 1, storageEngine: "wiredTiger" },
+  });
   const uri = mongoMemServer.getUri();
 
   await mongoose.connect(uri);
@@ -28,15 +34,18 @@ export const connectToMockDB = async () => {
  * Closing the Database connection
  */
 export const closeMockDatabase = async () => {
-  // Get rid of the database
-  await mongoose.connection.dropDatabase();
-  // close the mongoose connection
-  await mongoose.connection.close();
-  // stop the memory server
-  await mongoMemServer.stop();
-
-  // clean up the variable
-  mongoMemServer = null;
+  if (mongoose.connection.readyState !== 0) {
+    // Get rid of the database
+    await mongoose.connection.dropDatabase();
+    // close the mongoose connection
+    await mongoose.connection.close();
+  }
+  if (mongoMemServer) {
+    // stop the memory server
+    await mongoMemServer.stop();
+    // clean up the variable
+    mongoMemServer = null;
+  }
 };
 
 /**
