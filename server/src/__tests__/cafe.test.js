@@ -42,15 +42,6 @@ describe("GET /api/cafes/", () => {
     expect(response.body.result.totalItems).toBe(50);
   });
 
-  it("Should return cafe by id in the db", async () => {
-    await seedData();
-    const response = await request.get("/api/cafes/64b8f5d2dc1b8a1234567802");
-
-    expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
-    expect(response.body.result[0].title).toBe("Café Het Paleis");
-  });
-
   it("Search should return cafe by its name", async () => {
     await seedData();
     const response = await request.get("/api/cafes?search=balie");
@@ -59,5 +50,28 @@ describe("GET /api/cafes/", () => {
     expect(response.body.success).toBe(true);
     expect(response.body.result.totalItems).toBe(1);
     expect(response.body.result.data[0].title).toBe("Café De Balie");
+  });
+
+  it("Search should return cafe by its name and utilities", async () => {
+    await seedData();
+    const response = await request.get(
+      "/api/cafes?search=water&utilities=0,2,5",
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.totalItems).toBe(1);
+    expect(response.body.result.data[0].title).toBe("Café Noord Waterside");
+  });
+});
+
+describe("GET /api/cafes/:id", () => {
+  it("Should return cafe by id in the db", async () => {
+    await seedData();
+    const response = await request.get("/api/cafes/64b8f5d2dc1b8a1234567802");
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result[0].title).toBe("Café Het Paleis");
   });
 });
