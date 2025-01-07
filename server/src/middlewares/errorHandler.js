@@ -10,9 +10,10 @@ const errorHandler = (error, req, res, next) => {
 
   logError(error);
 
-  res
-    .status(500)
-    .send({ success: false, msg: "Unable to store review, try again later" });
+  res.status(500).send({
+    success: false,
+    msg: error.message || "Unable to store review, try again later",
+  });
 };
 
 export default errorHandler;

@@ -5,6 +5,7 @@
 - [GET /api/cafes](#get-apicafes)
 - [GET /api/cafes/{id}](#get-apicafesid)
 - [POST /api/reviews](#post-apireviews)
+- [PUT /api/reviews](#put-apireviews)
 
 ## GET /api/cafes
 
@@ -342,11 +343,11 @@ Example:
 
 ### Request Body
 
-| Parameter | Type   | Required | Description                     |
-| --------- | ------ | -------- | ------------------------------- |
-| `cafeId`  | string | Yes      | The id of the cafe.             |
-| `review`  | string | Yes      | The text/content of the review. |
-| `rating`  | number | Yes      | Number from 1 to 5.             |
+| Parameter | Type   | Required | Description                                        |
+| --------- | ------ | -------- | -------------------------------------------------- |
+| `cafeId`  | string | Yes      | The id of the cafe.                                |
+| `review`  | string | Yes      | The text/content of the review, min 10 characters. |
+| `rating`  | number | Yes      | Number from 1 to 5.                                |
 
 ### Example Request
 
@@ -396,6 +397,73 @@ Content-Type: application/json
         "__v": 0
       }
     ]
+  }
+}
+```
+
+## PUT /api/reviews
+
+**Description**: Updating a review.
+
+### Request Body
+
+| Parameter  | Type   | Required | Description                                        |
+| ---------- | ------ | -------- | -------------------------------------------------- |
+| `reviewId` | string | Yes      | The id of the cafe.                                |
+| `review`   | string | Yes      | The text/content of the review, min 10 characters. |
+| `rating`   | number | Yes      | Number from 1 to 5.                                |
+
+### Example Request
+
+```http
+PUT /api/reviews
+Content-Type: application/json
+
+{
+  "reviewId": "6761e0b294a9afdb262f170b",
+  "review": "test review",
+  "rating": 4
+}
+```
+
+**Response**:
+
+```json
+{
+  "success": true,
+  "result": {
+    "updatedCafe": {
+      "location": {
+        "latitude": 52.364812,
+        "longitude": 4.881876
+      },
+      "_id": "64b8f5d2dc1b8a1234567801",
+      "title": "Café De Balie",
+      "description": "A cultural café near Leidseplein offering coffee, lunch, and events.",
+      "address": "Kleine-Gartmanplantsoen 10, 1017 RR Amsterdam, Netherlands",
+      "rating": 4.333333333333333,
+      "photos": [
+        "Café-vanaf-buiten-scaled.webp",
+        "bdiukylpviLcZig5NHdEiUlWFrh0m2-metaU09QSDA5NDYuanBn.webp",
+        "Balie_Warmer-51-scaled.webp",
+        "afbeelding-de-balie.webp"
+      ],
+      "utilities": [0, 2, 7, 15],
+      "foodOptions": [0, 2, 3],
+      "__v": 0,
+      "createdAt": "2025-01-02T19:47:14.369Z",
+      "updatedAt": "2025-01-06T16:50:34.179Z"
+    },
+    "updatedReview": {
+      "_id": "6761e0b294a9afdb262f170b",
+      "text": "Cozy cafe with excellent coffee and warm lighting.",
+      "cafeId": "64b8f5d2dc1b8a1234567801",
+      "userId": "64b8f600dc1b8a1234567901",
+      "rating": 4,
+      "createdAt": "2024-03-19T00:05:55.322Z",
+      "updatedAt": "2025-01-06T16:50:34.061Z",
+      "__v": 0
+    }
   }
 }
 ```
