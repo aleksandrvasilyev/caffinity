@@ -34,7 +34,6 @@ const Cafe = () => {
   const renderPhotos = () => {
     const photos = cafe.photos || [];
 
-    // If there are 4 or more photos, show the Swiper
     if (photos.length >= 4) {
       return (
         <Swiper
@@ -75,15 +74,16 @@ const Cafe = () => {
       );
     }
 
-    // If there are 2 or 3 photos, display them side-by-side and make them responsive
+    const gridCols = photos.length === 2 ? "grid-cols-2" : "grid-cols-3";
+
     return (
-      <div className="flex justify-start gap-4 w-full">
+      <div className={`grid ${gridCols} gap-4 w-full`}>
         {photos.map((photo, index) => (
           <img
             key={index}
             src={`https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${photo}`}
             alt={`Cafe photo ${index + 1}`}
-            className="rounded-lg shadow-lg object-cover w-1/2 sm:w-1/3 md:w-1/4"
+            className="rounded-lg shadow-lg object-cover w-full h-64"
           />
         ))}
       </div>
@@ -91,37 +91,32 @@ const Cafe = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex flex-col p-6">
-        {renderPhotos()}
-        <div className="text-left w-full mt-6">
-          <h1 className="text-2xl font-semibold">
-            {cafe.title || "Cafe Name"}
-          </h1>
-          <p className="text-gray-600 mt-2">
-            {cafe.description || "No description available."}
-          </p>
-          {cafe.rating && (
-            <StarRating
-              rating={cafe.rating}
-              numReviews={cafe.numReviews || 0}
-            />
+    <div className="container mx-auto p-4 grid gap-6">
+      <div className="grid gap-6">{renderPhotos()}</div>
+      <div className="grid gap-4 text-left">
+        <h1 className="text-2xl font-semibold">{cafe.title || "Cafe Name"}</h1>
+        <p className="text-gray-600">
+          {cafe.description || "No description available."}
+        </p>
+        {cafe.rating && (
+          <StarRating rating={cafe.rating} numReviews={cafe.numReviews || 0} />
+        )}
+        <p className="text-text flex items-center gap-2">
+          <PinIcon />
+          {cafe.address || "No address provided"}
+          {cafe.address && (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                cafe.address,
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
+              View on Google Maps
+            </a>
           )}
-          <p className="text-text flex flex-row justify-start items-center mt-2">
-            <PinIcon />
-            {cafe.address || "No address provided"}
-            {cafe.address && (
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cafe.address)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 underline ml-2"
-              >
-                View on Google Maps
-              </a>
-            )}
-          </p>
-        </div>
+        </p>
       </div>
     </div>
   );
