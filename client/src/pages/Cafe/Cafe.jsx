@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper/modules"; // Include Navigation
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import "../../components/TopDisplay/custom-swiper.css";
 import useFetch from "../../hooks/useFetch";
@@ -93,10 +93,7 @@ const Cafe = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col p-6">
-        {/* Image Gallery */}
         {renderPhotos()}
-
-        {/* Text Content */}
         <div className="text-left w-full mt-6">
           <h1 className="text-2xl font-semibold">
             {cafe.title || "Cafe Name"}
@@ -113,6 +110,16 @@ const Cafe = () => {
           <p className="text-text flex flex-row justify-start items-center mt-2">
             <PinIcon />
             {cafe.address || "No address provided"}
+            {cafe.address && (
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cafe.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline ml-2"
+              >
+                View on Google Maps
+              </a>
+            )}
           </p>
         </div>
       </div>
