@@ -1,5 +1,5 @@
-import { addReview, editReview } from "../util/reviews.js";
-import Review from "../models/Review.js";
+import { addReview, editReview, removeReview } from "../util/reviews.js";
+// import Review from "../models/Review.js";
 
 export const storeReview = async (req, res, next) => {
   try {
@@ -34,18 +34,14 @@ export const deleteReview = async (req, res, next) => {
   const reviewId = req.body.reviewId;
 
   try {
-    const deletedReview = await Review.deleteOne({ _id: reviewId });
-
-    if (deletedReview.deletedCount === 0) {
-      return res.status(400).send({
-        success: false,
-        msg: "Review was not deleted, try again later!",
-      });
-    }
+    const updatedCafe = await removeReview(reviewId);
 
     res.status(200).send({
       success: true,
-      result: { message: "Review deleted successfully" },
+      result: {
+        message: "Review successfully deleted!",
+        updatedCafe,
+      },
     });
   } catch (error) {
     next(error);
