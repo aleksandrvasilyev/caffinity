@@ -5,19 +5,19 @@ import mongoose from "mongoose";
 export const validateAddReview = async (req, res, next) => {
   const { cafeId, review, rating } = req.body;
 
-  if (!isModelIdValidString(cafeId)) {
+  if (!isObjectIdValidString(cafeId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Cafe id should be a string" });
   }
 
-  if (!isModelIdValidIdObject(cafeId)) {
+  if (!isObjectIdValidIdObject(cafeId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Cafe id is not a valid ObjectId" });
   }
 
-  if (!(await isModelExists(Cafe, cafeId))) {
+  if (!(await isObjectExists(Cafe, cafeId))) {
     return res.status(400).send({ success: false, msg: "Cafe does not exist" });
   }
 
@@ -41,19 +41,19 @@ export const validateAddReview = async (req, res, next) => {
 export const validateEditReview = async (req, res, next) => {
   const { reviewId, review, rating } = req.body;
 
-  if (!isModelIdValidString(reviewId)) {
+  if (!isObjectIdValidString(reviewId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Review id should be a string" });
   }
 
-  if (!isModelIdValidIdObject(reviewId)) {
+  if (!isObjectIdValidIdObject(reviewId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Review id is not a valid ObjectId" });
   }
 
-  if (!(await isModelExists(Review, reviewId))) {
+  if (!(await isObjectExists(Review, reviewId))) {
     return res
       .status(400)
       .send({ success: false, msg: "Review does not exist" });
@@ -79,19 +79,19 @@ export const validateEditReview = async (req, res, next) => {
 export const validateDeleteReview = async (req, res, next) => {
   const { reviewId } = req.body;
 
-  if (!isModelIdValidString(reviewId)) {
+  if (!isObjectIdValidString(reviewId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Review id should be a string" });
   }
 
-  if (!isModelIdValidIdObject(reviewId)) {
+  if (!isObjectIdValidIdObject(reviewId)) {
     return res
       .status(400)
       .send({ success: false, msg: "Review id is not a valid ObjectId" });
   }
 
-  if (!(await isModelExists(Review, reviewId))) {
+  if (!(await isObjectExists(Review, reviewId))) {
     return res
       .status(400)
       .send({ success: false, msg: "Review does not exist" });
@@ -100,15 +100,15 @@ export const validateDeleteReview = async (req, res, next) => {
   next();
 };
 
-const isModelIdValidString = (cafeId) => {
+const isObjectIdValidString = (cafeId) => {
   return typeof cafeId === "string";
 };
 
-const isModelIdValidIdObject = (cafeId) => {
+const isObjectIdValidIdObject = (cafeId) => {
   return mongoose.Types.ObjectId.isValid(cafeId);
 };
 
-const isModelExists = async (model, modelId) => {
+const isObjectExists = async (model, modelId) => {
   return await model.exists({ _id: modelId });
 };
 

@@ -25,7 +25,14 @@ export const deleteReview = async (req, res, next) => {
   const reviewId = req.body.reviewId;
 
   try {
-    await Review.deleteOne({ _id: reviewId });
+    const deletedReview = await Review.deleteOne({ _id: reviewId });
+
+    if (deletedReview.deletedCount === 0) {
+      return res.status(400).send({
+        success: false,
+        msg: "Review was not deleted, try again later!",
+      });
+    }
 
     res
       .status(200)
