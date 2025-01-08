@@ -18,6 +18,13 @@ export const createUser = async (username, password) => {
     password: hashedPassword,
   });
 
+  if (!newUser) {
+    throw {
+      status: 400,
+      message: "Error when creating new user, try again later",
+    };
+  }
+
   const user = await User.findById(newUser._id).select("-password -__v");
 
   return user;

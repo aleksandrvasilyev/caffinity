@@ -19,7 +19,7 @@ const User = mongoose.model("users", userSchema);
 
 export const validateUser = (userObject) => {
   const errorList = [];
-  const allowedKeys = ["name", "email", "password"];
+  const allowedKeys = ["name", "email", "password", "username"];
 
   const validatedKeysMessage = validateAllowedFields(userObject, allowedKeys);
 
@@ -37,6 +37,10 @@ export const validateUser = (userObject) => {
 
   if (userObject.password == null) {
     errorList.push("password is a required field");
+  }
+
+  if (userObject.username == null) {
+    errorList.push("username is a required field");
   }
 
   return errorList;
