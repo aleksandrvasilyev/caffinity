@@ -160,14 +160,16 @@ describe("POST /api/reviews", () => {
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
-      expect(response.body.result.updatedCafe._id).toBe(
+      expect(response.body.result.review.updatedCafe._id).toBe(
         "64b8f5d2dc1b8a1234567808",
       );
-      expect(response.body.result.addedReview[0].cafeId).toBe(
+      expect(response.body.result.review.addedReview[0].cafeId).toBe(
         "64b8f5d2dc1b8a1234567808",
       );
-      expect(response.body.result.addedReview[0].text).toBe("test review");
-      expect(response.body.result.addedReview[0].rating).toBe(4);
+      expect(response.body.result.review.addedReview[0].text).toBe(
+        "test review",
+      );
+      expect(response.body.result.review.addedReview[0].rating).toBe(4);
 
       await session.commitTransaction();
     } catch (error) {
@@ -302,14 +304,16 @@ describe("PUT /api/reviews", () => {
       expect(response.status).toBe(200);
       expect(response.body.success).toBe(true);
 
-      expect(response.body.result.updatedCafe._id).toBe(
+      expect(response.body.result.review.updatedCafe._id).toBe(
         "64b8f5d2dc1b8a1234567808",
       );
-      expect(response.body.result.updatedReview.cafeId).toBe(
+      expect(response.body.result.review.updatedReview.cafeId).toBe(
         "64b8f5d2dc1b8a1234567808",
       );
-      expect(response.body.result.updatedReview.text).toBe("test review");
-      expect(response.body.result.updatedReview.rating).toBe(4);
+      expect(response.body.result.review.updatedReview.text).toBe(
+        "test review",
+      );
+      expect(response.body.result.review.updatedReview.rating).toBe(4);
 
       await session.commitTransaction();
     } catch (error) {
@@ -335,7 +339,7 @@ describe("DELETE /api/reviews", () => {
 
       expect(response.status).toBe(200);
       expect(response.body.success).toBe(true);
-      expect(response.body.result).toBe("Review successfully deleted!");
+      expect(response.body.result.message).toBe("Review deleted successfully");
 
       await session.commitTransaction();
     } catch (error) {

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cafeRouter from "./routes/cafe.js";
 import userRouter from "./routes/user.js";
+import authRouter from "./routes/auth.js";
 import reviewRouter from "./routes/review.js";
 import utilitiesRouter from "./routes/utilities.js";
 import errorHandler from "./middlewares/errorHandler.js";
@@ -23,6 +24,7 @@ app.use("/api/user", userRouter);
 app.use("/api/cafes", cafeRouter);
 app.use("/api/reviews", reviewRouter);
 app.use("/api/utilities", utilitiesRouter);
+app.use("/api", authRouter);
 
 app.use(errorHandler);
 
