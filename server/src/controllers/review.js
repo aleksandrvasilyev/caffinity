@@ -1,5 +1,4 @@
 import { addReview, editReview, removeReview } from "../util/reviews.js";
-// import Review from "../models/Review.js";
 
 export const storeReview = async (req, res, next) => {
   try {
@@ -39,7 +38,7 @@ export const deleteReview = async (req, res, next) => {
     res.status(200).send({
       success: true,
       result: {
-        message: "Review successfully deleted!",
+        message: "Review deleted successfully",
         updatedCafe,
       },
     });

@@ -2,6 +2,7 @@ import Cafe from "../models/Cafe.js";
 import Review from "../models/Review.js";
 import mongoose from "mongoose";
 import { logError } from "../util/logging.js";
+import throwError from "./throwError.js";
 
 export const addReview = async ({ cafeId, review, rating }) => {
   const session = await mongoose.startSession();
@@ -33,7 +34,7 @@ export const addReview = async ({ cafeId, review, rating }) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    logError("Transaction error:", error);
+    logError(error);
     throw error;
   }
 };
@@ -52,7 +53,7 @@ export const editReview = async ({ reviewId, review, rating }) => {
     // });
 
     // if (!reviewObject) {
-    // throw { status: 400, message: "Review id or User id is invalid!" };
+    // throwError("Review id or User id is invalid!");
     // }
 
     const updatedReview = await Review.findOneAndUpdate(
@@ -72,7 +73,7 @@ export const editReview = async ({ reviewId, review, rating }) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    logError("Transaction error:", error);
+    logError(error);
     throw error;
   }
 };
@@ -92,10 +93,7 @@ export const removeReview = async (reviewId) => {
     const deletedReview = await Review.deleteOne({ _id: reviewId });
 
     if (deletedReview.deletedCount === 0) {
-      throw {
-        status: 400,
-        message: "Review was not deleted, try again later!",
-      };
+      throwError("Review was not deleted, try again later!");
     }
 
     const updatedCafe = await updateAverageRating(cafeId, session);
@@ -107,7 +105,7 @@ export const removeReview = async (reviewId) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    logError("Transaction error:", error);
+    logError(error);
     throw error;
   }
 };
@@ -116,7 +114,9 @@ const updateAverageRating = async (cafeId, session) => {
   const reviews = await Review.find({ cafeId }).session(session);
 
   const averageRating =
-    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+    reviews.length > 0
+      ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
+      : 0;
 
   const updatedCafe = await Cafe.findOneAndUpdate(
     { _id: cafeId },
