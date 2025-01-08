@@ -57,7 +57,7 @@ export const editReview = async ({ reviewId, review, rating }) => {
     // });
 
     // if (!reviewObject) {
-    // throw { statusCode: 400, message: "Review id or User id is invalid!" };
+    // throw { status: 400, message: "Review id or User id is invalid!" };
     // }
 
     const updatedReview = await Review.findOneAndUpdate(

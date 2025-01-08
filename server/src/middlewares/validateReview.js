@@ -5,8 +5,35 @@ import mongoose from "mongoose";
 export const validateAddReview = async (req, res, next) => {
   const { cafeId, review, rating } = req.body;
 
-  if (!(await validateReview(res, Cafe, cafeId, "Cafe", review, rating)))
-    return;
+  if (!isObjectIdValidString(cafeId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Cafe id should be a string" });
+  }
+
+  if (!isObjectIdValidIdObject(cafeId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Cafe id is not a valid ObjectId" });
+  }
+
+  if (!(await isObjectExists(Cafe, cafeId))) {
+    return res.status(400).send({ success: false, msg: "Cafe does not exist" });
+  }
+
+  if (!isReviewValid(review)) {
+    return res.status(400).send({
+      success: false,
+      msg: "Review should be a string and at least 10 characters long",
+    });
+  }
+
+  if (!isRatingValid(rating)) {
+    return res.status(400).send({
+      success: false,
+      msg: "Rating should be a number between 1 and 5",
+    });
+  }
 
   next();
 };
@@ -14,60 +41,81 @@ export const validateAddReview = async (req, res, next) => {
 export const validateEditReview = async (req, res, next) => {
   const { reviewId, review, rating } = req.body;
 
-  if (!(await validateReview(res, Review, reviewId, "Review", review, rating)))
-    return;
+  if (!isObjectIdValidString(reviewId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review id should be a string" });
+  }
+
+  if (!isObjectIdValidIdObject(reviewId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review id is not a valid ObjectId" });
+  }
+
+  if (!(await isObjectExists(Review, reviewId))) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review does not exist" });
+  }
+
+  if (!isReviewValid(review)) {
+    return res.status(400).send({
+      success: false,
+      msg: "Review should be a string and at least 10 characters long",
+    });
+  }
+
+  if (!isRatingValid(rating)) {
+    return res.status(400).send({
+      success: false,
+      msg: "Rating should be a number between 1 and 5",
+    });
+  }
 
   next();
 };
 
-const validateReview = async (
-  res,
-  model,
-  entityId,
-  entityName,
-  review,
-  rating,
-) => {
-  if (typeof entityId !== "string") {
-    res.status(400).send({
-      success: false,
-      msg: `${entityName} id should be a string`,
-    });
-    return false;
+export const validateDeleteReview = async (req, res, next) => {
+  const { reviewId } = req.body;
+
+  if (!isObjectIdValidString(reviewId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review id should be a string" });
   }
 
-  if (!mongoose.Types.ObjectId.isValid(entityId)) {
-    res.status(400).send({
-      success: false,
-      msg: `${entityName} id is not a valid ObjectId`,
-    });
-    return false;
+  if (!isObjectIdValidIdObject(reviewId)) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review id is not a valid ObjectId" });
   }
 
-  const exists = await model.exists({ _id: entityId });
-  if (!exists) {
-    res.status(400).send({
-      success: false,
-      msg: `${entityName} does not exist`,
-    });
-    return false;
+  if (!(await isObjectExists(Review, reviewId))) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Review does not exist" });
   }
 
-  if (typeof review !== "string" || review.length < 10) {
-    res.status(400).send({
-      success: false,
-      msg: "Review should be a string and at least 10 characters long",
-    });
-    return false;
-  }
+  next();
+};
 
-  if (typeof rating !== "number" || rating < 1 || rating > 5) {
-    res.status(400).send({
-      success: false,
-      msg: "Rating should be a number between 1 and 5",
-    });
-    return false;
-  }
+const isObjectIdValidString = (cafeId) => {
+  return typeof cafeId === "string";
+};
 
-  return true;
+const isObjectIdValidIdObject = (cafeId) => {
+  return mongoose.Types.ObjectId.isValid(cafeId);
+};
+
+const isObjectExists = async (model, modelId) => {
+  return await model.exists({ _id: modelId });
+};
+
+const isReviewValid = (review) => {
+  return typeof review === "string" && review.length >= 10;
+};
+
+const isRatingValid = (rating) => {
+  return typeof rating === "number" && rating >= 1 && rating <= 5;
 };

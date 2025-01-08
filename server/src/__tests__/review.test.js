@@ -320,3 +320,29 @@ describe("PUT /api/reviews", () => {
     }
   });
 });
+
+describe("DELETE /api/reviews", () => {
+  it("Should return a success message if review was deleted successfully", async () => {
+    await createTestCafe();
+    const session = await mongoose.startSession();
+
+    try {
+      session.startTransaction();
+
+      const response = await request.delete("/api/reviews").send({
+        reviewId: "6761e0b294a9afdb262f170b",
+      });
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.result).toBe("Review successfully deleted!");
+
+      await session.commitTransaction();
+    } catch (error) {
+      await session.abortTransaction();
+      throw error;
+    } finally {
+      session.endSession();
+    }
+  });
+});
