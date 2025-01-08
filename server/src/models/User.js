@@ -4,9 +4,10 @@ import validateAllowedFields from "../util/validateAllowedFields.js";
 
 const userSchema = new mongoose.Schema(
   {
-    email: { type: String, required: true, unique: true },
+    email: { type: String },
     password: { type: String, required: true },
     name: { type: String },
+    username: { type: String, required: true, unique: true },
     avatar: { type: String },
     phoneNumber: { type: String },
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cafe" }],
