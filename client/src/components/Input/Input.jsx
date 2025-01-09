@@ -9,6 +9,7 @@ const Input = ({ placeholder, type, name, onChange }) => {
       name={name}
       onChange={onChange}
       className="w-full p-3 rounded text-black mb-6 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
+      required
     />
   );
 };
