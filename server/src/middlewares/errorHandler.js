@@ -2,9 +2,9 @@ import { logError } from "../util/logging.js";
 
 /* eslint-disable-next-line no-unused-vars */
 const errorHandler = (error, req, res, next) => {
-  if (error.statusCode) {
+  if (error.status) {
     return res
-      .status(error.statusCode)
+      .status(error.status)
       .send({ success: false, msg: error.message });
   }
 
