@@ -64,7 +64,7 @@ const Cafe = () => {
               className="flex justify-center items-center slide"
             >
               <img
-                src={`https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${photo}`}
+                src={`${process.env.BASE_IMAGE_URL}${photo}`}
                 alt={`Cafe photo ${index + 1}`}
                 className="rounded-lg shadow-lg object-cover transition-all duration-300 ease-in-out"
               />
@@ -81,7 +81,7 @@ const Cafe = () => {
         {photos.map((photo, index) => (
           <img
             key={index}
-            src={`https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${photo}`}
+            src={`${process.env.BASE_IMAGE_URL}${photo}`}
             alt={`Cafe photo ${index + 1}`}
             className="rounded-lg shadow-lg object-cover w-full h-64"
           />
