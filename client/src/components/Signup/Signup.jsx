@@ -20,10 +20,10 @@ const Signup = () => {
   const { isLoading, error, performFetch } = useFetch("/register", setResponse);
 
   useEffect(() => {
-    if (response.response.success) {
+    if (response.success) {
       navigate("/login");
     }
-  }, [response.response.success, navigate]);
+  }, [response.success, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -109,7 +109,7 @@ const Signup = () => {
         {(!passwordMatch ||
           isLoading ||
           error ||
-          (!response.success && response.results.message)) && (
+          (response.success === false && response.message)) && (
           <div
             className="flex flex-col items-center justify-center mb-4 bg-white p-4 rounded-lg"
             ref={errorContainerRef}
@@ -119,7 +119,7 @@ const Signup = () => {
             )}
             {isLoading && <p>Processing...</p>}
             {error && <p>Something went wrong...</p>}
-            {!response.success && response.response.message && (
+            {!response.success && response.message && (
               <p className="text-accent">{response.response.message}</p>
             )}
           </div>
