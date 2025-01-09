@@ -9,12 +9,7 @@ const Signup = () => {
   const errorContainerRef = useRef(null);
 
   const [passwordMatch, setPasswordMatch] = useState(true);
-  const [response, setResponse] = useState({
-    success: false,
-    response: {
-      message: "",
-    },
-  });
+  const [response, setResponse] = useState({});
 
   const [formData, setFormData] = useState({
     username: "",
@@ -22,7 +17,7 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const { isLoading, error, performFetch } = useFetch("/signup", setResponse);
+  const { isLoading, error, performFetch } = useFetch("/register", setResponse);
 
   useEffect(() => {
     if (response.response.success) {
@@ -114,7 +109,7 @@ const Signup = () => {
         {(!passwordMatch ||
           isLoading ||
           error ||
-          (!response.success && response.response.message)) && (
+          (!response.success && response.results.message)) && (
           <div
             className="flex flex-col items-center justify-center mb-4 bg-white p-4 rounded-lg"
             ref={errorContainerRef}
