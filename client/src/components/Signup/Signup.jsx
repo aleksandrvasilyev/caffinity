@@ -9,7 +9,6 @@ const Signup = () => {
   const errorContainerRef = useRef(null);
 
   const [passwordMatch, setPasswordMatch] = useState(true);
-  const [setResponse] = useState({});
 
   const [formData, setFormData] = useState({
     username: "",
@@ -18,7 +17,6 @@ const Signup = () => {
   });
 
   const { isLoading, error, performFetch } = useFetch("/register", (data) => {
-    setResponse(data);
     if (data.success) {
       navigate("/login");
     }
@@ -64,7 +62,6 @@ const Signup = () => {
       !errorContainerRef.current.contains(event.target)
     ) {
       setPasswordMatch(true);
-      setResponse({});
     }
   };
 
