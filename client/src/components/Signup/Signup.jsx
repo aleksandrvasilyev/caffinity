@@ -9,7 +9,7 @@ const Signup = () => {
   const errorContainerRef = useRef(null);
 
   const [passwordMatch, setPasswordMatch] = useState(true);
-  const [response, setResponse] = useState({});
+  const [setResponse] = useState({});
 
   const [formData, setFormData] = useState({
     username: "",
@@ -17,13 +17,12 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const { isLoading, error, performFetch } = useFetch("/register", setResponse);
-
-  useEffect(() => {
-    if (response.success) {
+  const { isLoading, error, performFetch } = useFetch("/register", (data) => {
+    setResponse(data);
+    if (data.success) {
       navigate("/login");
     }
-  }, [response.success, navigate]);
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,10 +64,7 @@ const Signup = () => {
       !errorContainerRef.current.contains(event.target)
     ) {
       setPasswordMatch(true);
-      setResponse({
-        success: false,
-        response: { message: "" },
-      });
+      setResponse({});
     }
   };
 
@@ -106,10 +102,7 @@ const Signup = () => {
           onChange={handleChange}
         />
 
-        {(!passwordMatch ||
-          isLoading ||
-          error ||
-          (response.success === false && response.message)) && (
+        {(!passwordMatch || isLoading || error) && (
           <div
             className="flex flex-col items-center justify-center mb-4 bg-white p-4 rounded-lg"
             ref={errorContainerRef}
@@ -118,9 +111,13 @@ const Signup = () => {
               <p className="text-accent">Passwords do not match</p>
             )}
             {isLoading && <p>Processing...</p>}
-            {error && <p>Something went wrong...</p>}
-            {!response.success && response.message && (
-              <p className="text-accent">{response.response.message}</p>
+
+            {error && (
+              <div className="text-center">
+                <p>Something went wrong...</p>
+                <br />
+                <p className="text-accent">{error}</p>
+              </div>
             )}
           </div>
         )}
@@ -132,7 +129,7 @@ const Signup = () => {
           Signup
         </Button>
 
-        <Link className="mt-10" to="/login">
+        <Link className="mt-10 " to="/login">
           Already have an account? Login
         </Link>
       </form>
