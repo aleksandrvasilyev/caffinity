@@ -5,7 +5,7 @@ import StarRating from "../StarRating/StarRating";
 import { useNavigate } from "react-router-dom";
 
 const CafeCard = ({ cafe }) => {
-  const imageUrl = `https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${cafe.photos[0]}`;
+  const imageUrl = `${process.env.BASE_IMAGE_URL}${cafe.photos[0]}`;
   const navigate = useNavigate();
 
   return (

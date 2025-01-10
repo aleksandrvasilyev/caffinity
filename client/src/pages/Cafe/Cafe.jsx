@@ -7,6 +7,8 @@ import "../../components/TopDisplay/custom-swiper.css";
 import useFetch from "../../hooks/useFetch";
 import StarRating from "../../components/StarRating/StarRating";
 import PinIcon from "../../components/Icons/PinIcon";
+import utilityIcons from "../../constants/utilityIcons";
+import foodOptionIcons from "../../constants/foodOptionIcons";
 
 const Cafe = () => {
   const { id: cafeId } = useParams();
@@ -64,7 +66,7 @@ const Cafe = () => {
               className="flex justify-center items-center slide"
             >
               <img
-                src={`https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${photo}`}
+                src={`${process.env.BASE_IMAGE_URL}${photo}`}
                 alt={`Cafe photo ${index + 1}`}
                 className="rounded-lg shadow-lg object-cover transition-all duration-300 ease-in-out"
               />
@@ -81,7 +83,7 @@ const Cafe = () => {
         {photos.map((photo, index) => (
           <img
             key={index}
-            src={`https://hyf-cohort-49-group-c.s3.eu-north-1.amazonaws.com/cafes/cafes/${photo}`}
+            src={`${process.env.BASE_IMAGE_URL}${photo}`}
             alt={`Cafe photo ${index + 1}`}
             className="rounded-lg shadow-lg object-cover w-full h-64"
           />
@@ -117,6 +119,41 @@ const Cafe = () => {
             </a>
           )}
         </p>
+        <div className="flex flex-wrap gap-4">
+          {cafe.utilitiesDetails.map((utility) => {
+            const IconComponent = utilityIcons[utility.value];
+            return (
+              <div
+                key={utility._id}
+                className="flex items-center gap-2 px-3 py-2 bg-gray-50 "
+              >
+                {IconComponent && (
+                  <span className="text-gray-700">
+                    <IconComponent />
+                  </span>
+                )}
+                <span className="text-sm text-gray-600">{utility.value}</span>
+              </div>
+            );
+          })}
+
+          {cafe.foodoptions.map((option) => {
+            const IconComponent = foodOptionIcons[option.value];
+            return (
+              <div
+                key={option._id}
+                className="flex items-center gap-2 px-3 py-2 bg-gray-50 "
+              >
+                {IconComponent && (
+                  <span className="text-gray-700">
+                    <IconComponent />
+                  </span>
+                )}
+                <span className="text-sm text-gray-600">{option.value}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
