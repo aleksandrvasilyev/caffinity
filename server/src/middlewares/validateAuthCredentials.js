@@ -1,3 +1,5 @@
+import throwError from "../util/throwError.js";
+
 export const validateRegistration = (req, res, next) => {
   const { username, password } = req.body;
 
@@ -10,19 +12,13 @@ export const validateRegistration = (req, res, next) => {
   const isUserNameValid = username.length >= 3;
 
   if (!isUserNameValid) {
-    throw {
-      status: 400,
-      message: "Username should be at least 3 characters long!",
-    };
+    throwError("Username should be at least 3 characters long!");
   }
 
   const isPasswordValid = password.length >= 6;
 
   if (!isPasswordValid) {
-    throw {
-      status: 400,
-      message: "Password should be at least 6 characters long!",
-    };
+    throwError("Password should be at least 6 characters long!");
   }
 
   next();

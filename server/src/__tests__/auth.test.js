@@ -22,6 +22,15 @@ afterAll(async () => {
   await closeMockDatabase();
 });
 
+beforeEach(() => {
+  jest.spyOn(console, "error").mockImplementation(() => {});
+});
+
+afterEach(() => {
+  // eslint-disable-next-line no-console
+  console.error.mockRestore();
+});
+
 const createUser = async () => {
   await User.create({
     username: "alex",
@@ -86,5 +95,43 @@ describe("POST /api/register/", () => {
     expect(response.status).toBe(400);
     expect(response.body.success).toBe(false);
     expect(response.body.msg).toBe("A user with this username already exists");
+  });
+});
+
+describe("POST /api/login/", () => {
+  it("Should return a successful result", async () => {
+    await createUser();
+
+    const response = await request.post("/api/login").send({
+      username: "alex",
+      password: "123456",
+    });
+
+    expect(response.status).toBe(200);
+    expect(response.body.result.message).toBe("User logged in successfully");
+    expect(response.body.result.user.username).toBe("alex");
+  });
+
+  it("Should return an error if credentials is not valid", async () => {
+    await createUser();
+
+    const response = await request.post("/api/login").send({
+      username: "alex",
+      password: "1234567",
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body.success).toBe(false);
+    expect(response.body.msg).toBe("Invalid credentials!");
+  });
+
+  it("Should return an error if username is not provided", async () => {
+    const response = await request.post("/api/login").send({
+      password: "123456",
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body.success).toBe(false);
+    expect(response.body.msg).toBe("Username and password are required!");
   });
 });
