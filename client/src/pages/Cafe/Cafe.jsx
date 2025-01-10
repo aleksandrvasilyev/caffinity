@@ -7,6 +7,8 @@ import "../../components/TopDisplay/custom-swiper.css";
 import useFetch from "../../hooks/useFetch";
 import StarRating from "../../components/StarRating/StarRating";
 import PinIcon from "../../components/Icons/PinIcon";
+import utilityIcons from "../../constants/utilityIcons";
+import foodOptionIcons from "../../constants/foodOptionIcons";
 
 const Cafe = () => {
   const { id: cafeId } = useParams();
@@ -117,6 +119,41 @@ const Cafe = () => {
             </a>
           )}
         </p>
+        <div className="flex flex-wrap gap-4">
+          {cafe.utilitiesDetails.map((utility) => {
+            const IconComponent = utilityIcons[utility.value];
+            return (
+              <div
+                key={utility._id}
+                className="flex items-center gap-2 px-3 py-2 bg-gray-50 "
+              >
+                {IconComponent && (
+                  <span className="text-gray-700">
+                    <IconComponent />
+                  </span>
+                )}
+                <span className="text-sm text-gray-600">{utility.value}</span>
+              </div>
+            );
+          })}
+
+          {cafe.foodoptions.map((option) => {
+            const IconComponent = foodOptionIcons[option.value];
+            return (
+              <div
+                key={option._id}
+                className="flex items-center gap-2 px-3 py-2 bg-gray-50 "
+              >
+                {IconComponent && (
+                  <span className="text-gray-700">
+                    <IconComponent />
+                  </span>
+                )}
+                <span className="text-sm text-gray-600">{option.value}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
