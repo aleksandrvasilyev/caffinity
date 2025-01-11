@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../Button/Button";
 import useFetch from "../../hooks/useFetch";
+import Input from "../Input/Input";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ userName: "", password: "" });
@@ -68,26 +69,25 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <form className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent ">
-        <label className="w-full">
-          <input
-            type="text"
-            name="userName"
-            placeholder="Username"
-            className="w-full p-3 rounded text-black mb-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
-            onChange={handleChange}
-          />
-        </label>
+      <form
+        className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent "
+        onSubmit={handleSubmit}
+      >
+        <Input
+          type="text"
+          name="userName"
+          placeholder="Username"
+          className="w-full p-3 rounded text-black mb-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
+          onChange={handleChange}
+        />
 
-        <label className="w-full">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="w-full p-3 rounded text-black mb-6 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
-            onChange={handleChange}
-          />
-        </label>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          className="w-full p-3 rounded text-black mb-6 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
+          onChange={handleChange}
+        />
 
         {(inputError ||
           storageError ||
@@ -111,7 +111,6 @@ const Login = () => {
         <Button
           type="submit"
           className="rounded-full text-white bg-accent px-6 py-2 ml-auto w-1/2 hover:bg-accent-light transition"
-          onClick={handleSubmit}
         >
           Login
         </Button>
