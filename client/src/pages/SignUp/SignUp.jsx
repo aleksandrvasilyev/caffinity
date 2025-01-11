@@ -1,11 +1,11 @@
 import React from "react";
+import Signup from "../../components/Signup/Signup";
 
 const SignUp = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Sign up Page</h1>
-      <p>This is the sign up page.</p>
-    </div>
+    <>
+      <Signup />
+    </>
   );
 };
 
