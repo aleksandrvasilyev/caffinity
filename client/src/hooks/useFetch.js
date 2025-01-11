@@ -53,21 +53,38 @@ const useFetch = (route, onReceived) => {
       // We add the /api subsection here to make it a single point of change if our configuration changes
 
       const baseUrl = `${process.env.BASE_SERVER_URL}/api${route}`;
-      const params = new URLSearchParams();
+      let url = baseUrl;
 
-      if (options?.params) {
-        params.append("page", options.params.page || "1");
-        params.append("limit", options.params.limit || "10");
+      // if method is GET or not provided, we add the params to the URL
+      if (!options?.method || options.method === "GET") {
+        //  use URLSearchParams to create a query string from an object
+        const params = new URLSearchParams();
+
+        //  add the page and limit to the query string if they are provided
+        if (options?.params) {
+          params.append("page", options.params.page || "1");
+          params.append("limit", options.params.limit || "10");
+        }
+
+        // add the search to the query string if it is provided
+        if (options?.search) {
+          params.append("search", options.search);
+        }
+
+        //  if there is params add them to the base URL with a ? prefix
+        if (params.toString()) {
+          url = `${baseUrl}?${params.toString()}`;
+        }
       }
-      if (options?.search) {
-        params.append("search", options.search);
-      }
 
-      const url = params.toString()
-        ? `${baseUrl}?${params.toString()}`
-        : baseUrl;
+      //  if the method is not GET, we add the body to the options
+      const fetchOptions = {
+        ...baseOptions,
+        ...options,
+        signal,
+      };
 
-      const res = await fetch(url, { ...baseOptions, ...options, signal });
+      const res = await fetch(url, fetchOptions);
 
       if (!res.ok) {
         setError(
