@@ -4,9 +4,10 @@ import validateAllowedFields from "../util/validateAllowedFields.js";
 
 const userSchema = new mongoose.Schema(
   {
-    email: { type: String, required: true, unique: true },
+    email: { type: String },
     password: { type: String, required: true },
     name: { type: String },
+    username: { type: String, required: true, unique: true },
     avatar: { type: String },
     phoneNumber: { type: String },
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cafe" }],
@@ -18,7 +19,7 @@ const User = mongoose.model("users", userSchema);
 
 export const validateUser = (userObject) => {
   const errorList = [];
-  const allowedKeys = ["name", "email", "password"];
+  const allowedKeys = ["name", "email", "password", "username"];
 
   const validatedKeysMessage = validateAllowedFields(userObject, allowedKeys);
 
@@ -36,6 +37,10 @@ export const validateUser = (userObject) => {
 
   if (userObject.password == null) {
     errorList.push("password is a required field");
+  }
+
+  if (userObject.username == null) {
+    errorList.push("username is a required field");
   }
 
   return errorList;

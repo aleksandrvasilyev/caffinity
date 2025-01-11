@@ -25,6 +25,7 @@ afterAll(async () => {
 const testUserBase = {
   name: "John",
   email: "john@doe.com",
+  username: "john",
   password: "password123",
 };
 
@@ -124,6 +125,7 @@ describe("POST /api/user/create", () => {
         expect(body.user.name).toEqual(testUser.name);
         expect(body.user.email).toEqual(testUser.email);
         expect(body.user.password).toEqual(testUser.password);
+        expect(body.user.username).toEqual(testUser.username);
 
         // Check that it was added to the DB
         return findUserInMockDB(body.user._id);

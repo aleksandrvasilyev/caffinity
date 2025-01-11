@@ -4,4 +4,6 @@ export default {
   },
   modulePathIgnorePatterns: ["__testUtils__"],
   transformIgnorePatterns: [],
+  setupFiles: ["<rootDir>/jest.setup.js"],
+  testTimeout: 40000,
 };

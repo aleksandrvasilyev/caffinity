@@ -8,9 +8,12 @@ export const getCafes = async (req, res) => {
   const limit = Math.max(Number(req.query.limit) || 10, 1);
   const page = Math.max(Number(req.query.page) || 1, 1);
   const search = req.query.search || null;
+  const utilities = req.query.utilities
+    ? req.query.utilities.split(",").map(Number)
+    : null;
 
   try {
-    const paginatedCafes = await paginate(Cafe, limit, page, search);
+    const paginatedCafes = await paginate(Cafe, limit, page, search, utilities);
 
     res.status(200).send({ success: true, result: paginatedCafes });
   } catch (error) {
@@ -42,7 +45,7 @@ export const getCafe = async (req, res) => {
         },
         ...buildCafeLookupPipeline(),
       ],
-      { maxTimeMS: 60000, allowDiskUse: true },
+      { maxTimeMS: 60000 },
     );
 
     if (!cafe) {
