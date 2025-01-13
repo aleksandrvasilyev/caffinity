@@ -1,14 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const LogoIcon = ({ onClick }) => {
+const LogoIcon = () => {
   return (
-    <div
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && onClick()}
-    >
+    <div>
       <svg
         width="50"
         height="50"
@@ -38,10 +32,6 @@ const LogoIcon = ({ onClick }) => {
       </svg>
     </div>
   );
-};
-
-LogoIcon.propTypes = {
-  onClick: PropTypes.func.isRequired,
 };
 
 export default LogoIcon;
