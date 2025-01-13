@@ -4,7 +4,7 @@ import useFetch from "../useFetch";
 import {
   getUsersSuccessMock,
   getUsersFailedMock,
-} from "../../__testUtils__/fetchUserMocks";
+} from "../../../__testUtils__/fetchUserMocks";
 
 // Reset mocks before every test
 beforeEach(() => {

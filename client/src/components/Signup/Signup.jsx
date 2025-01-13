@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 
 const Signup = () => {
   const navigate = useNavigate();

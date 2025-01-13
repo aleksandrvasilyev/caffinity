@@ -1,29 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import Input from "../Input/Input";
+import useAuth from "../../hooks/useAuth/useAuth";
 
 const Login = () => {
+  const { login } = useAuth();
   const [loginData, setLoginData] = useState({ username: "", password: "" });
-  const [response, setResponse] = useState({});
   const [inputError, setInputError] = useState(null);
-  const [storageError, setStorageError] = useState(null);
   const errorContainerRef = useRef(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleResponse = async (data) => {
+  const navigate = useNavigate();
+
+  const handleResponse = (data) => {
     if (data?.result?.token) {
-      try {
-        localStorage.setItem("token", data.result.token);
-        setIsLoggedIn(true);
-        setResponse(data);
-      } catch (error) {
-        ("Failed to save login data");
-        if (localStorage.getItem("token") === null) {
-          setStorageError("Failed to save login data");
-        }
-      }
+      login(data.result.token);
+    } else {
+      setInputError("Invalid credentials. Please try again.");
     }
+  };
+  const handleLoginClick = () => {
+    navigate("/");
   };
 
   const { isLoading, error, performFetch } = useFetch("/login", handleResponse);
@@ -44,7 +42,6 @@ const Login = () => {
     });
   };
 
-  // to close the error message when clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -52,7 +49,6 @@ const Login = () => {
         !errorContainerRef.current.contains(event.target)
       ) {
         setInputError(null);
-        setStorageError(null);
       }
     };
 
@@ -62,7 +58,6 @@ const Login = () => {
     };
   }, []);
 
-  // to update the loginData state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginData((prev) => ({
@@ -71,7 +66,6 @@ const Login = () => {
     }));
   };
 
-  // to validate the input fields or now maybe we call add more validation checks or handle it in backend
   const inputValidation = () => {
     if (!loginData.username || !loginData.password) {
       setInputError("Please enter a valid username and password");
@@ -82,8 +76,6 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      {isLoggedIn && <p className="absolute top-[15%]">Logged in</p>}
-
       <form
         className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent "
         onSubmit={handleSubmit}
@@ -104,24 +96,19 @@ const Login = () => {
           onChange={handleChange}
         />
 
-        {(inputError ||
-          storageError ||
-          isLoading ||
-          error ||
-          response.message) && (
+        {(inputError || isLoading || error) && (
           <div
             className="bg-white w-1/2 p-2 rounded-lg text-center"
             ref={errorContainerRef}
           >
             {inputError && <p>{inputError}</p>}
             {isLoading && <p>Wait a sec...</p>}
-            {storageError && <p>{storageError}</p>}
             {error && <p>{error.message}</p>}
-            {!isLoading && !error && response && <p>{response.message}</p>}
           </div>
         )}
 
         <Button
+          onClick={handleLoginClick}
           type="submit"
           className="rounded-full text-white bg-accent px-6 py-2 ml-auto w-1/2 hover:bg-accent-light transition"
         >
