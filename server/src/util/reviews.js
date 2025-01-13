@@ -4,14 +4,15 @@ import mongoose from "mongoose";
 import { logError } from "../util/logging.js";
 import throwError from "./throwError.js";
 
-export const addReview = async ({ cafeId, review, rating }) => {
+export const addReview = async (req) => {
+  const { cafeId, review, rating } = req.body;
+  const user = req.user;
+
   const session = await mongoose.startSession();
   session.startTransaction();
 
   try {
-    // to-do validate authorized user
-
-    const userId = "6776852f29c6508b1898f99e";
+    const userId = user._id.toString();
 
     const addedReview = await Review.create(
       [
@@ -39,22 +40,24 @@ export const addReview = async ({ cafeId, review, rating }) => {
   }
 };
 
-export const editReview = async ({ reviewId, review, rating }) => {
+export const editReview = async (req) => {
+  const { reviewId, review, rating } = req.body;
+  const user = req.user;
+
   const session = await mongoose.startSession();
   session.startTransaction();
-  // const userId = "64b8f600dc1b8a1234567902";
 
   try {
-    // to-do validate authorized user
+    const userId = user._id.toString();
 
-    // const reviewObject = await Review.findOne({
-    // _id: reviewId,
-    // userId: userId,
-    // });
+    const reviewObject = await Review.findOne({
+      _id: reviewId,
+      userId: userId,
+    });
 
-    // if (!reviewObject) {
-    // throwError("Review id or User id is invalid!");
-    // }
+    if (!reviewObject) {
+      throwError("Permission denied");
+    }
 
     const updatedReview = await Review.findOneAndUpdate(
       { _id: reviewId },
@@ -78,14 +81,24 @@ export const editReview = async ({ reviewId, review, rating }) => {
   }
 };
 
-export const removeReview = async (reviewId) => {
+export const removeReview = async (req) => {
+  const reviewId = req.body.reviewId;
+  const user = req.user;
+
   const session = await mongoose.startSession();
   session.startTransaction();
 
   try {
-    // to-do validate authorized user
+    const userId = user._id.toString();
 
-    // const userId = "64b8f600dc1b8a1234567902";
+    const reviewObject = await Review.findOne({
+      _id: reviewId,
+      userId: userId,
+    });
+
+    if (!reviewObject) {
+      throwError("Permission denied");
+    }
 
     const review = await Review.findOne({ _id: reviewId });
     const cafeId = review.cafeId;

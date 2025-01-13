@@ -9,11 +9,12 @@ import {
   validateEditReview,
   validateDeleteReview,
 } from "../middlewares/validateReview.js";
+import isAuthorized from "../middlewares/isAuthorized.js";
 
 const reviewRouter = express.Router();
 
-reviewRouter.post("/", validateAddReview, storeReview);
-reviewRouter.put("/", validateEditReview, updateReview);
-reviewRouter.delete("/", validateDeleteReview, deleteReview);
+reviewRouter.post("/", isAuthorized, validateAddReview, storeReview);
+reviewRouter.put("/", isAuthorized, validateEditReview, updateReview);
+reviewRouter.delete("/", isAuthorized, validateDeleteReview, deleteReview);
 
 export default reviewRouter;

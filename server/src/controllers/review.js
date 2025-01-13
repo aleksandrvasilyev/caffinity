@@ -2,7 +2,7 @@ import { addReview, editReview, removeReview } from "../util/reviews.js";
 
 export const storeReview = async (req, res, next) => {
   try {
-    const addedReview = await addReview(req.body);
+    const addedReview = await addReview(req);
 
     res.status(201).send({
       success: true,
@@ -15,7 +15,7 @@ export const storeReview = async (req, res, next) => {
 
 export const updateReview = async (req, res, next) => {
   try {
-    const updatedReview = await editReview(req.body);
+    const updatedReview = await editReview(req);
 
     res.status(200).send({
       success: true,
@@ -30,10 +30,8 @@ export const updateReview = async (req, res, next) => {
 };
 
 export const deleteReview = async (req, res, next) => {
-  const reviewId = req.body.reviewId;
-
   try {
-    const updatedCafe = await removeReview(reviewId);
+    const updatedCafe = await removeReview(req);
 
     res.status(200).send({
       success: true,
