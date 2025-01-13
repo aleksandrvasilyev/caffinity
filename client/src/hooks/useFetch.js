@@ -71,6 +71,11 @@ const useFetch = (route, onReceived) => {
           params.append("search", options.search);
         }
 
+        // add the utilities to the query string if it is provided
+        if (options?.utilities) {
+          params.append("utilities", options.utilities);
+        }
+
         //  if there is params add them to the base URL with a ? prefix
         if (params.toString()) {
           url = `${baseUrl}?${params.toString()}`;
