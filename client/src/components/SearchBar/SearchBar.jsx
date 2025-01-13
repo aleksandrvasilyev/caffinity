@@ -3,6 +3,7 @@ import SearchIcon from "../Icons/SearchIcon";
 import Filters from "../Filter/Filters";
 import useFetch from "../../hooks/useFetch";
 import SearchResultsList from "./SearchResultsList";
+import CityFilter from "./CityFilter";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -84,6 +85,8 @@ const SearchBar = () => {
             No results found
           </p>
         ))}
+
+      <CityFilter />
     </div>
   );
 };
