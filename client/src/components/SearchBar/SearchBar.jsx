@@ -3,19 +3,18 @@ import SearchIcon from "../Icons/SearchIcon";
 import Filters from "../Filter/Filters";
 import useFetch from "../../hooks/useFetch";
 import SearchResultsList from "./SearchResultsList";
+import CityFilter from "./CityFilter";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const searchContainerRef = useRef(null);
   const [searchResults, setSearchResults] = useState(null);
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const { isLoading, error, performFetch } = useFetch("/cafes", (response) => {
     setSearchResults(response.result.data || []);
     setIsSearchOpen(true);
   });
-
-  //eslint-disable-next-line no-unused-vars
-  const [selectedFilters, setSelectedFilters] = useState([]);
 
   // to close the search results when clicked outside
   useEffect(() => {
@@ -38,6 +37,7 @@ const SearchBar = () => {
       performFetch({
         method: "GET",
         search: searchQuery,
+        utilities: selectedFilters.join(","),
       });
     }
   };
@@ -85,6 +85,8 @@ const SearchBar = () => {
             No results found
           </p>
         ))}
+
+      <CityFilter />
     </div>
   );
 };

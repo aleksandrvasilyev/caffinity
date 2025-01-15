@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../Button/Button";
 import CarouselDisplay from "./CarouselDisplay";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
-import HomeFilters from "./HomeFilters";
 
 const TopDisplay = () => {
   const [topCafes, setTopCafes] = useState([]);
   const { isLoading, error, performFetch } = useFetch("/cafes", setTopCafes);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     performFetch({ method: "GET" });
   }, []);
 
@@ -20,8 +19,6 @@ const TopDisplay = () => {
 
   return (
     <>
-      <HomeFilters />
-
       <div className="font-bold text-2xl text-center">Top Rated Cafes</div>
 
       {isLoading && <div className="text-center">Loading...</div>}

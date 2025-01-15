@@ -11,7 +11,7 @@ const SearchResultsList = ({ searchResults }) => {
         <li
           key={result._id}
           className="text-black border-b-2 py-8 px-4 border-black bg-white hover:bg-stone-200 cursor-pointer "
-          onClick={() => navigate(`/cafes/${result._id}`)}
+          onClick={() => navigate(`/cafe/${result._id}`)}
         >
           <p>{result.title}</p>
         </li>
