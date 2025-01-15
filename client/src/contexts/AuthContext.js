@@ -8,7 +8,14 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
+      return null;
+    };
+
+    const storedToken = getCookie("token");
     if (storedToken) {
       setIsAuthenticated(true);
       setToken(storedToken);
@@ -18,13 +25,20 @@ const AuthProvider = ({ children }) => {
   const login = (authToken) => {
     setIsAuthenticated(true);
     setToken(authToken);
-    localStorage.setItem("token", authToken);
+
+    const now = new Date();
+    now.setTime(now.getTime() + 60 * 60 * 1000);
+    const expires = now.toUTCString();
+
+    document.cookie = `token=${authToken}; path=/; expires=${expires}; secure; SameSite=Strict;`;
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setToken(null);
-    localStorage.removeItem("token");
+
+    document.cookie =
+      "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; secure; SameSite=Strict;";
   };
 
   return (
