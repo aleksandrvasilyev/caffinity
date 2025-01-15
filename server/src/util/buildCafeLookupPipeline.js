@@ -39,6 +39,9 @@ const buildCafeLookupPipeline = (search, utilities) => {
           {
             $unwind: "$user",
           },
+          {
+            $limit: 5,
+          },
         ],
         as: "reviews",
       },
