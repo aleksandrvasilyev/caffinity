@@ -33,7 +33,16 @@ const SearchBar = () => {
   }, []);
 
   const handleSearchClick = () => {
-    if (searchQuery.trim()) {
+    if (
+      searchQuery === "Amsterdam" ||
+      searchQuery === "Den Haag" ||
+      searchQuery === "Rotterdam"
+    ) {
+      performFetch({
+        method: "GET",
+        city: searchQuery,
+      });
+    } else if (searchQuery.trim()) {
       performFetch({
         method: "GET",
         search: searchQuery,

@@ -32,7 +32,7 @@ const CityFilter = () => {
 
       <Button
         className="bg-primary rounded-full text-white font-medium"
-        value="The Hague"
+        value="Den Haag"
         onClick={handleClick}
       >
         The Hague
