@@ -41,11 +41,17 @@ const SearchBar = () => {
       performFetch({
         method: "GET",
         city: searchQuery,
+        utilities: selectedFilters.join(","),
       });
     } else if (searchQuery.trim()) {
       performFetch({
         method: "GET",
         search: searchQuery,
+        utilities: selectedFilters.join(","),
+      });
+    } else if (searchQuery.trim() === "") {
+      performFetch({
+        method: "GET",
         utilities: selectedFilters.join(","),
       });
     }
@@ -57,7 +63,7 @@ const SearchBar = () => {
         <input
           className="h-[30%] px-3 pb-2 rounded-full w-[100%] focus:outline-none hover:none pl-10 text-text text-ellipsis bg-transparent "
           type="text"
-          placeholder="Search for cafes by name, city, or features"
+          placeholder="Search for cafes by name, city, or just select a filter"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
