@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import "../../components/TopDisplay/custom-swiper.css";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import StarRating from "../../components/StarRating/StarRating";
 import PinIcon from "../../components/Icons/PinIcon";
 import utilityIcons from "../../constants/utilityIcons";
@@ -141,9 +141,7 @@ const Cafe = () => {
         <p className="text-gray-600">
           {cafe.description || "No description available."}
         </p>
-        {cafe.rating && (
-          <StarRating rating={cafe.rating} numReviews={cafe.numReviews || 0} />
-        )}
+        {cafe.rating && <StarRating rating={cafe.rating} />}
         <p className="text-text flex items-center gap-2">
           <PinIcon />
           {cafe.address || "No address provided"}
