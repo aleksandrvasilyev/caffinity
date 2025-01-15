@@ -3,7 +3,7 @@
     "_id": "64b8f5d2dc1b8a1234567801",
     "title": "Café De Balie",
     "description": "A cultural café near Leidseplein offering coffee, lunch, and events.",
-    "address": "Kleine-Gartmanplantsoen 10, 1017 RR Amsterdam, Netherlands",
+    "address": "Kleine-Gartmanplantsoen 10, 1017 RR Rotterdam, Netherlands",
     "location": {
       "latitude": 52.364812,
       "longitude": 4.881876
@@ -22,7 +22,7 @@
     "_id": "64b8f5d2dc1b8a1234567802",
     "title": "Café Het Paleis",
     "description": "Cozy café near the Royal Palace serving pastries and coffee.",
-    "address": "Nieuwezijds Voorburgwal 196, 1012 SJ Amsterdam",
+    "address": "Nieuwezijds Voorburgwal 196, 1012 SJ Rotterdam",
     "location": {
       "latitude": 52.373173,
       "longitude": 4.892608
@@ -41,7 +41,7 @@
     "_id": "64b8f5d2dc1b8a1234567803",
     "title": "Café Amstelhaven",
     "description": "Riverside café with a terrace overlooking the Amstel.",
-    "address": "Mauritskade 1, 1091 EW Amsterdam",
+    "address": "Mauritskade 1, 1091 EW Rotterdam",
     "location": {
       "latitude": 52.362221,
       "longitude": 4.905045
@@ -60,7 +60,7 @@
     "_id": "64b8f5d2dc1b8a1234567804",
     "title": "Café Jordaan Corner",
     "description": "Traditional Dutch café with canal views in the Jordaan.",
-    "address": "Prinsengracht 263, 1016 GV Amsterdam",
+    "address": "Prinsengracht 263, 1016 GV Rotterdam",
     "location": {
       "latitude": 52.375218,
       "longitude": 4.883977
@@ -78,7 +78,7 @@
     "_id": "64b8f5d2dc1b8a1234567805",
     "title": "Café De Pijp Delight",
     "description": "Hip café in De Pijp serving healthy brunch options.",
-    "address": "Albert Cuypstraat 86, 1072 CV Amsterdam",
+    "address": "Albert Cuypstraat 86, 1072 CV Rotterdam",
     "location": {
       "latitude": 52.357239,
       "longitude": 4.895842
@@ -92,7 +92,7 @@
     "_id": "64b8f5d2dc1b8a1234567806",
     "title": "Café Westerpark Lounge",
     "description": "Green café near the park offering organic coffee and pastries.",
-    "address": "Haarlemmerweg 8, 1014 BE Amsterdam",
+    "address": "Haarlemmerweg 8, 1014 BE Den Haag",
     "location": {
       "latitude": 52.3862,
       "longitude": 4.8736
@@ -111,7 +111,7 @@
     "_id": "64b8f5d2dc1b8a1234567807",
     "title": "Café Oud-Zuid Garden",
     "description": "Elegant café in Oud-Zuid with a hidden garden terrace.",
-    "address": "Van Baerlestraat 45, 1071 AP Amsterdam",
+    "address": "Van Baerlestraat 45, 1071 AP Den Haag",
     "location": {
       "latitude": 52.3584,
       "longitude": 4.8794
@@ -157,7 +157,7 @@
     "_id": "64b8f5d2dc1b8a1234567810",
     "title": "Café De L'Europe",
     "description": "Upscale café with river views inside a luxury hotel.",
-    "address": "Nieuwe Doelenstraat 2-14, 1012 CP Amsterdam",
+    "address": "Nieuwe Doelenstraat 2-14, 1012 CP Den Haag",
     "location": {
       "latitude": 52.367432,
       "longitude": 4.895134
@@ -213,7 +213,7 @@
     "_id": "64b8f5d2dc1b8a1234567813",
     "title": "Café Oost Indie",
     "description": "Café in the East district with a variety of breakfast bowls.",
-    "address": "Linnaeusstraat 58, 1092 CM Amsterdam",
+    "address": "Linnaeusstraat 58, 1092 CM Den Haag",
     "location": {
       "latitude": 52.3601,
       "longitude": 4.9205
@@ -230,7 +230,7 @@
     "_id": "64b8f5d2dc1b8a1234567814",
     "title": "Café Haarlemmer Treats",
     "description": "Popular café on Haarlemmerdijk with homemade pastries.",
-    "address": "Haarlemmerdijk 38, 1013 JD Amsterdam",
+    "address": "Haarlemmerdijk 38, 1013 JD Rotterdam",
     "location": {
       "latitude": 52.38298,
       "longitude": 4.8885
@@ -265,7 +265,7 @@
     "_id": "64b8f5d2dc1b8a1234567816",
     "title": "Café Artis Garden",
     "description": "Near Artis Zoo, a family-friendly café with a leafy terrace.",
-    "address": "Plantage Kerklaan 38, 1018 CZ Amsterdam",
+    "address": "Plantage Kerklaan 38, 1018 CZ Den Haag",
     "location": {
       "latitude": 52.3678,
       "longitude": 4.9156
@@ -283,7 +283,7 @@
     "_id": "64b8f5d2dc1b8a1234567817",
     "title": "Café Westerliefde",
     "description": "Artsy café with live music performances in Westerpark.",
-    "address": "Klonneplein 4-6, 1014 DD Amsterdam",
+    "address": "Klonneplein 4-6, 1014 DD Rotterdam",
     "location": {
       "latitude": 52.3868,
       "longitude": 4.8793
@@ -333,7 +333,7 @@
     "_id": "64b8f5d2dc1b8a1234567820",
     "title": "Café De Hallen Market",
     "description": "Café inside a renovated tram depot, offering a variety of bites.",
-    "address": "Hannie Dankbaarpassage 33, 1053 RT Amsterdam",
+    "address": "Hannie Dankbaarpassage 33, 1053 RT Rotterdam",
     "location": {
       "latitude": 52.3681,
       "longitude": 4.8628
@@ -350,7 +350,7 @@
     "_id": "64b8f5d2dc1b8a1234567821",
     "title": "Café Prinsengracht View",
     "description": "Charming café with a view of Prinsengracht canal.",
-    "address": "Prinsengracht 500, 1017 KH Amsterdam",
+    "address": "Prinsengracht 500, 1017 KH Den Haag",
     "location": {
       "latitude": 52.3669,
       "longitude": 4.8855
@@ -381,7 +381,7 @@
     "_id": "64b8f5d2dc1b8a1234567823",
     "title": "Café Rembrandt Square",
     "description": "Café on a lively square with late-night snacks.",
-    "address": "Rembrandtplein 15, 1017 CT Amsterdam",
+    "address": "Rembrandtplein 15, 1017 CT Rotterdam",
     "location": {
       "latitude": 52.3669,
       "longitude": 4.8964
@@ -423,7 +423,7 @@
     "_id": "64b8f5d2dc1b8a1234567826",
     "title": "Café Nine Streets",
     "description": "Quaint café in the Nine Streets area.",
-    "address": "Wolvenstraat 12, 1016 EP Amsterdam",
+    "address": "Wolvenstraat 12, 1016 EP Den Haag",
     "location": {
       "latitude": 52.3715,
       "longitude": 4.8852
@@ -437,7 +437,7 @@
     "_id": "64b8f5d2dc1b8a1234567827",
     "title": "Café Westergas",
     "description": "Creative café in Westergas cultural area.",
-    "address": "Polonceaukade 27, 1014 DA Amsterdam",
+    "address": "Polonceaukade 27, 1014 DA Rotterdam",
     "location": {
       "latitude": 52.3869,
       "longitude": 4.8735
@@ -465,7 +465,7 @@
     "_id": "64b8f5d2dc1b8a1234567829",
     "title": "Café De Pijp Classics",
     "description": "Another gem in De Pijp serving classic Dutch pastries.",
-    "address": "Ferdinand Bolstraat 45, 1072 LB Amsterdam",
+    "address": "Ferdinand Bolstraat 45, 1072 LB Den Haag",
     "location": {
       "latitude": 52.3549,
       "longitude": 4.8914
@@ -493,7 +493,7 @@
     "_id": "64b8f5d2dc1b8a1234567831",
     "title": "Café Beethovenstraat",
     "description": "Quiet café in a chic neighborhood.",
-    "address": "Beethovenstraat 32, 1077 JH Amsterdam",
+    "address": "Beethovenstraat 32, 1077 JH Rotterdam",
     "location": {
       "latitude": 52.3465,
       "longitude": 4.8791
@@ -538,7 +538,7 @@
     "_id": "64b8f5d2dc1b8a1234567834",
     "title": "Café Sloterdijk Station",
     "description": "Convenient café near Sloterdijk Station.",
-    "address": "Orlyplein 10, 1043 DP Amsterdam",
+    "address": "Orlyplein 10, 1043 DP Den Haag",
     "location": {
       "latitude": 52.3886,
       "longitude": 4.8367
@@ -569,7 +569,7 @@
     "_id": "64b8f5d2dc1b8a1234567836",
     "title": "Café IJburg Shores",
     "description": "Waterfront café in IJburg.",
-    "address": "IJburglaan 700, 1087 EM Amsterdam",
+    "address": "IJburglaan 700, 1087 EM Rotterdam",
     "location": {
       "latitude": 52.3604,
       "longitude": 4.9833
@@ -600,7 +600,7 @@
     "_id": "64b8f5d2dc1b8a1234567838",
     "title": "Café Rivierenbuurt",
     "description": "Friendly café in Rivierenbuurt.",
-    "address": "Maasstraat 56, 1078 HL Amsterdam",
+    "address": "Maasstraat 56, 1078 HL Den Haag",
     "location": {
       "latitude": 52.346,
       "longitude": 4.8998
@@ -628,7 +628,7 @@
     "_id": "64b8f5d2dc1b8a1234567840",
     "title": "Café Frederik Hendrik",
     "description": "Local café in Frederik Hendrik neighborhood.",
-    "address": "Frederik Hendrikstraat 75, 1052 HN Amsterdam",
+    "address": "Frederik Hendrikstraat 75, 1052 HN Rotterdam",
     "location": {
       "latitude": 52.3792,
       "longitude": 4.8739
@@ -673,7 +673,7 @@
     "_id": "64b8f5d2dc1b8a1234567843",
     "title": "Café Buiksloterham",
     "description": "Trendy café in the north, industrial area turned chic.",
-    "address": "Distelweg 74, 1031 HH Amsterdam",
+    "address": "Distelweg 74, 1031 HH Den Haag",
     "location": {
       "latitude": 52.3976,
       "longitude": 4.9025
@@ -705,7 +705,7 @@
     "_id": "64b8f5d2dc1b8a1234567845",
     "title": "Café Bijlmer Bloom",
     "description": "Café in the Bijlmer area, diverse food scene.",
-    "address": "Bijlmerdreef 200, 1102 AC Amsterdam",
+    "address": "Bijlmerdreef 200, 1102 AC Rotterdam",
     "location": {
       "latitude": 52.3174,
       "longitude": 4.9728
@@ -741,7 +741,7 @@
     "_id": "64b8f5d2dc1b8a1234567847",
     "title": "Café Wibaut Smooth",
     "description": "Café on Wibautstraat with healthy options.",
-    "address": "Wibautstraat 150, 1091 GR Amsterdam",
+    "address": "Wibautstraat 150, 1091 GR Den Haag",
     "location": {
       "latitude": 52.3555,
       "longitude": 4.9104
@@ -793,7 +793,7 @@
     "_id": "64b8f5d2dc1b8a1234567850",
     "title": "Café Amstelveld Relax",
     "description": "Laid-back café near Amstelveld.",
-    "address": "Amstelveld 7, 1017 JD Amsterdam",
+    "address": "Amstelveld 7, 1017 JD Rotterdam",
     "location": {
       "latitude": 52.3643,
       "longitude": 4.8965
