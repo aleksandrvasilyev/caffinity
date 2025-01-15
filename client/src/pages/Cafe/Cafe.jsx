@@ -9,10 +9,15 @@ import StarRating from "../../components/StarRating/StarRating";
 import PinIcon from "../../components/Icons/PinIcon";
 import utilityIcons from "../../constants/utilityIcons";
 import foodOptionIcons from "../../constants/foodOptionIcons";
+import UserDefaultIcon from "../../components/Icons/UserDefaultIcon";
+import Button from "../../components/Button/Button";
+import WriteIcon from "../../components/Icons/WriteIcon";
 
 const Cafe = () => {
   const { id: cafeId } = useParams();
   const [cafe, setCafe] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { isLoading, error, performFetch } = useFetch(
     `/cafes/${cafeId}`,
     (data) => setCafe(data.result?.[0] || null),
@@ -20,7 +25,12 @@ const Cafe = () => {
 
   useEffect(() => {
     performFetch({ method: "GET" });
+
+    setIsLoggedIn(true);
   }, [cafeId]);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   if (isLoading) return <div className="text-center">Loading...</div>;
   if (error)
@@ -35,7 +45,6 @@ const Cafe = () => {
 
   const renderPhotos = () => {
     const photos = cafe.photos || [];
-
     if (photos.length >= 4) {
       return (
         <Swiper
@@ -92,8 +101,40 @@ const Cafe = () => {
     );
   };
 
+  const renderReviews = () => {
+    const reviews = cafe.reviews || [];
+    if (reviews.length === 0) {
+      return (
+        <p className="text-gray-600">No reviews available for this cafe.</p>
+      );
+    }
+
+    return (
+      <div className="reviews-section">
+        <h2 className="text-xl font-semibold mb-4">Customer Reviews</h2>
+        <div className="grid gap-4">
+          {reviews.map((review) => (
+            <div
+              key={review._id}
+              className="p-4 bg-gray-50 border rounded-lg shadow-sm"
+            >
+              <div className="flex items-center gap-4 mb-2">
+                <UserDefaultIcon />
+                <div>
+                  <p className="font-semibold">{review.user.name}</p>
+                  <StarRating rating={review.rating} />
+                </div>
+              </div>
+              <p className="text-gray-700">{review.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="container mx-auto p-4 grid gap-6">
+    <div className="container my-8 mx-auto p-4 grid gap-6">
       <div className="grid gap-6">{renderPhotos()}</div>
       <div className="grid gap-4 text-left">
         <h1 className="text-2xl font-semibold">{cafe.title || "Cafe Name"}</h1>
@@ -154,6 +195,51 @@ const Cafe = () => {
             );
           })}
         </div>
+
+        {isLoggedIn && (
+          <Button
+            className="bg-primary w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
+            onClick={openModal}
+          >
+            <WriteIcon /> Write a Review
+          </Button>
+        )}
+        {!isLoggedIn && (
+          <Button
+            className="mt-6 px-4 py-2 w-40 bg-gray-400 text-white rounded-3xl cursor-not-allowed"
+            disabled
+          >
+            Write a Review
+          </Button>
+        )}
+
+        {renderReviews()}
+
+        {isModalOpen && (
+          <div className="fixed z-50 inset-0 bg-gray-700 bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-8 rounded-md shadow-md w-96">
+              <h2 className="text-xl  font-semibold mb-4">Write a Review</h2>
+              <textarea
+                className="w-full p-4 border rounded-md mb-4"
+                placeholder="Write your review here..."
+              />
+              <div className="flex gap-4">
+                <Button
+                  className="px-4 py-2 rounded-3xl bg-accent text-white "
+                  onClick={closeModal}
+                >
+                  Submit
+                </Button>
+                <Button
+                  className="px-4 py-2 rounded-3xl bg-gray-400 text-white"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -4,18 +4,37 @@ import useFetch from "../../hooks/useFetch";
 import Input from "../Input/Input";
 
 const Login = () => {
-  const [loginData, setLoginData] = useState({ userName: "", password: "" });
-  const [response, setResponse] = useState({ message: "", token: "" });
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [response, setResponse] = useState({});
   const [inputError, setInputError] = useState(null);
   const [storageError, setStorageError] = useState(null);
-  const { isLoading, error, performFetch } = useFetch("/login", setResponse);
   const errorContainerRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleResponse = async (data) => {
+    if (data?.result?.token) {
+      try {
+        localStorage.setItem("token", data.result.token);
+        setIsLoggedIn(true);
+        setResponse(data);
+      } catch (error) {
+        ("Failed to save login data");
+        if (localStorage.getItem("token") === null) {
+          setStorageError("Failed to save login data");
+        }
+      }
+    }
+  };
+
+  const { isLoading, error, performFetch } = useFetch("/login", handleResponse);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!inputValidation()) {
       return;
     }
+
     performFetch({
       method: "POST",
       headers: {
@@ -45,22 +64,16 @@ const Login = () => {
 
   // to update the loginData state
   const handleChange = (e) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value.trim() });
+    const { name, value } = e.target;
+    setLoginData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-
-  // to save the token in local storage
-  useEffect(() => {
-    if (response.token)
-      try {
-        localStorage.setItem("token", response.token);
-      } catch (error) {
-        setStorageError("Error saving token to local storage", error);
-      }
-  }, [response.token]);
 
   // to validate the input fields or now maybe we call add more validation checks or handle it in backend
   const inputValidation = () => {
-    if (!loginData.userName || !loginData.password) {
+    if (!loginData.username || !loginData.password) {
       setInputError("Please enter a valid username and password");
       return false;
     }
@@ -69,13 +82,15 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
+      {isLoggedIn && <p className="absolute top-[15%]">Logged in</p>}
+
       <form
         className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent "
         onSubmit={handleSubmit}
       >
         <Input
           type="text"
-          name="userName"
+          name="username"
           placeholder="Username"
           className="w-full p-3 rounded text-black mb-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
           onChange={handleChange}
@@ -101,9 +116,7 @@ const Login = () => {
             {inputError && <p>{inputError}</p>}
             {isLoading && <p>Wait a sec...</p>}
             {storageError && <p>{storageError}</p>}
-            {error && (
-              <p>{error.message || "Something went wrong! Try Again."}</p>
-            )}
+            {error && <p>{error.message}</p>}
             {!isLoading && !error && response && <p>{response.message}</p>}
           </div>
         )}
