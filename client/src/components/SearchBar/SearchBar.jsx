@@ -33,14 +33,15 @@ const SearchBar = () => {
   }, []);
 
   const handleSearchClick = () => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
     if (
-      searchQuery === "Amsterdam" ||
-      searchQuery === "Den Haag" ||
-      searchQuery === "Rotterdam"
+      normalizedQuery === "amsterdam" ||
+      normalizedQuery === "den haag" ||
+      normalizedQuery === "rotterdam"
     ) {
       performFetch({
         method: "GET",
-        city: searchQuery,
+        city: searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1),
         utilities: selectedFilters.join(","),
       });
     } else if (searchQuery.trim()) {
