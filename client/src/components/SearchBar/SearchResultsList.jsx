@@ -6,17 +6,19 @@ const SearchResultsList = ({ searchResults }) => {
   const navigate = useNavigate();
 
   return (
-    <ul className=" bg-white rounded-md border-solid border-2 border-black flex flex-col  my-6 space-y-3 h-[400px] overflow-y-scroll ">
-      {searchResults.map((result) => (
-        <li
-          key={result._id}
-          className="text-black border-b-2 py-8 px-4 border-black bg-white hover:bg-stone-200 cursor-pointer "
-          onClick={() => navigate(`/cafe/${result._id}`)}
-        >
-          <p>{result.title}</p>
-        </li>
-      ))}
-    </ul>
+    <div className="w-full max-w-2xl mx-auto px-4">
+      <ul className=" bg-white rounded-lg border-2 border-black shadow-lg divide-y divide-gray-200 my-6 max-h-[400px] overflow-y-auto">
+        {searchResults.map((result) => (
+          <li
+            key={result._id}
+            className="transition-colors duration-150 ease-in-out hover:bg-stone-100 hover:bg-stone-200 cursor-pointer "
+            onClick={() => navigate(`/cafe/${result._id}`)}
+          >
+            <p>{result.title}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
