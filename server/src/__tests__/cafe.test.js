@@ -26,9 +26,9 @@ describe("GET /api/cafes/", () => {
   it("Should return an empty array if there are no cafes in the db", async () => {
     const response = await request.get("/api/cafes");
 
-    expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
-    expect(response.body.result.data).toEqual([]);
+    expect(response.status).toBe(404);
+    expect(response.body.success).toBe(false);
+    expect(response.body.msg).toEqual("Not found");
   });
 
   it("Should return all the cafes in the db", async () => {

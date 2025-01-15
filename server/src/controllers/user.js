@@ -2,19 +2,17 @@ import User, { validateUser } from "../models/User.js";
 import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
-export const getUsers = async (req, res) => {
+export const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     res.status(200).json({ success: true, result: users });
   } catch (error) {
     logError(error);
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to get users, try again later" });
+    next(error);
   }
 };
 
-export const createUser = async (req, res) => {
+export const createUser = async (req, res, next) => {
   try {
     const { user } = req.body;
 
@@ -42,8 +40,6 @@ export const createUser = async (req, res) => {
     }
   } catch (error) {
     logError(error);
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to create user, try again later" });
+    next(error);
   }
 };

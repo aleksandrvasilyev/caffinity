@@ -1,11 +1,31 @@
 import buildCafeLookupPipeline from "./buildCafeLookupPipeline.js";
+import mongoose from "mongoose";
+import throwError from "./throwError.js";
 
-const paginate = async (model, limit, page, search, utilities) => {
+const paginate = async (attributes) => {
+  const collectionName = attributes.model.collection.collectionName;
+  let model, limit, page, search, utilities, cafeId, lookupPipeline;
+
+  if (collectionName === "cafes") {
+    ({ model, limit, page, search, utilities } = attributes);
+    lookupPipeline = buildCafeLookupPipeline(search, utilities);
+  } else if (collectionName === "reviews") {
+    ({ model, limit, page, cafeId } = attributes);
+
+    if (!cafeId) {
+      throwError("Cafe id is required");
+    }
+
+    lookupPipeline = [
+      { $match: { cafeId: new mongoose.Types.ObjectId(cafeId) } },
+    ];
+  }
+
   const skip = limit * (page - 1);
 
   const result = await model.aggregate(
     [
-      ...buildCafeLookupPipeline(search, utilities),
+      ...lookupPipeline,
       {
         $facet: {
           data: [{ $skip: skip }, { $limit: limit }],
@@ -18,6 +38,10 @@ const paginate = async (model, limit, page, search, utilities) => {
 
   const data = result[0].data;
   const totalItems = result[0].totalCount[0]?.count || 0;
+
+  if (totalItems === 0) {
+    throwError("Not found", 404);
+  }
 
   return {
     limit: limit,
