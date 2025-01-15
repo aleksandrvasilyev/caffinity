@@ -30,11 +30,19 @@ const CityFilter = () => {
         Amsterdam
       </Button>
 
-      <Button className="bg-primary rounded-full text-white font-medium">
+      <Button
+        className="bg-primary rounded-full text-white font-medium"
+        value="The Hague"
+        onClick={handleClick}
+      >
         The Hague
       </Button>
 
-      <Button className="bg-primary rounded-full text-white font-medium">
+      <Button
+        className="bg-primary rounded-full text-white font-medium"
+        value="Rotterdam"
+        onClick={handleClick}
+      >
         Rotterdam
       </Button>
     </div>
