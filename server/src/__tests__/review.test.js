@@ -470,3 +470,25 @@ describe("DELETE /api/reviews", () => {
     }
   });
 });
+
+describe("GET /api/reviews", () => {
+  it("Should return a list of reviews", async () => {
+    await createTestData();
+    const response = await request.get(
+      "/api/reviews?cafe=64b8f5d2dc1b8a1234567808",
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.data.length).toEqual(2);
+  });
+
+  it("Should return an error if cafe id is not provided", async () => {
+    await createTestData();
+    const response = await request.get("/api/reviews");
+
+    expect(response.status).toBe(400);
+    expect(response.body.success).toBe(false);
+    expect(response.body.msg).toBe("Cafe id is required");
+  });
+});

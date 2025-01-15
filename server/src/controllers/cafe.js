@@ -4,27 +4,35 @@ import { logError } from "../util/logging.js";
 import paginate from "../util/pagination.js";
 import mongoose from "mongoose";
 
-export const getCafes = async (req, res) => {
+export const getCafes = async (req, res, next) => {
   const limit = Math.max(Number(req.query.limit) || 10, 1);
   const page = Math.max(Number(req.query.page) || 1, 1);
   const search = req.query.search || null;
   const utilities = req.query.utilities
     ? req.query.utilities.split(",").map(Number)
     : null;
+  const cafeName = req.query.cafe;
+  const cityName = req.query.city;
 
   try {
-    const paginatedCafes = await paginate(Cafe, limit, page, search, utilities);
+    const paginatedCafes = await paginate({
+      model: Cafe,
+      limit,
+      page,
+      search,
+      utilities,
+      cafeName,
+      cityName,
+    });
 
     res.status(200).send({ success: true, result: paginatedCafes });
   } catch (error) {
     logError(error);
-    res
-      .status(500)
-      .send({ success: false, msg: "Unable to get cafes, try again later" });
+    next(error);
   }
 };
 
-export const getCafe = async (req, res) => {
+export const getCafe = async (req, res, next) => {
   const cafeId = req.params.id;
 
   try {
@@ -55,8 +63,6 @@ export const getCafe = async (req, res) => {
     res.send({ success: true, result: cafe });
   } catch (error) {
     logError(error);
-    res
-      .status(500)
-      .send({ success: false, msg: "Unable to get cafe, try again later" });
+    next(error);
   }
 };
