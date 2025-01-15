@@ -58,26 +58,26 @@ const CafeByCity = () => {
 
   useEffect(() => {
     if (!cafes.length && city) {
-      fetchCafes(currentPage); 
+      fetchCafes(currentPage);
     }
   }, [city, cafes.length, currentPage]);
 
   return (
     <div className="mx-auto w-full flex flex-col items-center">
-    <div className="flex flex-row flex-wrap justify-start w-full p-5 gap-5">
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {cafes.map((cafe) => (
-        <CafeCard key={cafe._id} cafe={cafe} />
-      ))}
+      <div className="flex flex-row flex-wrap justify-start w-full p-5 gap-5">
+        {isLoading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {cafes.map((cafe) => (
+          <CafeCard key={cafe._id} cafe={cafe} />
+        ))}
+      </div>
+
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
-  
-    <Pagination
-      totalPages={totalPages}
-      currentPage={currentPage}
-      onPageChange={handlePageChange}
-    />
-  </div>
   );
 };
 

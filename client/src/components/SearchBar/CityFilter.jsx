@@ -46,7 +46,7 @@ const CityFilter = () => {
           currentPage: 1,
           error: error,
           isLoading: isLoading,
-          city: city, // Pass the city to maintain context
+          city: city,
         },
       });
     } else {
