@@ -1,4 +1,4 @@
-const buildCafeLookupPipeline = (search, utilities) => {
+const buildCafeLookupPipeline = (search, utilities, cityName) => {
   const pipeline = [
     {
       $lookup: {
@@ -83,6 +83,14 @@ const buildCafeLookupPipeline = (search, utilities) => {
     pipeline.unshift({
       $match: {
         utilities: { $all: utilities },
+      },
+    });
+  }
+
+  if (cityName) {
+    pipeline.unshift({
+      $match: {
+        $text: { $search: cityName },
       },
     });
   }

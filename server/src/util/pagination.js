@@ -4,11 +4,12 @@ import throwError from "./throwError.js";
 
 const paginate = async (attributes) => {
   const collectionName = attributes.model.collection.collectionName;
-  let model, limit, page, search, utilities, cafeId, lookupPipeline;
+  let model, limit, page, search, utilities, cafeId, cityName, lookupPipeline;
 
   if (collectionName === "cafes") {
-    ({ model, limit, page, search, utilities } = attributes);
-    lookupPipeline = buildCafeLookupPipeline(search, utilities);
+    ({ model, limit, page, search, utilities, cityName } = attributes);
+
+    lookupPipeline = buildCafeLookupPipeline(search, utilities, cityName);
   } else if (collectionName === "reviews") {
     ({ model, limit, page, cafeId } = attributes);
 
