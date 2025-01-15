@@ -76,6 +76,16 @@ const useFetch = (route, onReceived) => {
           params.append("utilities", options.utilities);
         }
 
+        // add the city to the query string if it is provided
+        if (options?.city) {
+          params.append("city", options.city);
+        }
+
+        // add the foodOptions to the query string if it is provided
+        if (options?.foodOptions) {
+          params.append("foodOptions", options.foodOptions);
+        }
+
         //  if there is params add them to the base URL with a ? prefix
         if (params.toString()) {
           url = `${baseUrl}?${params.toString()}`;

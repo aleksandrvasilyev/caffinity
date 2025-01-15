@@ -14,7 +14,7 @@ const CityFilter = () => {
 
     performFetch({
       method: "GET",
-      search: city,
+      city: city,
     });
 
     navigate("/cafeByCity", { state: { cafes: cafeByCity } });
