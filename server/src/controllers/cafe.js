@@ -11,6 +11,8 @@ export const getCafes = async (req, res, next) => {
   const utilities = req.query.utilities
     ? req.query.utilities.split(",").map(Number)
     : null;
+  const cafeName = req.query.cafe;
+  const cityName = req.query.city;
 
   try {
     const paginatedCafes = await paginate({
@@ -19,6 +21,8 @@ export const getCafes = async (req, res, next) => {
       page,
       search,
       utilities,
+      cafeName,
+      cityName,
     });
 
     res.status(200).send({ success: true, result: paginatedCafes });

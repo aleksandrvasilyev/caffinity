@@ -24,9 +24,17 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-4 py-2 bg-background border-b border-text">
-      <div>
-        <LogoIcon onClick={handleLogoClick} className="cursor-pointer" />
+    <header className="flex items-center justify-between px-4 py-7 bg-background border-b border-text">
+      <div
+        className="flex flex-row cursor-pointer gap-2 p-0"
+        onClick={handleLogoClick}
+      >
+        <LogoIcon />{" "}
+        <div className="flex">
+          <p className="self-center font-roboto text-accent text-2xl">
+            Caffinity
+          </p>
+        </div>
       </div>
 
       <div className="flex items-center gap-4">
