@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SearchIcon from "../Icons/SearchIcon";
 import Filters from "../Filter/Filters";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import SearchResultsList from "./SearchResultsList";
 import CityFilter from "./CityFilter";
 

@@ -4,7 +4,7 @@ import FullStarIcon from "../Icons/FullStarIcon";
 import HalfStarIcon from "../Icons/HalfStarIcon";
 import EmptyStarIcon from "../Icons/EmptyStarIcon";
 
-const StarRating = ({ rating, numReviews }) => {
+const StarRating = ({ rating }) => {
   const fullStars = Math.floor(rating);
   const halfStars = rating % 1 >= 0.5 ? 1 : 0;
   const emptyStars = 5 - (fullStars + halfStars);
@@ -24,8 +24,6 @@ const StarRating = ({ rating, numReviews }) => {
       {emptyStarsArray.map((_, index) => (
         <EmptyStarIcon key={`empty-${index}`} />
       ))}
-
-      <span className="ml-2 text-sm text-gray-600">{numReviews} </span>
     </div>
   );
 };

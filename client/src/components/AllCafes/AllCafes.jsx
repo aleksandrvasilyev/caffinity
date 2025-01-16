@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import CafeCard from "../CafeCard/CafeCard";
 import Pagination from "../Pagination/Pagination";
 
