@@ -120,12 +120,16 @@ const SearchBar = () => {
         </div>
       </div>
 
-      {isLoading && <div> Loading...</div>}
-      {error && (
-        <div className=" px-auto py-6 text-lg">
-          Error: {error.message || "Something went wrong"}
+      {isLoading || error ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl">
+          {isLoading && <div> Loading...</div>}
+          {error && (
+            <div className=" px-auto py-6 text-lg">
+              Error: {error.message || "Something went wrong"}
+            </div>
+          )}
         </div>
-      )}
+      ) : null}
 
       {searchResults &&
         isSearchOpen &&
