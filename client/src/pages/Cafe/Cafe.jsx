@@ -16,7 +16,6 @@ import WriteIcon from "../../components/Icons/WriteIcon";
 const Cafe = () => {
   const { id: cafeId } = useParams();
   const [cafe, setCafe] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isLoading, error, performFetch } = useFetch(
     `/cafes/${cafeId}`,
@@ -25,8 +24,6 @@ const Cafe = () => {
 
   useEffect(() => {
     performFetch({ method: "GET" });
-
-    setIsLoggedIn(true);
   }, [cafeId]);
 
   const openModal = () => setIsModalOpen(true);
@@ -194,22 +191,12 @@ const Cafe = () => {
           })}
         </div>
 
-        {isLoggedIn && (
-          <Button
-            className="bg-primary w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
-            onClick={openModal}
-          >
-            <WriteIcon /> Write a Review
-          </Button>
-        )}
-        {!isLoggedIn && (
-          <Button
-            className="mt-6 px-4 py-2 w-40 bg-gray-400 text-white rounded-3xl cursor-not-allowed"
-            disabled
-          >
-            Write a Review
-          </Button>
-        )}
+        <Button
+          className="bg-primary w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
+          onClick={openModal}
+        >
+          <WriteIcon /> Write a Review
+        </Button>
 
         {renderReviews()}
 
