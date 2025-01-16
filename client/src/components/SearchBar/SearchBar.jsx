@@ -132,7 +132,7 @@ const SearchBar = () => {
         !isLoading &&
         (searchResults.length > 0 ? (
           <div
-            className="relative  top-[44%] w-full z-50 mt-4 rounded-lg"
+            className="relative  top-[37%] w-full z-50 mt-4 rounded-lg"
             ref={searchContainerRef}
           >
             <SearchResultsList searchResults={searchResults} />
