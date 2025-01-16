@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../Button/Button";
 import CarouselDisplay from "./CarouselDisplay";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import { useNavigate } from "react-router-dom";
 
 const TopDisplay = () => {

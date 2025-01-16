@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 
 const FilterDropdown = ({ onFilterChange, selectedFilters }) => {
   const [utilities, setUtilities] = useState([]);
