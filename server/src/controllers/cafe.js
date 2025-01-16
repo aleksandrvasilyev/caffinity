@@ -38,7 +38,6 @@ export const getCafes = async (req, res, next) => {
 
     res.status(200).send({ success: true, result: paginatedCafes });
   } catch (error) {
-    console.log(4242);
     logError(error);
     next(error);
   }
