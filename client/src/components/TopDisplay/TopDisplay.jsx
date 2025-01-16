@@ -18,8 +18,10 @@ const TopDisplay = () => {
     : topCafes?.result?.data || [];
 
   return (
-    <>
-      <div className="font-bold text-2xl text-center">Top Rated Cafes</div>
+    <div className=" mx-auto my-[10%] p-4  w-full">
+      <div className="font-bold text-2xl text-center my-5">
+        Places to Discover
+      </div>
 
       {isLoading && <div className="text-center">Loading...</div>}
       {error && (
@@ -44,7 +46,7 @@ const TopDisplay = () => {
           Browse All
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 
