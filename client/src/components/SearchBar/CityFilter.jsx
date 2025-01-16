@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
-const CityFilter = () => {
+const CityFilter = ({ onMouseEnter, onMouseLeave }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -54,11 +55,13 @@ const CityFilter = () => {
     }
   };
   return (
-    <div className="flex sm:flex-row flex-col flex-wrap gap-3 justify-between mx-auto my-[4%]  p-5 my-20 w-[85%] h-auto">
+    <div className="flex sm:flex-row flex-col flex-wrap gap-3 justify-between mx-auto p-5 my-20 w-[85%] h-auto">
       <Button
         className="bg-primary rounded-full text-white font-medium"
         data-search="Amsterdam"
         onClick={handleClick}
+        onMouseEnter={() => onMouseEnter("amsterdam")}
+        onMouseLeave={onMouseLeave}
       >
         Amsterdam
       </Button>
@@ -67,6 +70,8 @@ const CityFilter = () => {
         className="bg-primary rounded-full text-white font-medium"
         data-search="Den Haag"
         onClick={handleClick}
+        onMouseEnter={() => onMouseEnter("denHaag")}
+        onMouseLeave={onMouseLeave}
       >
         The Hague
       </Button>
@@ -75,11 +80,17 @@ const CityFilter = () => {
         className="bg-primary rounded-full text-white font-medium"
         data-search="Rotterdam"
         onClick={handleClick}
+        onMouseEnter={() => onMouseEnter("rotterdam")}
+        onMouseLeave={onMouseLeave}
       >
         Rotterdam
       </Button>
     </div>
   );
+};
+CityFilter.propTypes = {
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
 };
 
 export default CityFilter;
