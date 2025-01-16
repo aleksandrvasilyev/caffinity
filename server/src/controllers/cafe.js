@@ -17,8 +17,12 @@ export const getCafes = async (req, res, next) => {
   let foodOptionIndex;
 
   if (foodOptionName) {
-    const foodOption = await FoodOptions.find({ value: foodOptionName });
-    foodOptionIndex = foodOption[0].index;
+    const foodOption = await FoodOptions.findOne({ value: foodOptionName });
+    if (foodOption) {
+      foodOptionIndex = foodOption.index;
+    } else {
+      foodOptionIndex = null;
+    }
   }
 
   try {
