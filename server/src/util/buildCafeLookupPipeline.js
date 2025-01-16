@@ -100,7 +100,7 @@ const buildCafeLookupPipeline = (
     });
   }
 
-  if (foodOptionIndex !== null) {
+  if (typeof foodOptionIndex !== "undefined" && foodOptionIndex !== null) {
     pipeline.unshift({
       $match: {
         foodOptions: foodOptionIndex,
