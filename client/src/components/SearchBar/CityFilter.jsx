@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 import { useNavigate } from "react-router-dom";
 
 const CityFilter = () => {
