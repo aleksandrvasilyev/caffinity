@@ -11,7 +11,7 @@ const SearchResultsList = ({ searchResults }) => {
         {searchResults.map((result) => (
           <li
             key={result._id}
-            className="transition-colors duration-150 ease-in-out hover:bg-stone-100 hover:bg-stone-200 cursor-pointer "
+            className="transition-colors duration-150 ease-in-out hover:bg-stone-100 hover:bg-stone-200 cursor-pointer p-4 "
             onClick={() => navigate(`/cafe/${result._id}`)}
           >
             <p>{result.title}</p>

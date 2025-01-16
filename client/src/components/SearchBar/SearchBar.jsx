@@ -76,8 +76,7 @@ const SearchBar = () => {
 
   return (
     <div
-      ref={searchContainerRef}
-      className="relative h-[600px] transition-all duration-1000"
+      className="relative h-[700px] transition-all duration-1000"
       style={{
         backgroundImage: `url(${currentBackground})`,
         backgroundSize: "cover",
@@ -132,7 +131,10 @@ const SearchBar = () => {
         isSearchOpen &&
         !isLoading &&
         (searchResults.length > 0 ? (
-          <div className="absolute top-[50%] w-[70%] z-50 mt-2 mx-[10%]">
+          <div
+            className="relative  top-[44%] w-full z-50 mt-4 rounded-lg"
+            ref={searchContainerRef}
+          >
             <SearchResultsList searchResults={searchResults} />
           </div>
         ) : (
