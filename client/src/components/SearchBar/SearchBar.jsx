@@ -77,7 +77,7 @@ const SearchBar = () => {
   return (
     <div
       ref={searchContainerRef}
-      className="relative h-[600px] transition-colors duration-950 fade-in-out"
+      className="relative h-[600px] transition-all duration-1000"
       style={{
         backgroundImage: `url(${currentBackground})`,
         backgroundSize: "cover",
