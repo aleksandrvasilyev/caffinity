@@ -8,7 +8,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const pagesArray = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="flex justify-center items-center gap-4">
+    <div className="flex justify-center items-center gap-4 text-md">
       <Button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -21,7 +21,11 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
         {pagesArray.map((page) => (
           <li key={page}>
             <button
-              className={currentPage === page ? "text-accent" : ""}
+              className={
+                currentPage === page
+                  ? "text-white bg-accent rounded-full p-1 mx-2"
+                  : ""
+              }
               onClick={() => onPageChange(page)}
             >
               {page}
