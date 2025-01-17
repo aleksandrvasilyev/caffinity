@@ -55,10 +55,6 @@ const paginate = async (attributes) => {
   const data = result[0].data;
   const totalItems = result[0].totalCount[0]?.count || 0;
 
-  if (totalItems === 0) {
-    throwError("Not found", 404);
-  }
-
   return {
     limit: limit,
     currentPage: page,

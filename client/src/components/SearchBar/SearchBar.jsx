@@ -8,6 +8,8 @@ import background from "../../../public/background.jpg";
 import amsterdam from "../../../public/amsterdam.jpg";
 import denHaag from "../../../public/denhaag.jpg";
 import rotterdam from "../../../public/rotterdam.jpg";
+import ReloadIcon from "../Icons/ReloadIcon";
+import Button from "../Button/Button";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -121,11 +123,19 @@ const SearchBar = () => {
       </div>
 
       {isLoading || error ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl">
+        <div className="absolute inset-0 flex  flex-col items-center justify-center bg-black bg-opacity-50 text-white text-2xl text-center">
           {isLoading && <div> Loading...</div>}
           {error && (
-            <div className=" px-auto py-6 text-lg">
+            <div className="px-auto py-6 text-lg flex flex-col items-center justify-center">
               Error: {error.message || "Something went wrong"}
+              <Button
+                className="mx-2 border-2 border-white mt-4"
+                onClick={() => {
+                  window.location.reload();
+                }}
+              >
+                <ReloadIcon />
+              </Button>
             </div>
           )}
         </div>
