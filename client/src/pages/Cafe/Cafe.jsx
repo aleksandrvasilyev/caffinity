@@ -5,18 +5,35 @@ import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import "../../components/TopDisplay/custom-swiper.css";
 import useFetch from "../../hooks/useFetch/useFetch";
-import StarRating from "../../components/StarRating/StarRating";
+import EditableStarRating from "../../components/EditableStarRating/EditableStarRating";
 import PinIcon from "../../components/Icons/PinIcon";
 import utilityIcons from "../../constants/utilityIcons";
 import foodOptionIcons from "../../constants/foodOptionIcons";
 import UserDefaultIcon from "../../components/Icons/UserDefaultIcon";
 import Button from "../../components/Button/Button";
 import WriteIcon from "../../components/Icons/WriteIcon";
+import useAuth from "../../hooks/useAuth/useAuth";
+import StarRating from "../../components/StarRating/StarRating";
+
+const getTokenFromCookies = () => {
+  const match = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="));
+  return match ? match.split("=")[1] : null;
+};
 
 const Cafe = () => {
   const { id: cafeId } = useParams();
   const [cafe, setCafe] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [reviewText, setReviewText] = useState("");
+  const [rating, setRating] = useState(0);
+  const [messageModal, setMessageModal] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+  const { isAuthenticated } = useAuth();
   const { isLoading, error, performFetch } = useFetch(
     `/cafes/${cafeId}`,
     (data) => setCafe(data.result?.[0] || null),
@@ -28,6 +45,63 @@ const Cafe = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const showMessage = (message, type) => {
+    setMessageModal({ isOpen: true, message, type });
+    setTimeout(
+      () => setMessageModal({ isOpen: false, message: "", type: "" }),
+      3000,
+    );
+  };
+
+  const handleReviewSubmit = async () => {
+    if (!isAuthenticated) {
+      showMessage("You need to be logged in to submit a review.", "error");
+      return;
+    }
+
+    if (!reviewText || rating === 0) {
+      showMessage("Please provide both a review and a rating.", "error");
+      return;
+    }
+
+    try {
+      const token = getTokenFromCookies();
+      if (!token) throw new Error("Authentication token not found");
+
+      const response = await fetch(
+        `${process.env.BASE_SERVER_URL}/api/reviews`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            cafeId,
+            review: reviewText,
+            rating,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.msg || "Failed to submit review");
+      }
+
+      showMessage("Review submitted successfully", "success");
+      closeModal();
+      setReviewText("");
+      setRating(0);
+      performFetch({ method: "GET" });
+    } catch (error) {
+      showMessage(
+        error.message || "Error submitting review. Please try again.",
+        "error",
+      );
+    }
+  };
 
   if (isLoading) return <div className="text-center">Loading...</div>;
   if (error)
@@ -118,7 +192,7 @@ const Cafe = () => {
               <div className="flex items-center gap-4 mb-2">
                 <UserDefaultIcon />
                 <div>
-                  <p className="font-semibold">{review.user.name}</p>
+                  <p className="font-semibold">{review.user?.username}</p>
                   <StarRating rating={review.rating} />
                 </div>
               </div>
@@ -129,9 +203,17 @@ const Cafe = () => {
       </div>
     );
   };
-
   return (
     <div className="container my-8 mx-auto p-4 grid gap-6">
+      {messageModal.isOpen && (
+        <div
+          className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-md shadow-md text-white ${
+            messageModal.type === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          {messageModal.message}
+        </div>
+      )}
       <div className="grid gap-6">{renderPhotos()}</div>
       <div className="grid gap-4 text-left">
         <h1 className="text-2xl font-semibold">{cafe.title || "Cafe Name"}</h1>
@@ -191,12 +273,21 @@ const Cafe = () => {
           })}
         </div>
 
-        <Button
-          className="bg-primary w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
-          onClick={openModal}
-        >
-          <WriteIcon /> Write a Review
-        </Button>
+        {isAuthenticated ? (
+          <Button
+            className="bg-primary w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
+            onClick={openModal}
+          >
+            <WriteIcon /> Write a Review
+          </Button>
+        ) : (
+          <Button
+            className="bg-gray-500 w-40 flex flex-row items-center justify-center gap-1 text-text text-sm rounded-3xl hover:bg-background border-primary border"
+            disabled
+          >
+            <WriteIcon /> Write a Review
+          </Button>
+        )}
 
         {renderReviews()}
 
@@ -207,11 +298,20 @@ const Cafe = () => {
               <textarea
                 className="w-full p-4 border rounded-md mb-4"
                 placeholder="Write your review here..."
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
               />
-              <div className="flex gap-4">
+
+              <EditableStarRating
+                rating={rating}
+                onRatingChange={setRating}
+                isEditable={true}
+              />
+
+              <div className="flex gap-4 mt-4">
                 <Button
-                  className="px-4 py-2 rounded-3xl bg-accent text-white "
-                  onClick={closeModal}
+                  className="px-4 py-2  rounded-3xl bg-accent text-white "
+                  onClick={handleReviewSubmit}
                 >
                   Submit
                 </Button>

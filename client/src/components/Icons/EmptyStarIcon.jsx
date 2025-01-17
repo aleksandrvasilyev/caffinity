@@ -1,6 +1,6 @@
 import React from "react";
-
-const EmptyStarIcon = () => (
+import PropTypes from "prop-types";
+const EmptyStarIcon = ({ onClick }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -9,6 +9,7 @@ const EmptyStarIcon = () => (
     viewBox="0 0 20 20"
     strokeWidth="2"
     alt="empty star"
+    onClick={onClick}
   >
     <path
       fillRule="evenodd"
@@ -17,5 +18,7 @@ const EmptyStarIcon = () => (
     />
   </svg>
 );
-
+EmptyStarIcon.propTypes = {
+  onClick: PropTypes.func,
+};
 export default EmptyStarIcon;
