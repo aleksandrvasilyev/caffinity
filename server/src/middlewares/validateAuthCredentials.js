@@ -23,3 +23,15 @@ export const validateRegistration = (req, res, next) => {
 
   next();
 };
+
+export const validateLogin = (req, res, next) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res
+      .status(400)
+      .send({ success: false, msg: "Username and password are required!" });
+  }
+
+  next();
+};
