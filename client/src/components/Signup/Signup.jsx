@@ -9,6 +9,7 @@ const Signup = () => {
   const errorContainerRef = useRef(null);
 
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [feedback, setFeedback] = useState(false);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -18,7 +19,10 @@ const Signup = () => {
 
   const { isLoading, error, performFetch } = useFetch("/register", (data) => {
     if (data.success) {
-      navigate("/login");
+      setFeedback(true);
+      setTimeout(() => {
+        navigate("/login");
+      }, 5000);
     }
   });
 
@@ -78,6 +82,13 @@ const Signup = () => {
         className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent"
         onSubmit={handleSubmit}
       >
+        <h1 className="text-2xl font-bold mt-2">Signup</h1>
+
+        <p className="text-left text-md my-6 p-2">
+          Create an account and start sharing your cafe experiences with
+          Caffinity!{" "}
+        </p>
+
         <Input
           placeholder="Enter a Username"
           type="text"
@@ -98,6 +109,17 @@ const Signup = () => {
           name="confirmPassword"
           onChange={handleChange}
         />
+
+        {feedback && (
+          <div className="flex flex-col items-center justify-center m-4 bg-white">
+            <p className=" text-accent mb-4 p-4 rounded-lg ">
+              Account created successfully!
+            </p>
+            <p className="text-accent mb-4 p-4 rounded-lg">
+              Redirecting to login page...
+            </p>
+          </div>
+        )}
 
         {(!passwordMatch || isLoading || error) && (
           <div
