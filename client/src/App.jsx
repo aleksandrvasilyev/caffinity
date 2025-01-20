@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import CafeByCity from "./pages/CafeByCity/CafeByCity";
 import AuthProvider from "./contexts/AuthContext";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <Footer />
       </>
     </AuthProvider>
   );
