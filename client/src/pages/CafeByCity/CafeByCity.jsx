@@ -65,7 +65,7 @@ const CafeByCity = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="w-[90%] my-4 mx-auto p-2">
-        <h1 className="text-4xl font-bold mt-10 mb-4 text-center">
+        <h1 className="text-xl font-bold mt-10 mb-4 text-center sm:text-4xl">
           Cafes in {city}
         </h1>
         <div className="flex flex-row flex-wrap justify-center w-full p-2 gap-5">
