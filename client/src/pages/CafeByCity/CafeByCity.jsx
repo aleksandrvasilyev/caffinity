@@ -63,20 +63,25 @@ const CafeByCity = () => {
   }, [city, cafes.length, currentPage]);
 
   return (
-    <div className="mx-auto w-full flex flex-col items-center">
-      <div className="flex flex-row flex-wrap justify-start w-full p-5 gap-5">
-        {isLoading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        {cafes.map((cafe) => (
-          <CafeCard key={cafe._id} cafe={cafe} />
-        ))}
-      </div>
+    <div className="flex justify-center items-center">
+      <div className="w-[90%] my-4 mx-auto p-2">
+        <h1 className="text-xl font-bold mt-10 mb-4 text-center sm:text-4xl">
+          Cafes in {city}
+        </h1>
+        <div className="flex flex-row flex-wrap justify-center w-full p-2 gap-5">
+          {isLoading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
+          {cafes.map((cafe) => (
+            <CafeCard key={cafe._id} cafe={cafe} />
+          ))}
+        </div>
 
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
