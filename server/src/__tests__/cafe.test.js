@@ -26,9 +26,9 @@ describe("GET /api/cafes/", () => {
   it("Should return an empty array if there are no cafes in the db", async () => {
     const response = await request.get("/api/cafes");
 
-    expect(response.status).toBe(404);
-    expect(response.body.success).toBe(false);
-    expect(response.body.msg).toEqual("Not found");
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.totalItems).toBe(0);
   });
 
   it("Should return all the cafes in the db", async () => {
@@ -49,7 +49,7 @@ describe("GET /api/cafes/", () => {
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
     expect(response.body.result.totalItems).toBe(1);
-    expect(response.body.result.data[0].title).toBe("Café De Balie");
+    expect(response.body.result.data[0].title).toBe("Cafe De Balie");
   });
 
   it("Search should return cafe by its name and utilities", async () => {
@@ -61,7 +61,7 @@ describe("GET /api/cafes/", () => {
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
     expect(response.body.result.totalItems).toBe(1);
-    expect(response.body.result.data[0].title).toBe("Café Noord Waterside");
+    expect(response.body.result.data[0].title).toBe("Cafe Noord Waterside");
   });
 });
 
@@ -72,6 +72,6 @@ describe("GET /api/cafes/:id", () => {
 
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
-    expect(response.body.result[0].title).toBe("Café Het Paleis");
+    expect(response.body.result[0].title).toBe("Cafe Het Paleis");
   });
 });
