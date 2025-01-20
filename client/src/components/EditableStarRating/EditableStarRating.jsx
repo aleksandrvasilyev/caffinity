@@ -1,27 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FullStarIcon from "../Icons/FullStarIcon";
 import EmptyStarIcon from "../Icons/EmptyStarIcon";
 
 const EditableStarRating = ({ rating, onRatingChange, isEditable }) => {
-  const handleStarClick = (index) => {
+  const handleStarClick = (newRating) => {
     if (isEditable && onRatingChange) {
-      onRatingChange(index);
+      onRatingChange(newRating);
     }
   };
 
   return (
-    <div className="flex items-center">
-      {Array.from({ length: 5 }).map((_, index) => {
+    <div className="flex items-center gap-1">
+      {[...Array(5)].map((_, index) => {
         const starIndex = index + 1;
+        const isFull = starIndex <= rating;
+
         return (
-          <span key={index}>
-            {rating >= starIndex ? (
-              <FullStarIcon onClick={() => handleStarClick(starIndex)} />
-            ) : (
-              <EmptyStarIcon onClick={() => handleStarClick(starIndex)} />
-            )}
-          </span>
+          <EmptyStarIcon
+            key={index}
+            onClick={() => handleStarClick(starIndex)}
+            className={isEditable ? "cursor-pointer" : ""}
+            style={{
+              fill: isFull ? "currentColor" : "none",
+              stroke: "currentColor",
+            }}
+          />
         );
       })}
     </div>
@@ -30,13 +33,12 @@ const EditableStarRating = ({ rating, onRatingChange, isEditable }) => {
 
 EditableStarRating.propTypes = {
   rating: PropTypes.number.isRequired,
-  onRatingChange: PropTypes.func,
-  isEditable: PropTypes.bool.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  isEditable: PropTypes.bool,
 };
 
 EditableStarRating.defaultProps = {
   isEditable: false,
-  onRatingChange: null,
 };
 
 export default EditableStarRating;

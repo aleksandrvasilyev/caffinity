@@ -304,7 +304,7 @@ const Cafe = () => {
 
               <EditableStarRating
                 rating={rating}
-                onRatingChange={setRating}
+                onRatingChange={(newRating) => setRating(newRating)}
                 isEditable={true}
               />
 
