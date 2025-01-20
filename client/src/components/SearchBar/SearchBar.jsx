@@ -18,6 +18,7 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [hoveredCity, setHoveredCity] = useState(false);
+  const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const { isLoading, error, performFetch } = useFetch("/cafes", (response) => {
     setSearchResults(response.result.data || []);
     setIsSearchOpen(true);
@@ -38,6 +39,16 @@ const SearchBar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Hide feedback after 2 seconds
+  useEffect(() => {
+    if (isFeedbackVisible) {
+      const timeout = setTimeout(() => {
+        setIsFeedbackVisible(false);
+      }, 1500);
+      return () => clearTimeout(timeout); // cleanup
+    }
+  }, [isFeedbackVisible]);
 
   const handleSearchClick = () => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -62,6 +73,10 @@ const SearchBar = () => {
         method: "GET",
         utilities: selectedFilters.join(","),
       });
+    }
+
+    if (!searchResults || searchResults.length === 0) {
+      setIsFeedbackVisible(true);
     }
   };
 
@@ -88,7 +103,7 @@ const SearchBar = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40">
         <div className="w-full max-w-2xl px-4">
           <div className="relative bg-white bg-opacity-80 p-6 rounded-full border-2 border-black">
-            <div className="flex flex-row items-center space-x-4">
+            <div className="flex flex-wrap items-center space-x-4 w-full">
               <input
                 className="flex-1 px-4 py-2 bg-transparent focus:outline-none text-text placeholder:text-gray-600"
                 type="text"
@@ -102,12 +117,12 @@ const SearchBar = () => {
               <button
                 onClick={handleSearchClick}
                 aria-label="search"
-                className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <SearchIcon aria-hidden="true" />
               </button>
 
-              <div className="flex-shrink-0 w-auto sm:w-12 md:w-auto">
+              <div className="w-auto">
                 <Filters onFilterChange={setSelectedFilters} />
               </div>
             </div>
@@ -146,15 +161,17 @@ const SearchBar = () => {
         !isLoading &&
         (searchResults.length > 0 ? (
           <div
-            className="relative  top-[37%] w-full z-50 mt-4 rounded-lg"
+            className="absolute top-[29%] w-full z-50 rounded-lg sm:top-[33%] "
             ref={searchContainerRef}
           >
             <SearchResultsList searchResults={searchResults} />
           </div>
         ) : (
-          <p className="p-4 text-black border-2 border-black mt-2 w-[30%] mx-auto">
-            No results found
-          </p>
+          isFeedbackVisible && (
+            <p className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto px-4 py-2 bg-white text-black text-lg text-center shadow-lg rounded">
+              No results found
+            </p>
+          )
         ))}
     </div>
   );
