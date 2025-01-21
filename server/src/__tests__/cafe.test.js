@@ -63,6 +63,27 @@ describe("GET /api/cafes/", () => {
     expect(response.body.result.totalItems).toBe(1);
     expect(response.body.result.data[0].title).toBe("Cafe Noord Waterside");
   });
+
+  it("Search should return cafe by its name and food options", async () => {
+    await seedData();
+    const response = await request.get(
+      "/api/cafes?search=water&food-options=0",
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.totalItems).toBe(1);
+    expect(response.body.result.data[0].title).toBe("Cafe Noord Waterside");
+  });
+
+  it("Search should return cafe by its food options", async () => {
+    await seedData();
+    const response = await request.get("/api/cafes?food-options=1,2");
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result.totalItems).toBe(15);
+  });
 });
 
 describe("GET /api/cafes/:id", () => {
