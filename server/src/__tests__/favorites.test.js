@@ -115,3 +115,22 @@ describe("POST /api/favorites", () => {
     ).toBe(true);
   });
 });
+
+describe("GET /api/favorites", () => {
+  it("Should return a success response when cafe was added to favorites", async () => {
+    await createTestData();
+
+    await request
+      .post("/api/favorites")
+      .set("Authorization", token)
+      .send({ cafeId: "64b8f5d2dc1b8a1234567808" });
+
+    const response = await request
+      .get("/api/favorites")
+      .set("Authorization", token);
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.result[0]._id).toEqual("64b8f5d2dc1b8a1234567808");
+  });
+});

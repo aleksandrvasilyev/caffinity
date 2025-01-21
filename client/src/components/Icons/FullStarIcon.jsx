@@ -8,6 +8,7 @@ const FullStarIcon = () => (
     viewBox="0 0 20 20"
     stroke="currentColor"
     alt="full star"
+    strokeWidth="2"
   >
     <path
       fillRule="evenodd"

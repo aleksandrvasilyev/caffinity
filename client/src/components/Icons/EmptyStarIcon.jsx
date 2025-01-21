@@ -1,21 +1,33 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const EmptyStarIcon = () => (
+const EmptyStarIcon = ({ className, style, onClick }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="16"
+    height="16"
+    className={className}
+    style={style}
+    onClick={onClick}
     fill="none"
     stroke="currentColor"
-    className="w-4 h-4 text-gray-300"
-    viewBox="0 0 20 20"
     strokeWidth="2"
-    alt="empty star"
   >
-    <path
-      fillRule="evenodd"
-      d="M10 15.27l4.15 2.18-1.58-5.43L18 7.24l-5.48-.44L10 2 7.48 6.8 2 7.24l4.43 4.78-1.58 5.43L10 15.27z"
-      clipRule="evenodd"
-    />
+    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
   </svg>
 );
+
+EmptyStarIcon.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func,
+};
+
+EmptyStarIcon.defaultProps = {
+  className: "",
+  style: {},
+  onClick: undefined,
+};
 
 export default EmptyStarIcon;
