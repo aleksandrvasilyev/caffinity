@@ -2,6 +2,21 @@ import { logError } from "../util/logging.js";
 import User from "../models/User.js";
 import Cafe from "../models/Cafe.js";
 
+export const getFavorites = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+
+    const favorites = await Cafe.find({ _id: { $in: user.favourites } });
+
+    res.status(200).send({ success: true, result: favorites });
+  } catch (error) {
+    logError(error);
+    next(error);
+  }
+};
+
 export const addToFavorites = async (req, res, next) => {
   try {
     const cafeId = req.body.cafeId;
