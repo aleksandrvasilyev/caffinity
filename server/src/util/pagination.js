@@ -10,20 +10,20 @@ const paginate = async (attributes) => {
     page,
     search,
     utilities,
+    foodOptions,
     cafeId,
     cityName,
-    foodOptionIndex,
     lookupPipeline;
 
   if (collectionName === "cafes") {
-    ({ model, limit, page, search, utilities, cityName, foodOptionIndex } =
+    ({ model, limit, page, search, utilities, cityName, foodOptions } =
       attributes);
 
     lookupPipeline = buildCafeLookupPipeline(
       search,
       utilities,
       cityName,
-      foodOptionIndex,
+      foodOptions,
     );
   } else if (collectionName === "reviews") {
     ({ model, limit, page, cafeId } = attributes);

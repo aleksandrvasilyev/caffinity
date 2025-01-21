@@ -1,5 +1,4 @@
 import Cafe from "../models/Cafe.js";
-import FoodOptions from "../models/FoodOptions.js";
 import buildCafeLookupPipeline from "../util/buildCafeLookupPipeline.js";
 import { logError } from "../util/logging.js";
 import paginate from "../util/pagination.js";
@@ -12,18 +11,10 @@ export const getCafes = async (req, res, next) => {
   const utilities = req.query.utilities
     ? req.query.utilities.split(",").map(Number)
     : null;
+  const foodOptions = req.query["food-options"]
+    ? req.query["food-options"].split(",").map(Number)
+    : null;
   const cityName = req.query.city;
-  const foodOptionName = req.query.foodoption;
-  let foodOptionIndex;
-
-  if (foodOptionName) {
-    const foodOption = await FoodOptions.findOne({ value: foodOptionName });
-    if (foodOption) {
-      foodOptionIndex = foodOption.index;
-    } else {
-      foodOptionIndex = null;
-    }
-  }
 
   try {
     const paginatedCafes = await paginate({
@@ -32,8 +23,8 @@ export const getCafes = async (req, res, next) => {
       page,
       search,
       utilities,
+      foodOptions,
       cityName,
-      foodOptionIndex,
     });
 
     res.status(200).send({ success: true, result: paginatedCafes });
