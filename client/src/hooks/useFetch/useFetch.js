@@ -82,8 +82,8 @@ const useFetch = (route, onReceived) => {
         }
 
         // add the foodOptions to the query string if it is provided
-        if (options?.foodOptions) {
-          params.append("foodOptions", options.foodOptions);
+        if (options?.["food-options"]) {
+          params.append("food-options", options["food-options"]);
         }
 
         //  if there is params add them to the base URL with a ? prefix

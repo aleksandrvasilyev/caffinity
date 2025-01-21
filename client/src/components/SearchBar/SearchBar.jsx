@@ -51,6 +51,16 @@ const SearchBar = () => {
   }, [isFeedbackVisible]);
 
   const handleSearchClick = () => {
+    const utilities = selectedFilters
+      .map((filter) => JSON.parse(filter))
+      .filter((item) => item.type === "utility")
+      .map((item) => item.value);
+
+    const foodOptions = selectedFilters
+      .map((filter) => JSON.parse(filter))
+      .filter((item) => item.type === "food-option")
+      .map((item) => item.value);
+
     const normalizedQuery = searchQuery.trim().toLowerCase();
     if (
       normalizedQuery === "amsterdam" ||
@@ -60,18 +70,21 @@ const SearchBar = () => {
       performFetch({
         method: "GET",
         city: searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1),
-        utilities: selectedFilters.join(","),
+        utilities: utilities.join(","),
+        ["food-option"]: foodOptions.join(","),
       });
     } else if (searchQuery.trim()) {
       performFetch({
         method: "GET",
         search: searchQuery,
-        utilities: selectedFilters.join(","),
+        utilities: utilities.join(","),
+        ["food-options"]: foodOptions.join(","),
       });
     } else if (searchQuery.trim() === "") {
       performFetch({
         method: "GET",
-        utilities: selectedFilters.join(","),
+        utilities: utilities.join(","),
+        ["food-options"]: foodOptions.join(","),
       });
     }
 
