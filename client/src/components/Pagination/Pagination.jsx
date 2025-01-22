@@ -23,8 +23,8 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
             <button
               className={
                 currentPage === page
-                  ? "text-white bg-accent rounded-full p-1 mx-2"
-                  : ""
+                  ? "text-white bg-accent rounded-full px-2 py-1"
+                  : "px-2 py-1"
               }
               onClick={() => onPageChange(page)}
             >

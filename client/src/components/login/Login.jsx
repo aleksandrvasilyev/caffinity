@@ -74,12 +74,12 @@ const Login = () => {
           Welcome Back!
         </h3>
 
-        <p className="mb-8">Enter Please enter login details below</p>
+        <p className="mb-8">Please enter login details below</p>
 
         <Input
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder="Enter a Username"
           className="w-full p-3 rounded text-black mb-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
           onChange={handleChange}
         />
@@ -87,7 +87,7 @@ const Login = () => {
         <Input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter password"
           className="w-full p-3 rounded text-black mb-6 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
           onChange={handleChange}
         />
