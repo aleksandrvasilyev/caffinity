@@ -4,10 +4,10 @@ import Filters from "../Filter/Filters";
 import useFetch from "../../hooks/useFetch/useFetch";
 import SearchResultsList from "./SearchResultsList";
 import CityFilter from "./CityFilter";
-import background from "../../../public/background.jpg";
-import amsterdam from "../../../public/amsterdam.jpg";
-import denHaag from "../../../public/denhaag.jpg";
-import rotterdam from "../../../public/rotterdam.jpg";
+import background from "../../../public/background-min.jpg";
+import amsterdam from "../../../public/amsterdam-center-min.jpg";
+import denHaag from "../../../public/denhaag-min.jpg";
+import rotterdam from "../../../public/rotterdam-min.jpg";
 import ReloadIcon from "../Icons/ReloadIcon";
 import Button from "../Button/Button";
 

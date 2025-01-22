@@ -77,16 +77,16 @@ const Signup = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen p-4">
       <form
         className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-bold mt-2">Signup</h1>
+        <h1 className="text-[2rem] font-bold drop-shadow-lg mt-4 mb-2">Signup</h1>
 
-        <p className="text-left text-md my-6 p-2">
+        <p className="text-left text-md mb-8">
           Create an account and start sharing your cafe experiences with
-          Caffinity!{" "}
+          Caffinity!
         </p>
 
         <Input
