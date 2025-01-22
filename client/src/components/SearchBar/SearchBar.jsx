@@ -115,6 +115,10 @@ const SearchBar = () => {
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40">
         <div className="w-full max-w-2xl px-4">
+          <div className="text-white text-center text-xl sm:text-2xl p-4 m-6 font-bold">
+            <p> Find the perfect cafe near you </p> <br />
+            <p>search now and discover your next favorite spot</p>
+          </div>
           <div className="relative bg-white bg-opacity-80 p-6 rounded-full border-2 border-black">
             <div className="flex flex-wrap items-center space-x-4 w-full">
               <input
