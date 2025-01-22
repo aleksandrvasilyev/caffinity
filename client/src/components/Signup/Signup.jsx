@@ -82,7 +82,9 @@ const Signup = () => {
         className="flex flex-col justify-center w-full max-w-md bg-primary p-6 rounded-lg text-accent"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-[2rem] font-bold drop-shadow-lg mt-4 mb-2">Signup</h1>
+        <h1 className="text-[2rem] font-bold drop-shadow-lg mt-4 mb-2">
+          Signup
+        </h1>
 
         <p className="text-left text-md mb-8">
           Create an account and start sharing your cafe experiences with
