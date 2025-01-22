@@ -16,6 +16,7 @@ const CafeByCity = () => {
   const [currentPage, setCurrentPage] = useState(
     location.state?.currentPage || 1,
   );
+  const [favorites, setFavorites] = useState([]);
   const city = location.state?.city;
 
   const fetchCafes = async (page) => {
@@ -56,6 +57,14 @@ const CafeByCity = () => {
     fetchCafes(newPage);
   };
 
+  const handleFavoriteToggle = (cafeId, newIsFav) => {
+    const updatedFavorites = newIsFav
+      ? [...favorites, cafeId]
+      : favorites.filter((id) => id !== cafeId);
+
+    setFavorites(updatedFavorites);
+  };
+
   useEffect(() => {
     if (!cafes.length && city) {
       fetchCafes(currentPage);
@@ -72,7 +81,12 @@ const CafeByCity = () => {
           {isLoading && <p>Loading...</p>}
           {error && <p>{error}</p>}
           {cafes.map((cafe) => (
-            <CafeCard key={cafe._id} cafe={cafe} />
+            <CafeCard
+              key={cafe._id}
+              cafe={cafe}
+              isFavorite={favorites.includes(cafe._id)}
+              onFavoriteToggle={handleFavoriteToggle}
+            />
           ))}
         </div>
 
