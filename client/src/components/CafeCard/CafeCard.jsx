@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PinIcon from "../Icons/PinIcon";
 import StarRating from "../StarRating/StarRating";
 import { useNavigate } from "react-router-dom";
-import HeartIcon from "../Icons/HeartIcon";
+import HeartCardIcon from "../Icons/HeartCafeCardIcon";
 import useFetch from "../../hooks/useFetch/useFetch";
 
 const getTokenFromCookies = () => {
@@ -15,15 +15,27 @@ const getTokenFromCookies = () => {
 
 const CafeCard = ({ cafe, isFavorite, onFavoriteToggle }) => {
   const [isFav, setIsFav] = useState(isFavorite);
-  const imageUrl = `${process.env.BASE_IMAGE_URL}${cafe.photos[0]}`;
+  const [errorMessage, setErrorMessage] = useState(null);
+  const imageUrl =
+    cafe.photos.length > 0
+      ? `${process.env.BASE_IMAGE_URL || ""}${cafe.photos[0]}`
+      : "/placeholder-image.jpg";
   const navigate = useNavigate();
 
-  const { performFetch } = useFetch("/favorites", (data) => {
+  const { performFetch, error } = useFetch("/favorites", (data) => {
     if (data.success) {
       setIsFav(!isFav);
-      onFavoriteToggle(cafe._id, !isFav);
+      if (onFavoriteToggle) {
+        onFavoriteToggle(cafe._id, !isFav);
+      }
     }
   });
+
+  useEffect(() => {
+    if (error) {
+      setErrorMessage("Failed to update favorite status. Please try again.");
+    }
+  }, [error]);
 
   useEffect(() => {
     setIsFav(isFavorite);
@@ -35,7 +47,7 @@ const CafeCard = ({ cafe, isFavorite, onFavoriteToggle }) => {
     const token = getTokenFromCookies();
 
     if (!token) {
-      alert("Please log in to favorite cafes.");
+      setErrorMessage("Please log in to favorite cafes.");
       return;
     }
 
@@ -43,7 +55,7 @@ const CafeCard = ({ cafe, isFavorite, onFavoriteToggle }) => {
     setIsFav(newIsFav);
 
     if (!cafe._id) {
-      alert("Cafe ID is missing. Cannot update favorite status.");
+      setErrorMessage("Cafe ID is missing. Cannot update favorite status.");
       return;
     }
 
@@ -65,7 +77,7 @@ const CafeCard = ({ cafe, isFavorite, onFavoriteToggle }) => {
       onClick={() => navigate(`/cafe/${cafe._id}`)}
     >
       <div className="relative">
-        <HeartIcon
+        <HeartCardIcon
           onClick={handleHeartClick}
           isActive={isFav}
           className="absolute top-2 right-2 z-10"
@@ -78,6 +90,9 @@ const CafeCard = ({ cafe, isFavorite, onFavoriteToggle }) => {
       </div>
 
       <div className="p-6 flex flex-col justify-center items-start">
+        {errorMessage && (
+          <p className="text-sm text-red-500 mb-4">{errorMessage}</p>
+        )}
         <h3 className="text-lg text-text font-semibold mb-2">{cafe.title}</h3>
         <p className="text-sm text-gray-600 mb-4">{cafe.description}</p>
         <StarRating rating={cafe.rating} numReviews={cafe.numReviews} />

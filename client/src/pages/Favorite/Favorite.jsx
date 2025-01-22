@@ -40,6 +40,10 @@ const Favorites = () => {
     });
   }, []);
 
+  const handleFavoriteToggle = (cafeId) => {
+    setCafes((prevCafes) => prevCafes.filter((cafe) => cafe._id !== cafeId));
+  };
+
   if (isLoading) {
     return <div>Loading your favorite cafes...</div>;
   }
@@ -49,7 +53,7 @@ const Favorites = () => {
   }
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 max-w-7xl mx-auto h-screen">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">
         Your Favorite Cafes
       </h1>
@@ -60,7 +64,7 @@ const Favorites = () => {
               key={cafe._id}
               cafe={cafe}
               isFavorite={true}
-              onFavoriteToggle={() => {}}
+              onFavoriteToggle={handleFavoriteToggle}
             />
           ))
         ) : (
