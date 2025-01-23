@@ -57,7 +57,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center flex-col gap-4 sm:item-center sm:flex-row">
         <HeartIcon onClick={handleFavoritesClick} className="cursor-pointer" />
 
         {!isAuthenticated ? (

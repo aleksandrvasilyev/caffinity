@@ -178,7 +178,7 @@ const SearchBar = () => {
         !isLoading &&
         (searchResults.length > 0 ? (
           <div
-            className="absolute top-[29%] w-full z-50 rounded-lg sm:top-[33%] "
+            className="absolute top-[45%] w-full z-50 rounded-lg sm:top-[45%] "
             ref={searchContainerRef}
           >
             <SearchResultsList searchResults={searchResults} />
