@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -6,7 +6,21 @@ import "swiper/css/bundle";
 import "./custom-swiper.css";
 import CafeCard from "../CafeCard/CafeCard";
 
-const CarouselDisplay = ({ results }) => {
+const CarouselDisplay = ({ results, onFavoriteToggle }) => {
+  const [favorites, setFavorites] = useState([]);
+
+  const handleFavoriteToggle = (cafeId, newIsFav) => {
+    const updatedFavorites = newIsFav
+      ? [...favorites, cafeId]
+      : favorites.filter((id) => id !== cafeId);
+
+    setFavorites(updatedFavorites);
+
+    if (onFavoriteToggle) {
+      onFavoriteToggle(cafeId, newIsFav);
+    }
+  };
+
   return (
     <>
       <Swiper
@@ -41,7 +55,11 @@ const CarouselDisplay = ({ results }) => {
               key={item._id}
               className="flex flex-col w-full h-[50%] mt-[6%] mb-[10%]"
             >
-              <CafeCard cafe={item} />
+              <CafeCard
+                cafe={item}
+                isFavorite={favorites.includes(item._id)}
+                onFavoriteToggle={handleFavoriteToggle}
+              />
             </SwiperSlide>
           ))}
         </div>
@@ -61,6 +79,7 @@ CarouselDisplay.propTypes = {
       rating: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onFavoriteToggle: PropTypes.func,
 };
 
 export default CarouselDisplay;
