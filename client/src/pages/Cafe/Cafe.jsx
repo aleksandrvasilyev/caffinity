@@ -192,7 +192,10 @@ const Cafe = () => {
               <div className="flex items-center gap-4 mb-2">
                 <UserDefaultIcon />
                 <div>
-                  <p className="font-semibold">{review.user?.username}</p>
+                  <p className="font-semibold">
+                    {review.user?.username.charAt(0).toUpperCase() +
+                      review.user?.username.slice(1)}
+                  </p>
                   <StarRating rating={review.rating} />
                 </div>
               </div>
