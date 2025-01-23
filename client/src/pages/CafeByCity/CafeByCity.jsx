@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CafeCard from "../../components/CafeCard/CafeCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { useLocation } from "react-router-dom";
+import FilterButtons from "../../components/FilterButtons/FilterButtons";
 
 const CafeByCity = () => {
   const location = useLocation();
@@ -19,13 +20,14 @@ const CafeByCity = () => {
   const [favorites, setFavorites] = useState([]);
   const city = location.state?.city;
 
-  const fetchCafes = async (page) => {
+  const fetchCafes = async (page, filter = null) => {
     setIsLoading(true);
     setError(null);
 
     try {
+      const filterParam = filter !== null ? `&food-options=${filter}` : "";
       const response = await fetch(
-        `${process.env.BASE_SERVER_URL}/api/cafes?city=${city}&page=${page}&limit=10`,
+        `${process.env.BASE_SERVER_URL}/api/cafes?city=${city}&page=${page}&limit=10&${filterParam}`,
         {
           method: "GET",
           headers: {
@@ -52,6 +54,11 @@ const CafeByCity = () => {
     }
   };
 
+  const handleFilterSelection = (filter) => {
+    setCurrentPage(1);
+    fetchCafes(1, filter.index);
+  };
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
     fetchCafes(newPage);
@@ -74,9 +81,16 @@ const CafeByCity = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="w-[90%] my-4 mx-auto p-2">
-        <h1 className="text-xl font-bold mt-10 mb-4 text-center sm:text-4xl">
+        <h1 className="text-2xl font-bold my-10 mb-10 border-b-4 border-stone-100 p-4  text-center sm:text-4xl">
           Cafes in {city}
         </h1>
+
+        <div>
+          <h4 className="text-xl font-semibold text-center my-2 ">
+            Looking for a particular food option ?
+          </h4>
+          <FilterButtons onFilterSelection={handleFilterSelection} />
+        </div>
         <div className="flex flex-row flex-wrap justify-center w-full p-2 gap-5">
           {isLoading && <p>Loading...</p>}
           {error && <p>{error}</p>}

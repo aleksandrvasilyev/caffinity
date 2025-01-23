@@ -2,18 +2,51 @@ import React, { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch/useFetch";
 import CafeCard from "../CafeCard/CafeCard";
 import Pagination from "../Pagination/Pagination";
+import FilterButtons from "../FilterButtons/FilterButtons";
 
 const AllCafes = () => {
   const [cafes, setCafes] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { isLoading, error, performFetch } = useFetch("/cafes", setCafes);
+  const [selectedFilter, setSelectedFilter] = useState(null);
+
+  const fetchCafes = (page, filter) => {
+    const queryParams = {
+      method: "GET",
+      params: {
+        page: page,
+        limit: 10,
+      },
+    };
+
+    if (filter !== null) {
+      queryParams["food-options"] = filter;
+    }
+
+    performFetch(queryParams);
+  };
 
   useEffect(() => {
-    performFetch({ method: "GET", params: { page: currentPage, limit: 10 } });
-  }, [currentPage]);
+    fetchCafes(currentPage, selectedFilter);
+  }, [currentPage, selectedFilter]);
 
-  const results = Array.isArray(cafes?.result?.data) ? cafes.result.data : [];
+  const results = Array.isArray(cafes?.result?.data)
+    ? cafes.result.data
+    : Array.isArray(cafes?.data)
+      ? cafes.data
+      : [];
+
+  const totalPages = cafes?.result?.totalPages || cafes?.totalPages || 1;
+
+  const onFilterSelection = (filter) => {
+    setSelectedFilter(filter.index);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage !== currentPage) setCurrentPage(newPage);
+  };
 
   const handleFavoriteToggle = async (cafeId, newIsFav) => {
     const updatedFavorites = newIsFav
@@ -25,6 +58,12 @@ const AllCafes = () => {
 
   return (
     <div>
+      <div className="mx-auto my-10 max-w-screen-md">
+        <p className="text-xl font-semibold text-center my-2">
+          Looking for a particular food option ?
+        </p>
+        <FilterButtons onFilterSelection={onFilterSelection} />
+      </div>
       {isLoading && <div className="text-center">Loading...</div>}
       {error && (
         <div className="text-center text-red-500">
@@ -46,9 +85,9 @@ const AllCafes = () => {
         )}
       </div>
       <Pagination
-        totalPages={cafes?.result?.totalPages}
+        totalPages={totalPages}
         currentPage={currentPage}
-        onPageChange={setCurrentPage}
+        onPageChange={handlePageChange}
       />
     </div>
   );
