@@ -4,10 +4,10 @@ import Filters from "../Filter/Filters";
 import useFetch from "../../hooks/useFetch/useFetch";
 import SearchResultsList from "./SearchResultsList";
 import CityFilter from "./CityFilter";
-import background from "../../../public/background.jpg";
-import amsterdam from "../../../public/amsterdam.jpg";
-import denHaag from "../../../public/denhaag.jpg";
-import rotterdam from "../../../public/rotterdam.jpg";
+import background from "../../../public/background-min.jpg";
+import amsterdam from "../../../public/amsterdam-center-min.jpg";
+import denHaag from "../../../public/denhaag-min.jpg";
+import rotterdam from "../../../public/rotterdam-min.jpg";
 import ReloadIcon from "../Icons/ReloadIcon";
 import Button from "../Button/Button";
 
@@ -115,6 +115,10 @@ const SearchBar = () => {
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40">
         <div className="w-full max-w-2xl px-4">
+          <div className="text-white text-center text-xl sm:text-2xl p-4 m-6 font-bold">
+            <p> Find the perfect cafe near you </p> <br />
+            <p>search now and discover your next favorite spot</p>
+          </div>
           <div className="relative bg-white bg-opacity-80 p-6 rounded-full border-2 border-black">
             <div className="flex flex-wrap items-center space-x-4 w-full">
               <input

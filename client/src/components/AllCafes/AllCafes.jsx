@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch/useFetch";
 import CafeCard from "../CafeCard/CafeCard";
 import Pagination from "../Pagination/Pagination";
@@ -7,6 +6,7 @@ import FilterButtons from "../FilterButtons/FilterButtons";
 
 const AllCafes = () => {
   const [cafes, setCafes] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { isLoading, error, performFetch } = useFetch("/cafes", setCafes);
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -48,6 +48,14 @@ const AllCafes = () => {
     if (newPage !== currentPage) setCurrentPage(newPage);
   };
 
+  const handleFavoriteToggle = async (cafeId, newIsFav) => {
+    const updatedFavorites = newIsFav
+      ? [...favorites, cafeId]
+      : favorites.filter((id) => id !== cafeId);
+
+    setFavorites(updatedFavorites);
+  };
+
   return (
     <div>
       <div className="mx-auto my-10 max-w-screen-md">
@@ -64,9 +72,14 @@ const AllCafes = () => {
       )}
       <div>
         {!isLoading && !error && results.length > 0 && (
-          <div className="flex  flex-row flex-wrap justify-center items-center gap-4  ">
+          <div className="flex flex-row flex-wrap justify-center items-center gap-4">
             {results.map((item) => (
-              <CafeCard cafe={item} key={item._id} />
+              <CafeCard
+                cafe={item}
+                key={item._id}
+                isFavorite={favorites.includes(item._id)}
+                onFavoriteToggle={handleFavoriteToggle}
+              />
             ))}
           </div>
         )}
