@@ -14,6 +14,7 @@ import Button from "../../components/Button/Button";
 import WriteIcon from "../../components/Icons/WriteIcon";
 import useAuth from "../../hooks/useAuth/useAuth";
 import StarRating from "../../components/StarRating/StarRating";
+import HeartCardIcon from "../../components/Icons/HeartCafeCardIcon";
 
 const getTokenFromCookies = () => {
   const match = document.cookie
@@ -26,6 +27,7 @@ const Cafe = () => {
   const { id: cafeId } = useParams();
   const [cafe, setCafe] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
   const [messageModal, setMessageModal] = useState({
@@ -39,6 +41,49 @@ const Cafe = () => {
     (data) => setCafe(data.result?.[0] || null),
   );
 
+  const { performFetch: favoriteFetch } = useFetch("/favorites", (data) => {
+    if (data.success) {
+      setIsFavorite((prev) => !prev);
+    }
+  });
+
+  useEffect(() => {
+    performFetch({ method: "GET" });
+
+    if (isAuthenticated) {
+      const token = getTokenFromCookies();
+      fetch(`/favorites/${cafeId}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => res.json())
+        .then((data) => setIsFavorite(data.isFavorite));
+    }
+  }, [cafeId, isAuthenticated]);
+
+  const handleFavoriteToggle = () => {
+    if (!isAuthenticated) {
+      alert("Please log in to favorite this cafe.");
+      return;
+    }
+
+    const token = getTokenFromCookies();
+    if (!token) {
+      alert("Authentication token is missing. Please log in again.");
+      return;
+    }
+
+    const method = isFavorite ? "DELETE" : "POST";
+
+    favoriteFetch({
+      method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cafeId }),
+    });
+  };
   useEffect(() => {
     performFetch({ method: "GET" });
   }, [cafeId]);
@@ -239,7 +284,14 @@ const Cafe = () => {
               View on Google Maps
             </a>
           )}
+
+          <HeartCardIcon
+            onClick={handleFavoriteToggle}
+            isActive={isFavorite}
+            className="top-2 right-2 cursor-pointer"
+          />
         </p>
+
         <div className="flex flex-wrap gap-4">
           {cafe.utilitiesDetails.map((utility) => {
             const IconComponent = utilityIcons[utility.value];
