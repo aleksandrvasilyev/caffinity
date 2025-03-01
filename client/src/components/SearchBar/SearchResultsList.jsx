@@ -6,8 +6,8 @@ const SearchResultsList = ({ searchResults }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
-      <ul className=" bg-white rounded-lg border-2 border-black shadow-lg divide-y divide-gray-200 my-6 max-h-[400px] overflow-y-auto">
+    <div className="w-full max-w-2xl mx-auto px-4 flex  justify-center items-center">
+      <ul className="w-[93%] bg-white rounded-bl-lg rounded-br-lg border-2 border-black shadow-lg divide-y divide-gray-200 my-4 max-h-[400px] overflow-y-auto">
         {searchResults.map((result) => (
           <li
             key={result._id}

@@ -67,8 +67,9 @@ const FilterDropdown = ({ onFilterChange, selectedFilters }) => {
   };
 
   return (
-    <div className="absolute top-13 right-0">
-      <ul className="bg-primary text-white rounded-lg p-4 flex flex-col w-60 my-6 space-y-3 h-[200px] overflow-y-scroll">
+    <div className="absolute top-15 left-7 ">
+      <div className="bg-zinc-950 h-[2px]"></div>
+      <ul className="bg-primary text-white rounded-bl-lg rounded-br-lg p-4 flex flex-col w-60 space-y-3 h-[200px] overflow-y-scroll">
         {filterList.map((item) => (
           <li key={item.value} className="flex items-center space-x-2">
             <input
