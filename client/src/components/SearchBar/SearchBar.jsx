@@ -119,10 +119,14 @@ const SearchBar = () => {
             <p> Find the perfect cafe near you </p> <br />
             <p>search now and discover your next favorite spot</p>
           </div>
-          <div className="relative bg-white bg-opacity-80 p-6 rounded-full border-2 border-black">
-            <div className="flex flex-wrap items-center space-x-4 w-full">
+
+          <div className="relative h-15 bg-white bg-opacity-80 pr-4 rounded-full border-2 border-black">
+            <div className="flex h-14 flex-wrap items-center space-x-4 w-full">
+              <div className="flex h-full">
+                <Filters onFilterChange={setSelectedFilters} />
+              </div>
               <input
-                className="flex-1 px-4 py-2 bg-transparent focus:outline-none text-text placeholder:text-gray-600"
+                className="flex-1 bg-transparent justify-center focus:outline-none text-xl placeholder:text-gray-600"
                 type="text"
                 placeholder="Search for cafes by name, city, or just select a filter"
                 value={searchQuery}
@@ -134,14 +138,10 @@ const SearchBar = () => {
               <button
                 onClick={handleSearchClick}
                 aria-label="search"
-                className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-6 h-6 sm:w-7 flex absolute right-4 sm:h-7 justify-center items-center hover:scale-110 transition-transform"
               >
                 <SearchIcon aria-hidden="true" />
               </button>
-
-              <div className="w-auto">
-                <Filters onFilterChange={setSelectedFilters} />
-              </div>
             </div>
           </div>
         </div>
