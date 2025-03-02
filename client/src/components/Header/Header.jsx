@@ -57,9 +57,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex items-center flex-col gap-4 sm:item-center sm:flex-row">
-        <HeartIcon onClick={handleFavoritesClick} className="cursor-pointer" />
-
+      <div className="flex items-center gap-4">
         {!isAuthenticated ? (
           <>
             <Button
@@ -76,19 +74,25 @@ const Header = () => {
             </Button>
           </>
         ) : (
-          <div className="relative">
-            <UserDefaultIcon
-              size={30}
+          <div className="flex items-center gap-3">
+            <HeartIcon
+              onClick={handleFavoritesClick}
               className="cursor-pointer"
-              onClick={toggleDropdown}
             />
-            {showDropdown && (
-              <div className="absolute right-0 mt-2 bg-white text-black py-1 px-4 rounded shadow">
-                <button onClick={handleLogout} className="w-full text-left">
-                  Logout
-                </button>
-              </div>
-            )}
+            <div className="relative">
+              <UserDefaultIcon
+                size={30}
+                className="cursor-pointer"
+                onClick={toggleDropdown}
+              />
+              {showDropdown && (
+                <div className="absolute right-0 mt-2 bg-white text-black py-1 px-4 rounded shadow">
+                  <button onClick={handleLogout} className="w-full text-left">
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
